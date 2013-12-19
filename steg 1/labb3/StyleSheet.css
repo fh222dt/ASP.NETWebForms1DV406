@@ -1,0 +1,26 @@
+﻿body {
+    width: 630px;
+    margin-left: 80px;
+    
+}
+table {
+    border-collapse: collapse;
+    margin-top: 50px;
+}
+
+table, td, th {
+    border: 1px solid #000;
+}
+th {
+    background: #000;
+    color: #fff;
+}
+
+td {
+    width: 80px;
+}
+
+fieldset {
+    border: 1px solid #000;
+    width: 200px;
+}

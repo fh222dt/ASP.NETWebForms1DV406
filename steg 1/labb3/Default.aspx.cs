@@ -43,48 +43,63 @@ public partial class _Default : System.Web.UI.Page
 
                 for (int i = 0; i < FArray.Length; i++)
                 {
-                    for (int j = 0; j < CArray.Length; j++)
-                    {
-                        FArray[i] = TemperatureConverter.CelsiusToFahrenheit(j);
-                    }
+                        FArray[i] = TemperatureConverter.CelsiusToFahrenheit(CArray[i]);
                 }
 
                 Col1.Text = "°C";
                 Col2.Text = "°F";
 
-                GenerateTable(rows, 2, tempStep, CArray);
+                GenerateTable(rows, 2, tempStep, CArray, FArray);
             }
 
             //Vid val av F till C
             if (FRadioButton.Checked == true)
             {
+                //skapa en Fahrenheit-array
+                int[] FArray = new int[rows];
+
+                for (int i = 0; i < FArray.Length; i++)
+                {
+                    FArray[i] = startTemp + (tempStep * i);
+                }
+
+                //skapa en Celsius-array
+                int[] CArray = new int[rows];
+
+                for (int i = 0; i < CArray.Length; i++)
+                {                    
+                    CArray[i] = TemperatureConverter.FahrenheitToCelsius(FArray[i]);
+                }                
+
                 Col1.Text = "°F";
                 Col2.Text = "°C";
 
-                //GenerateTable(rows, 2, tempStep);
+                GenerateTable(rows, 2, tempStep, FArray, CArray);
             }
         }
     }
 
-    protected void GenerateTable(int rows, int cols, int steps, int[] temps)
+    protected void GenerateTable(int rows, int cols, int steps, int[] right, int[] left)
     {
         //TempTable
         for (int i = 0; i < rows; i++)
         {
-            //skapa rader
+            //skapa rad
             TableRow tRow = new TableRow();
             TempTable.Rows.Add(tRow);
 
             for (int j = 0; j < cols; j++)
             {
-                //skapa celler
+                //skapa cell
                 TableCell tCell = new TableCell();                
                 tRow.Cells.Add(tCell);
-
-                //temperaturerna sätts in (stega igenom arreyerna)
-                for (int t = 0; t < temps.Length; t++)
+                if (j == 0)
                 {
-                    tCell.Text = "hm " + temps[2];
+                    tCell.Text = "" + right[i];
+                }
+                if (j == 1)
+                {
+                    tCell.Text = "" + left[i];
                 }
                 
             }

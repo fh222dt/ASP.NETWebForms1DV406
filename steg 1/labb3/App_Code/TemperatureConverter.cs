@@ -12,7 +12,7 @@ public static class TemperatureConverter
     {
         int fahrenheit = 0;
 
-        fahrenheit = degreesC * (9 / 5) + 32;
+        fahrenheit = (degreesC * 9 / 5) + 32;
 
         return fahrenheit;
     }
@@ -21,7 +21,7 @@ public static class TemperatureConverter
     {
         int celsius = 0;
 
-        celsius = (degreesF - 32) * (5 / 9);
+        celsius = (degreesF - 32) * 5 / 9;
 
         return celsius;
     }

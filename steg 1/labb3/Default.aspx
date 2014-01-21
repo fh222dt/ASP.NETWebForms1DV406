@@ -48,6 +48,7 @@
         <asp:RangeValidator ID="RangeValidator1" runat="server" ErrorMessage="Ange ett steg mellan 1 & 100" Type="Integer" 
             ControlToValidate="StepTextBox" MaximumValue="100" MinimumValue="1">*</asp:RangeValidator>
     </div>
+        <%-- knapp --%>
     <div>
     <fieldset><legend>Välj typ av konvertering</legend>
         <div>

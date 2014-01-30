@@ -24,8 +24,8 @@
     <%-- presentation av gissningar --%>
         <div id="results">
             <asp:PlaceHolder ID="ResultPlaceHolder" runat="server" Visible="false">
-                <asp:Label ID="NumberResultLabel" runat="server" Text="här ska gissade tal synas {0} "></asp:Label>
-                <asp:Label ID="ResultatLabel" runat="server" Text="Grattis du klarade det på {0} försök!"></asp:Label>
+                <p></p><asp:Label ID="NumberResultLabel" runat="server" Text="här ska gissade tal synas || {0} "></asp:Label></p>
+                <p><asp:Label ID="ResultatLabel" runat="server" Text="Grattis du klarade det på {0} försök!"></asp:Label></p>
                 <div id="newGuess">
                     <asp:Button ID="NewGuessButton" runat="server" Text="Slumpa nytt hemligt tal" />
                 </div>

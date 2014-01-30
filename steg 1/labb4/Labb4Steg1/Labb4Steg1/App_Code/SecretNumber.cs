@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Labb4Steg1.App_Code
 {
@@ -75,15 +77,16 @@ namespace Labb4Steg1.App_Code
         }
 
         //Metoder
-        public void Initialize()    //static?
+        public void Initialize()
         {
             Random random = new Random();
             _number = random.Next(1, 101);
+            _previousGuesses = new List<int>();     //osäker
             _previousGuesses.Clear();
             Outcome = Outcome.Indefinite;
         }
 
-        public Outcome MakeGuess(int guess)     //static??
+        public Outcome MakeGuess(int guess)
         {
             if (guess > 0 && guess < 101)
             {

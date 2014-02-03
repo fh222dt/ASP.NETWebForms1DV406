@@ -94,45 +94,49 @@ namespace Labb4Steg1.App_Code
                 if (Count == MaxNumberOfGuesses)
                 {
                     Outcome = Outcome.NoMoreGuesses;
+                    _previousGuesses.Add(guess);
                     return Outcome;
                 }
                 if (guess == _number)
                 {
                     Outcome = Outcome.Correct;
+                    _previousGuesses.Add(guess);
                     return Outcome;
                 }
                 if (_previousGuesses.Contains(guess))
                 {
                     Outcome = Outcome.PreviousGuesses;
+                    _previousGuesses.Add(guess);
                     return Outcome;
                 }
                 if (guess < _number)
                 {
                     Outcome = Outcome.Low;
+                    _previousGuesses.Add(guess);
                     return Outcome;
                 }
                 if (guess > _number)
                 {
                     Outcome = Outcome.High;
+                    _previousGuesses.Add(guess);
                     return Outcome;
                 }
-                else if (PreviousGuesses.Contains(guess))
-                {
-                    Outcome = Outcome.PreviousGuesses;
-                    return Outcome;
-                }
+                //else if (PreviousGuesses.Contains(guess))
+                //{
+                //    Outcome = Outcome.PreviousGuesses;
+                //    return Outcome;
+                //}
                 else
                 {
                     Outcome = Outcome.Indefinite;
                     return Outcome;
                 }
-
             }
+
             else
             {
                 throw new ArgumentOutOfRangeException("guess", "talet måste vara mellan 1-100");
             }
-
         }
     }
 

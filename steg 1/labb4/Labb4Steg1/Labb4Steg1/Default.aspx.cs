@@ -10,11 +10,18 @@ namespace Labb4Steg1
 {
     public partial class Default : System.Web.UI.Page
     {
-        //här ska vara privat egenskap m session
+        private SecretNumber Sn
+        {
+            get { return Session["secret"] as SecretNumber; }
+            set { Session["secret"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                Sn = new SecretNumber();
+            }
         }
 
         protected void GuessButton_Click(object sender, EventArgs e)
@@ -22,41 +29,64 @@ namespace Labb4Steg1
             if (IsValid)
             {
                 //gör så att inmatat data går att bearbeta
-                int guess = int.Parse(GuessNumberTextBox.Text);
+                int guess = int.Parse(GuessNumberTextBox.Text);                
 
-                SecretNumber SecNo = new SecretNumber();
-
-                var answer = SecNo.MakeGuess(guess);
+                var answer = Sn.MakeGuess(guess);
                 var userHelp = "";
 
-                if (answer == Outcome.High)
+                if (Sn.CanMakeGuess)
                 {
-                    userHelp = "för högt";
+
+                    if (answer == Outcome.High)
+                    {
+                        userHelp = "för högt";
+                    }
+
+                    if (answer == Outcome.Low)
+                    {
+                        userHelp = "för lågt";
+                    }
+
+                    if (answer == Outcome.PreviousGuesses)
+                    {
+                        userHelp = "Du har redan gissat på talet";
+                    }
                 }
 
-                if (answer == Outcome.Low)
+                else
                 {
-                    userHelp = "för lågt";
-                }
+                    if (answer == Outcome.Correct)
+                    {
+                        userHelp = "Du gissade rätt! Du klarade det på " + Sn.Count + " försök";
+                    }
 
-                if (answer == Outcome.PreviousGuesses)
-                {
-                    userHelp = "Du har redan gissat på talet";
-                }
+                    if (answer == Outcome.NoMoreGuesses)
+                    {
+                        userHelp = "Du har inga gissningar kvar. Det hemliga talet var " + Sn.Number;
+                    }
 
-                if (answer == Outcome.Correct)
-                {
-                    userHelp = "Du gissade rätt! Du klarade det på " + SecNo.Count;
+                    //visa knapp för ny gissning
+                    NewGuessPlaceHolder.Visible = true;
+                    //sudda gissningsknapp & ruta jquery
                 }
 
                 //gör resultatet synligt
                 ResultPlaceHolder.Visible = true;
-
-                //visa gissade tal 
-                NumberResultLabel.Text = String.Format(NumberResultLabel.Text, userHelp);
-                //visa feedback
-                ResultatLabel.Text = String.Format(ResultatLabel.Text, "x");
+                
+                var pg = "";
+                foreach (int i in Sn.PreviousGuesses)
+                {
+                    pg += i.ToString()+", ";
+                }
+                
+                //visa gissade tal & hjälptext
+                ResultLabel.Text = String.Format(ResultLabel.Text, pg, userHelp);        
             }
+        }
+
+        protected void NewGuessButton_Click(object sender, EventArgs e)
+        {
+            Sn.Initialize();
         }
     }
 }

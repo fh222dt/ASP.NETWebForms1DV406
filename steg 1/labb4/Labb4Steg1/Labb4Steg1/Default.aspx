@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Labb4Steg1.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Labb4Steg1.Default" ViewStateMode="Disabled" %>
 
 <!DOCTYPE html>
 
@@ -24,12 +24,18 @@
     <%-- presentation av gissningar --%>
         <div id="results">
             <asp:PlaceHolder ID="ResultPlaceHolder" runat="server" Visible="false">
-                <p></p><asp:Label ID="NumberResultLabel" runat="server" Text="här ska gissade tal synas || {0} "></asp:Label></p>
-                <p><asp:Label ID="ResultatLabel" runat="server" Text="Grattis du klarade det på {0} försök!"></asp:Label></p>
-                <div id="newGuess">
-                    <asp:Button ID="NewGuessButton" runat="server" Text="Slumpa nytt hemligt tal" />
-                </div>
+                <p><asp:Label ID="ResultLabel" runat="server" Text="gissade tal {0} {1}"></asp:Label></p>
             </asp:PlaceHolder>
+
+            <%--<p><asp:Label ID="ResultatLabel" runat="server" Text="Grattis du klarade det på {0} försök!"></asp:Label></p>--%>
+
+            <div id="newGuess">
+                <asp:PlaceHolder ID="NewGuessPlaceHolder" runat="server" Visible="false" >
+                    <asp:Button ID="NewGuessButton" runat="server" Text="Slumpa nytt hemligt tal" OnClick="NewGuessButton_Click" />
+                </asp:PlaceHolder>
+                    
+            </div>
+            
         </div>
     </form>
 </body>

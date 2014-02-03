@@ -11,7 +11,8 @@
     <h1>Gissa det hemliga talet</h1>
     <form id="form1" runat="server">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade. Åtgärda felen och försök igen." />
-    <%-- inmatning av gissning --%>
+    
+        <%-- inmatning av gissning --%>
     <div id="guess">
         <asp:Label ID="GuessNumberLabel" runat="server" Text="Ange ett tal mellan 1 & 100: "></asp:Label>
         <asp:TextBox ID="GuessNumberTextBox" runat="server"></asp:TextBox>
@@ -24,16 +25,13 @@
     <%-- presentation av gissningar --%>
         <div id="results">
             <asp:PlaceHolder ID="ResultPlaceHolder" runat="server" Visible="false">
-                <p><asp:Label ID="ResultLabel" runat="server" Text="gissade tal {0} {1}"></asp:Label></p>
+                <p><asp:Label ID="ResultLabel" runat="server" Text="{0} {1}"></asp:Label></p>
             </asp:PlaceHolder>
-
-            <%--<p><asp:Label ID="ResultatLabel" runat="server" Text="Grattis du klarade det på {0} försök!"></asp:Label></p>--%>
 
             <div id="newGuess">
                 <asp:PlaceHolder ID="NewGuessPlaceHolder" runat="server" Visible="false" >
                     <asp:Button ID="NewGuessButton" runat="server" Text="Slumpa nytt hemligt tal" OnClick="NewGuessButton_Click" />
-                </asp:PlaceHolder>
-                    
+                </asp:PlaceHolder>                    
             </div>
             
         </div>

@@ -17,7 +17,10 @@ namespace Labb4Steg1
         }
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   //sätt fokus på textboxen
+            GuessNumberTextBox.Focus();
+
+            //endast vid första besöket av sidan skapas ett nytt objekt
             if (!IsPostBack)
             {
                 Sn = new SecretNumber();
@@ -28,6 +31,8 @@ namespace Labb4Steg1
         {   //gör något endast om sidan är validerad
             if (IsValid)
             {
+                
+
                 //gör så att inmatat data går att bearbeta
                 int guess = int.Parse(GuessNumberTextBox.Text);                
 
@@ -65,9 +70,13 @@ namespace Labb4Steg1
                         userHelp = "Du har inga gissningar kvar. Det hemliga talet var " + Sn.Number;
                     }
 
-                    //visa knapp för ny gissning
+                    //visa knapp för ny gissning & sätt fokus
                     NewGuessPlaceHolder.Visible = true;
-                    //sudda gissningsknapp & ruta jquery
+                    NewGuessButton.Focus();
+                    
+                    //disable textfält & gissa-knapp
+                    GuessNumberTextBox.Enabled = false;
+                    GuessButton.Enabled = false;
                 }
 
                 //gör resultatet synligt
@@ -80,7 +89,8 @@ namespace Labb4Steg1
                 }
                 
                 //visa gissade tal & hjälptext
-                ResultLabel.Text = String.Format(ResultLabel.Text, pg, userHelp);        
+                ResultLabel.Text = String.Format(ResultLabel.Text, pg, userHelp);
+                
             }
         }
 

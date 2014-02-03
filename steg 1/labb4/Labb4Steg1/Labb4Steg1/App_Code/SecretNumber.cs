@@ -10,7 +10,7 @@ namespace Labb4Steg1.App_Code
 {
     public class SecretNumber
     {
-        //fält vad ska va privat??
+        //fält
         private int _number;
         private List<int> _previousGuesses;
         //konstant
@@ -90,8 +90,9 @@ namespace Labb4Steg1.App_Code
         {
             if (guess > 0 && guess < 101)
             {
+                //_previousGuesses.Add(guess);
 
-                if (Count == MaxNumberOfGuesses)
+                if (Count+1 >= MaxNumberOfGuesses)  //plus 1 för att kolla av innan gissningen är klar
                 {
                     Outcome = Outcome.NoMoreGuesses;
                     _previousGuesses.Add(guess);
@@ -106,7 +107,8 @@ namespace Labb4Steg1.App_Code
                 if (_previousGuesses.Contains(guess))
                 {
                     Outcome = Outcome.PreviousGuesses;
-                    _previousGuesses.Add(guess);
+                    //_previousGuesses.Remove(guess);
+                   // _previousGuesses.Add(guess);
                     return Outcome;
                 }
                 if (guess < _number)
@@ -121,11 +123,7 @@ namespace Labb4Steg1.App_Code
                     _previousGuesses.Add(guess);
                     return Outcome;
                 }
-                //else if (PreviousGuesses.Contains(guess))
-                //{
-                //    Outcome = Outcome.PreviousGuesses;
-                //    return Outcome;
-                //}
+                
                 else
                 {
                     Outcome = Outcome.Indefinite;

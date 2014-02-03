@@ -92,18 +92,20 @@ namespace Labb4Steg1.App_Code
             {
                 //_previousGuesses.Add(guess);
 
-                if (Count+1 >= MaxNumberOfGuesses)  //plus 1 för att kolla av innan gissningen är klar
-                {
-                    Outcome = Outcome.NoMoreGuesses;
-                    _previousGuesses.Add(guess);
-                    return Outcome;
-                }
                 if (guess == _number)
                 {
                     Outcome = Outcome.Correct;
                     _previousGuesses.Add(guess);
                     return Outcome;
                 }
+
+                if (Count+1 >= MaxNumberOfGuesses)  //plus 1 för att kolla av innan gissningen är klar
+                {
+                    Outcome = Outcome.NoMoreGuesses;
+                    _previousGuesses.Add(guess);
+                    return Outcome;
+                }
+                
                 if (_previousGuesses.Contains(guess))
                 {
                     Outcome = Outcome.PreviousGuesses;

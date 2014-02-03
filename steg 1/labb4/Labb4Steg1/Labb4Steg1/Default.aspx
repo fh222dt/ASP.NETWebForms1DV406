@@ -9,6 +9,7 @@
 </head>
 <body>
     <h1>Gissa det hemliga talet</h1>
+    <p>Du har 7 försök på dig. Lycka till!</p>
     <form id="form1" runat="server">
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Fel inträffade. Åtgärda felen och försök igen." />
     

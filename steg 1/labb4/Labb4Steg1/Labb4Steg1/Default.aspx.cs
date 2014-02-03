@@ -97,6 +97,8 @@ namespace Labb4Steg1
         protected void NewGuessButton_Click(object sender, EventArgs e)
         {
             Sn.Initialize();
+            GuessNumberTextBox.Text = "";
+            //GuessButton.Enabled = true;
         }
     }
 }

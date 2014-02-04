@@ -10,3 +10,7 @@
     width: 30px;
 }
 
+.disabled {
+    background-color: #EBEBE4;
+    color: graytext;
+}

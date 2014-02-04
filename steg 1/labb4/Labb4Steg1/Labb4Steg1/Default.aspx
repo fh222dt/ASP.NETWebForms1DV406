@@ -24,18 +24,17 @@
     </div>
 
     <%-- presentation av gissningar --%>
-        <div id="results">
-            <asp:PlaceHolder ID="ResultPlaceHolder" runat="server" Visible="false">
-                <p><asp:Label ID="ResultLabel" runat="server" Text="{0} {1}"></asp:Label></p>
-            </asp:PlaceHolder>
+    <div id="results">
+        <asp:PlaceHolder ID="ResultPlaceHolder" runat="server" Visible="false">
+            <p><asp:Label ID="ResultLabel" runat="server" Text="{0} {1}"></asp:Label></p>
+        </asp:PlaceHolder>
 
-            <div id="newGuess">
-                <asp:PlaceHolder ID="NewGuessPlaceHolder" runat="server" Visible="false" >
-                    <asp:Button ID="NewGuessButton" runat="server" Text="Slumpa nytt hemligt tal" OnClick="NewGuessButton_Click" />
-                </asp:PlaceHolder>                    
-            </div>
-            
-        </div>
+        <div id="newGuess">
+            <asp:PlaceHolder ID="NewGuessPlaceHolder" runat="server" Visible="false" >
+                <asp:Button ID="NewGuessButton" runat="server" Text="Slumpa nytt hemligt tal" OnClick="NewGuessButton_Click" />
+            </asp:PlaceHolder>                    
+        </div>            
+    </div>
     </form>
 </body>
 </html>

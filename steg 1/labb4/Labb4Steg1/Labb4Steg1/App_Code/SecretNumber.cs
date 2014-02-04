@@ -55,7 +55,6 @@ namespace Labb4Steg1.App_Code
                     return _number;
                 }
             }
-            //behövs set?
         }  
 
         public Outcome Outcome { get; private set; }
@@ -81,7 +80,7 @@ namespace Labb4Steg1.App_Code
         {
             Random random = new Random();
             _number = random.Next(1, 101);
-            _previousGuesses = new List<int>();     //osäker
+            _previousGuesses = new List<int>();
             _previousGuesses.Clear();
             Outcome = Outcome.Indefinite;
         }
@@ -90,8 +89,6 @@ namespace Labb4Steg1.App_Code
         {
             if (guess > 0 && guess < 101)
             {
-                //_previousGuesses.Add(guess);
-
                 if (guess == _number)
                 {
                     Outcome = Outcome.Correct;
@@ -109,8 +106,6 @@ namespace Labb4Steg1.App_Code
                 if (_previousGuesses.Contains(guess))
                 {
                     Outcome = Outcome.PreviousGuesses;
-                    //_previousGuesses.Remove(guess);
-                   // _previousGuesses.Add(guess);
                     return Outcome;
                 }
                 if (guess < _number)

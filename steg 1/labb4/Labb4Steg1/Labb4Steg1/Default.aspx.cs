@@ -18,7 +18,7 @@ namespace Labb4Steg1
 
         protected void Page_Load(object sender, EventArgs e)
         {   //sätt fokus på textboxen
-            GuessNumberTextBox.Focus();
+            GuessNumberTextBox.Focus();           
 
             //endast vid första besöket av sidan skapas ett nytt objekt
             if (!IsPostBack)
@@ -30,9 +30,7 @@ namespace Labb4Steg1
         protected void GuessButton_Click(object sender, EventArgs e)
         {   //gör något endast om sidan är validerad
             if (IsValid)
-            {
-                
-
+            {  
                 //gör så att inmatat data går att bearbeta
                 int guess = int.Parse(GuessNumberTextBox.Text);                
 
@@ -70,13 +68,14 @@ namespace Labb4Steg1
                         userHelp = "Du har inga gissningar kvar. Det hemliga talet var " + Sn.Number;
                     }
 
+                    //disable textfält & gissa-knapp
+                    GuessNumberTextBox.ReadOnly = true;
+                    GuessNumberTextBox.CssClass = "disabled";
+                    GuessButton.Enabled = false;
+
                     //visa knapp för ny gissning & sätt fokus
                     NewGuessPlaceHolder.Visible = true;
-                    NewGuessButton.Focus();
-                    
-                    //disable textfält & gissa-knapp
-                    GuessNumberTextBox.Enabled = false;
-                    GuessButton.Enabled = false;
+                    NewGuessButton.Focus();                    
                 }
 
                 //gör resultatet synligt
@@ -88,7 +87,7 @@ namespace Labb4Steg1
                     pg += i.ToString()+", ";
                 }
                 
-                //visa gissade tal & hjälptext
+                //lägg till gissade tal & hjälptext
                 ResultLabel.Text = String.Format(ResultLabel.Text, pg, userHelp);
                 
             }
@@ -96,9 +95,11 @@ namespace Labb4Steg1
 
         protected void NewGuessButton_Click(object sender, EventArgs e)
         {
-            Sn.Initialize();
+            GuessNumberTextBox.Enabled = true;
             GuessNumberTextBox.Text = "";
-            //GuessButton.Enabled = true;
+            
+            //generera nytt slumptal
+            Sn.Initialize();
         }
     }
 }

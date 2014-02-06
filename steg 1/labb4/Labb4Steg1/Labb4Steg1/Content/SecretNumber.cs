@@ -18,7 +18,7 @@ namespace Labb4Steg1.App_Code
 
 
         //Egenskaper
-        public bool CanMakeGuess
+        public bool CanMakeGuess 
         {
             get
             {
@@ -37,9 +37,9 @@ namespace Labb4Steg1.App_Code
             }
         }
 
-        public int Count
-        {
-            get { return _previousGuesses.Count; }
+        public int Count 
+        { 
+            get { return _previousGuesses.Count; } 
         }
 
         public int? Number //är nullable
@@ -55,7 +55,7 @@ namespace Labb4Steg1.App_Code
                     return _number;
                 }
             }
-        }
+        }  
 
         public Outcome Outcome { get; private set; }
 
@@ -96,13 +96,13 @@ namespace Labb4Steg1.App_Code
                     return Outcome;
                 }
 
-                if (Count + 1 >= MaxNumberOfGuesses)  //plus 1 för att kolla av innan gissningen är klar
+                if (Count+1 >= MaxNumberOfGuesses)  //plus 1 för att kolla av innan gissningen är klar
                 {
                     Outcome = Outcome.NoMoreGuesses;
                     _previousGuesses.Add(guess);
                     return Outcome;
                 }
-
+                
                 if (_previousGuesses.Contains(guess))
                 {
                     Outcome = Outcome.PreviousGuesses;
@@ -120,7 +120,7 @@ namespace Labb4Steg1.App_Code
                     _previousGuesses.Add(guess);
                     return Outcome;
                 }
-
+                
                 else
                 {
                     Outcome = Outcome.Indefinite;

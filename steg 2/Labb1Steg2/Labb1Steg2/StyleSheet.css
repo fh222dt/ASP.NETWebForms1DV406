@@ -1,0 +1,33 @@
+﻿body {
+    width: 630px;
+    margin-left: 80px;
+    
+}
+
+#BigImage {
+    width: 624px;
+    border: 3px solid black;
+}
+
+#thumbsArea {
+    height: 70px;
+    overflow:auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+}
+
+#thumbs {
+    width:4000px;
+}
+
+    #thumbsArea img {
+        float: left;
+        margin-right: 10px;
+        border: 3px solid black;
+        
+    }
+
+.bigPic {
+    border: 5px solid grey;
+}

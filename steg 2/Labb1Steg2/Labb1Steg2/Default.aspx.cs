@@ -19,6 +19,8 @@ namespace Labb1Steg2
             thumbsRepeater.DataSource = files;
             thumbsRepeater.DataBind();
 
+            var query = Request.QueryString["name"];
+            BigImage.ImageUrl = "img/" + query;
             
         }
 
@@ -33,9 +35,17 @@ namespace Labb1Steg2
 
                     var content = galleryFileUpload.FileContent;
                     var name = galleryFileUpload.FileName;
-                    var image = pic.SaveImage(content, name);
+                    var imageFN = pic.SaveImage(content, name);
 
-                    BigImage.ImageUrl = "img/" + image;
+                    //felmeddel vid uppladdning som misslyckas
+                        var validator = new CustomValidator();
+                        validator.Text = "Ett fel inträffade vid uppladdningen";
+                        Validators.Add(validator);
+             
+
+
+
+                    BigImage.ImageUrl = "img/" + imageFN;
 
                     //visa rättmeddelande vid uppladdning
                     SuccessPlaceHolder.Visible = true;
@@ -43,9 +53,9 @@ namespace Labb1Steg2
 
                     //markera thumb
 
-                    //felmeddel vid uppladdning som misslyckas
+                    
 
-                    //Response.Redirect();
+                    Response.Redirect("?name=" + imageFN);
                 }
 
             }

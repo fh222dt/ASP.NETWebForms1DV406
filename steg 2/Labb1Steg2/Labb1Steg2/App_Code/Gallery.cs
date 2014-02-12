@@ -70,34 +70,42 @@ namespace Labb1Steg2.App_Code
 
         public string SaveImage(Stream stream, string fileName)
         {
-            var image = System.Drawing.Image.FromStream(stream);
-            string imgPath = PhysicalApplicationPath + fileName;
-            string fileExt = Path.GetExtension(imgPath);
-            string name = Path.GetFileNameWithoutExtension(imgPath);
-            int i = 2;
-
-            //lägg till en siffra om filnamnet redan finns
-            if (ImageExist(fileName))
+            try
             {
-                fileName = string.Format("{0}{1}{2}", name, i++, fileExt);
+                var image = System.Drawing.Image.FromStream(stream);
+
+                //spara bilden m thumb om bilden har rätt mimetyp
+                if (IsValidImage(image))
+                {
+
+                    string imgPath = PhysicalApplicationPath + fileName;
+                    string fileExt = Path.GetExtension(imgPath);
+                    string name = Path.GetFileNameWithoutExtension(imgPath);
+                    int i = 2;
+
+                    //lägg till en siffra om filnamnet redan finns
+                    if (ImageExist(fileName))
+                    {
+                        fileName = string.Format("{0}{1}{2}", name, i++, fileExt);
+                    }
+
+                    image.Save(Path.GetFullPath(PhysicalApplicationPath + fileName));
+                    var thumb = image.GetThumbnailImage(60, 45, null, System.IntPtr.Zero);
+                    thumb.Save(Path.GetFullPath(PhysicalApplicationPath + @"\thumbs\" + fileName));
+                }
+
+                else
+                {
+                    throw new ArgumentException("Bilden har fel format");
+                }
+
+                return fileName;
             }
 
-            //spara bilden m thumb
-            if (IsValidImage(image))
-            {
-                image.Save(Path.GetFullPath(PhysicalApplicationPath + fileName));
-                var thumb = image.GetThumbnailImage(60, 45, null, System.IntPtr.Zero);
-                thumb.Save(Path.GetFullPath(PhysicalApplicationPath + @"\thumbs\" + fileName));
-
-            }
-
-
-            else
+            catch 
             {
                 throw new ArgumentException("Bilden har fel format");
             }
-
-            return fileName;
         }
     }
 }

@@ -23,7 +23,7 @@
             <div id="thumbs">
             <asp:Repeater ID="thumbsRepeater" runat="server" OnItemCommand="thumbsRepeater_ItemCommand">
                 <ItemTemplate>
-                    <asp:HyperLink ID="thumbHyperLink" runat="server" NavigateUrl='<%# "~/default.aspx?name=" + Server.UrlEncode(Eval("Name", "~/img/{0}")) %>'>
+                    <asp:HyperLink ID="thumbHyperLink" runat="server" NavigateUrl='<%# "~/default.aspx?name=" + Eval("Name", "{0}") %>'>
                         <asp:Image ID="Image" runat="server" CssClass="thumbs" ImageUrl='<%# Eval("Name", "~/img/thumbs/{0}") %>' CommandName="bigger" />
                         <%--<asp:ImageButton ID="ImageButton" runat="server" ImageUrl='<%# Eval("Name", "~/img/thumbs/{0}") %>' CommandName="bigger" />--%>
                     </asp:HyperLink> 

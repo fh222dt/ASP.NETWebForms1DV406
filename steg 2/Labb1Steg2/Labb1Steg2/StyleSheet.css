@@ -28,6 +28,11 @@
         
     }
 
-.bigPic {
-    border: 5px solid grey;
+.marked {
+    border: 5px solid red;
+}
+
+.success {
+    background: #d3faa7;
+
 }

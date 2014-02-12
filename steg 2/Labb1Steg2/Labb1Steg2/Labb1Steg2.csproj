@@ -67,7 +67,6 @@
     <Content Include="img\Autumn Leaves.jpg" />
     <Content Include="img\Creek.jpg" />
     <Content Include="img\Desert Landscape.jpg" />
-    <Content Include="img\Desert Landscape2.jpg" />
     <Content Include="img\Dock.jpg" />
     <Content Include="img\Forest Flowers.jpg" />
     <Content Include="img\Forest.jpg" />
@@ -79,7 +78,6 @@
     <Content Include="img\thumbs\Autumn Leaves.jpg" />
     <Content Include="img\thumbs\Creek.jpg" />
     <Content Include="img\thumbs\Desert Landscape.jpg" />
-    <Content Include="img\thumbs\Desert Landscape2.jpg" />
     <Content Include="img\thumbs\Dock.jpg" />
     <Content Include="img\thumbs\Forest Flowers.jpg" />
     <Content Include="img\thumbs\Forest.jpg" />
@@ -90,16 +88,12 @@
     <Content Include="img\thumbs\Oryx Antelope.jpg" />
     <Content Include="img\thumbs\Toco Toucan.jpg" />
     <Content Include="img\thumbs\Tree.jpg" />
-    <Content Include="img\thumbs\Tree2.jpg" />
     <Content Include="img\thumbs\Waterfall.jpg" />
     <Content Include="img\thumbs\Winter Leaves.jpg" />
-    <Content Include="img\thumbs\Winter Leaves2.jpg" />
     <Content Include="img\Toco Toucan.jpg" />
     <Content Include="img\Tree.jpg" />
-    <Content Include="img\Tree2.jpg" />
     <Content Include="img\Waterfall.jpg" />
     <Content Include="img\Winter Leaves.jpg" />
-    <Content Include="img\Winter Leaves2.jpg" />
     <Content Include="packages.config" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />

@@ -12,7 +12,10 @@
 <h1>Galleriet</h1>
     <form id="form1" runat="server">
     <div>
-        
+     <%-- Rättmeddelande vid uppladdning av bild --%>
+        <asp:PlaceHolder ID="SuccessPlaceHolder" runat="server" Visible="false">
+            <p class="success">Bilden har sparats</p>
+        </asp:PlaceHolder>
     <%-- En stor yta för bilden att visas --%>        
         <asp:Image ID="BigImage" ImageUrl="~/img/Dock.jpg" runat="server" />        
         <%-- Tumnaglar --%>
@@ -20,8 +23,9 @@
             <div id="thumbs">
             <asp:Repeater ID="thumbsRepeater" runat="server" OnItemCommand="thumbsRepeater_ItemCommand">
                 <ItemTemplate>
-                    <asp:HyperLink ID="thumbHyperLink" runat="server" NavigateUrl='<%# Eval("Name", "~/img/{0}") %>'>
-                        <asp:Image ID="Image1" runat="server" CssClass="thumbs" ImageUrl='<%# Eval("Name", "~/img/thumbs/{0}") %>' />
+                    <asp:HyperLink ID="thumbHyperLink" runat="server" NavigateUrl='<%# "~/default.aspx?name=" + Server.UrlEncode(Eval("Name", "~/img/{0}")) %>'>
+                        <asp:Image ID="Image" runat="server" CssClass="thumbs" ImageUrl='<%# Eval("Name", "~/img/thumbs/{0}") %>' CommandName="bigger" />
+                        <%--<asp:ImageButton ID="ImageButton" runat="server" ImageUrl='<%# Eval("Name", "~/img/thumbs/{0}") %>' CommandName="bigger" />--%>
                     </asp:HyperLink> 
                 </ItemTemplate>
             </asp:Repeater>
@@ -39,7 +43,8 @@
         
         <asp:Button ID="uploadButton" runat="server" Text="Ladda upp" OnClick="uploadButton_Click" />
     </div>
-    </form>
     <script src="gallery.js"></script>
+    </form>
+    
 </body>
 </html>

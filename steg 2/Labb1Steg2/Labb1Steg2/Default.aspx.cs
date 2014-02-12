@@ -12,7 +12,8 @@ namespace Labb1Steg2
     public partial class Default : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
+        {   
+            //bind bilderna till repeatern
             var di = new DirectoryInfo(Gallery.PhysicalApplicationPath);
             var files = di.GetFiles();
             thumbsRepeater.DataSource = files;
@@ -36,16 +37,31 @@ namespace Labb1Steg2
 
                     BigImage.ImageUrl = "img/" + image;
 
+                    //visa rättmeddelande vid uppladdning
+                    SuccessPlaceHolder.Visible = true;
+                    ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "fadeOut()", true);
 
+                    //markera thumb
 
-                    //Response.Redirect("?name"+ fileName);
+                    //felmeddel vid uppladdning som misslyckas
+
+                    //Response.Redirect();
                 }
 
             }
         }
         protected void thumbsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            
+            if (e.CommandName == "bigger")
+            {
+                var thumb = e.Item.FindControl("ImageButton") as Image;
+
+                //markera thumben
+                thumb.CssClass = "marked";
+
+                BigImage.ImageUrl = "img/" + thumb.ImageUrl;
+
+            }
         }
     }
 }

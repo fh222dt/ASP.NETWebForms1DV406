@@ -42,16 +42,16 @@ namespace Labb1Steg2
                 Session["upload"] = null;
             }
 
-            //visa felmeddelande om uppladdning ej går igenom
-            if (Session["fail"] != null)
-            {
-                var uploadError = new CustomValidator();
-                uploadError.IsValid = false;
-                uploadError.ErrorMessage = "Ett fel inträffade vid uppladdningen";
-                Validators.Add(uploadError);
+            ////visa felmeddelande om uppladdning ej går igenom
+            //if (Session["fail"] != null)
+            //{
+            //    var uploadError = new CustomValidator();
+            //    uploadError.IsValid = false;
+            //    uploadError.ErrorMessage = "Ett fel inträffade vid uppladdningen";
+            //    Validators.Add(uploadError);
 
-                Session["fail"] = null;
-            }
+            //    Session["fail"] = null;
+            //}
 
         }
 
@@ -69,47 +69,33 @@ namespace Labb1Steg2
                     var name = galleryFileUpload.FileName;
                     
                     //spara bild
-                    var imageFN = pic.SaveImage(content, name);     
-
-                    if (imageFN == "" ) 
+                    try
                     {
-                        //felmeddel vid uppladdning som misslyckas
-                        Session["fail"] = true;
-                        
-                    }
-
-                    else {
-                        //rättmeddelande vid uppladdning                        
+                        var imageFN = pic.SaveImage(content, name);
                         Session["upload"] = true;
+
+                        //ladda om sidan med ny url
+                        Response.Redirect("?name=" + imageFN);
                     }
-                                                            
-                    //ladda om sidan med ny url
-                    Response.Redirect("?name=" + imageFN);
+                    catch (Exception ex)
+                    {
+                        
+                        //var uploadError = new CustomValidator();
+                        //uploadError.IsValid = false;
+                        //uploadError.ErrorMessage = ex.Message;
+                        //Validators.Add(uploadError);
+
+
+                        var validator = new CustomValidator { 
+                            IsValid = false, 
+                            ErrorMessage = ex.Message };
+                        Page.Validators.Add(validator);
+                    }     
+                           
                 }
 
             }
         }
-
-        //protected void Page_Error(object sender, EventArgs e)
-        //{
-        //    // Get last error from the server
-        //    Exception exc = Server.GetLastError();
-
-        //    if (exc is ArgumentException)
-        //    {
-        //        //felmeddel vid uppladdning som misslyckas
-        //        var uploadError = new CustomValidator();
-        //        uploadError.ValidationGroup = "Main";
-        //        uploadError.IsValid = false;
-        //        uploadError.ErrorMessage = "Ett fel inträffade vid uppladdningen";
-        //        Validators.Add(uploadError);
-
-        //        // Clear the error from the server
-        //        Server.ClearError();
-        //    }
-
-        //}
-
 
         protected void thumbsRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
@@ -128,7 +114,6 @@ namespace Labb1Steg2
             {
                 thumb.CssClass = "thumbs marked";
             }
-
 
         }
     }

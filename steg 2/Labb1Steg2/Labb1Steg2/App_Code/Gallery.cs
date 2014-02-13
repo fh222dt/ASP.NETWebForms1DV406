@@ -106,8 +106,8 @@ namespace Labb1Steg2.App_Code
 
             catch
             {   //returnera tom sträng ist för filväg
-                return "";
-                //throw new ArgumentException("Bilden har fel format");
+                //return "";
+                throw new ArgumentException("Bilden har fel format");
             }
 
         }

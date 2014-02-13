@@ -19,9 +19,24 @@ namespace Labb1Steg2
             thumbsRepeater.DataSource = files;
             thumbsRepeater.DataBind();
 
+            //visa stora bilden efter vilken querystring som är aktuell
             var query = Request.QueryString["name"];
-            BigImage.ImageUrl = "img/" + query;
-            
+            if (query != null)
+            {
+                BigImage.ImageUrl = "img/" + query;
+            }
+
+            //markera motsvarande thumb
+            //var thumb = thumbsRepeater.FindControl("ThumbImage");
+            //var url = thumb.ImageUrl;
+
+            //if (query != null)
+            //{
+            //    if (url.Contains(query))
+            //    {
+            //        thumb.CssClass = "marked";
+            //    }
+            //}
         }
 
         protected void uploadButton_Click(object sender, EventArgs e)
@@ -35,17 +50,15 @@ namespace Labb1Steg2
 
                     var content = galleryFileUpload.FileContent;
                     var name = galleryFileUpload.FileName;
+
                     var imageFN = pic.SaveImage(content, name);
 
                     //felmeddel vid uppladdning som misslyckas
                         var validator = new CustomValidator();
                         validator.Text = "Ett fel inträffade vid uppladdningen";
                         Validators.Add(validator);
-             
 
-
-
-                    BigImage.ImageUrl = "img/" + imageFN;
+                    //BigImage.ImageUrl = "img/" + imageFN;
 
                     //visa rättmeddelande vid uppladdning
                     SuccessPlaceHolder.Visible = true;
@@ -54,23 +67,56 @@ namespace Labb1Steg2
                     //markera thumb
 
                     
-
+                    //ladda om sidan med ny url
                     Response.Redirect("?name=" + imageFN);
                 }
 
             }
         }
+
         protected void thumbsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            if (e.CommandName == "bigger")
+        //    var thumb = e.Item.FindControl("ThumbImage") as Image;
+        //    var url = thumb.ImageUrl;
+        //    var query = Request.QueryString["name"];
+
+        //    if (url.Contains(query))
+        //    {
+        //        thumb.CssClass = "marked";
+        //    }            
+            
+        //    //var url = ThumbImage.ImageUrl;
+
+        //    //if (e.CommandName == "bigger")
+        //    //{
+        //    //    var thumb = e.Item.FindControl("ImageButton") as Image;
+
+        //    //    //markera thumben
+        //    //    thumb.CssClass = "marked";
+
+        //    //    BigImage.ImageUrl = "img/" + thumb.ImageUrl;
+
+        //    //}
+        }
+
+
+        protected void thumbsRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            var thumb = e.Item.FindControl("ThumbImage") as Image;
+            var url = thumb.ImageUrl;
+            var query = Request.QueryString["name"];
+
+            //thumb.CssClass = "marked";
+
+            //om tom = sidan laddas för 1a gången med dock.jpg
+            if (query == null)
             {
-                var thumb = e.Item.FindControl("ImageButton") as Image;
+                query = "Dock.jpg";                
+            }
 
-                //markera thumben
+            if (url.Contains(query))
+            {
                 thumb.CssClass = "marked";
-
-                BigImage.ImageUrl = "img/" + thumb.ImageUrl;
-
             }
         }
     }

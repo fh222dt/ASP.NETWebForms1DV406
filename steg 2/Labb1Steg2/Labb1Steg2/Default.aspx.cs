@@ -11,6 +11,7 @@ namespace Labb1Steg2
 {
     public partial class Default : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {   
             //bind bilderna till repeatern
@@ -21,22 +22,37 @@ namespace Labb1Steg2
 
             //visa stora bilden efter vilken querystring som är aktuell
             var query = Request.QueryString["name"];
-            if (query != null)
+            if (query == null)
+            {
+                BigImage.ImageUrl = "img/dock.jpg";
+            }
+            else if (query == "")
+            {
+                BigImage.ImageUrl = "img/dock.jpg";
+            }
+            else
             {
                 BigImage.ImageUrl = "img/" + query;
             }
 
-            //markera motsvarande thumb
-            //var thumb = thumbsRepeater.FindControl("ThumbImage");
-            //var url = thumb.ImageUrl;
+            //visa rättmeddelande om uppladdat
+            if (Session["upload"] != null)
+            {
+                SuccessPlaceHolder.Visible = true;
+                Session["upload"] = null;
+            }
 
-            //if (query != null)
-            //{
-            //    if (url.Contains(query))
-            //    {
-            //        thumb.CssClass = "marked";
-            //    }
-            //}
+            //visa felmeddelande om uppladdning ej går igenom
+            if (Session["fail"] != null)
+            {
+                var uploadError = new CustomValidator();
+                uploadError.IsValid = false;
+                uploadError.ErrorMessage = "Ett fel inträffade vid uppladdningen";
+                Validators.Add(uploadError);
+
+                Session["fail"] = null;
+            }
+
         }
 
         protected void uploadButton_Click(object sender, EventArgs e)
@@ -47,26 +63,26 @@ namespace Labb1Steg2
                 if (galleryFileUpload.HasFile)
                 {
                     Gallery pic = new Gallery();
-
+                    
+                    //parametrar för att spara bild
                     var content = galleryFileUpload.FileContent;
                     var name = galleryFileUpload.FileName;
-
-                    var imageFN = pic.SaveImage(content, name);
-
-                    //felmeddel vid uppladdning som misslyckas
-                        var validator = new CustomValidator();
-                        validator.Text = "Ett fel inträffade vid uppladdningen";
-                        Validators.Add(validator);
-
-                    //BigImage.ImageUrl = "img/" + imageFN;
-
-                    //visa rättmeddelande vid uppladdning
-                    SuccessPlaceHolder.Visible = true;
-                    ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", "fadeOut()", true);
-
-                    //markera thumb
-
                     
+                    //spara bild
+                    var imageFN = pic.SaveImage(content, name);     
+
+                    if (imageFN == "" ) 
+                    {
+                        //felmeddel vid uppladdning som misslyckas
+                        Session["fail"] = true;
+                        
+                    }
+
+                    else {
+                        //rättmeddelande vid uppladdning                        
+                        Session["upload"] = true;
+                    }
+                                                            
                     //ladda om sidan med ny url
                     Response.Redirect("?name=" + imageFN);
                 }
@@ -74,30 +90,25 @@ namespace Labb1Steg2
             }
         }
 
-        protected void thumbsRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-        //    var thumb = e.Item.FindControl("ThumbImage") as Image;
-        //    var url = thumb.ImageUrl;
-        //    var query = Request.QueryString["name"];
+        //protected void Page_Error(object sender, EventArgs e)
+        //{
+        //    // Get last error from the server
+        //    Exception exc = Server.GetLastError();
 
-        //    if (url.Contains(query))
+        //    if (exc is ArgumentException)
         //    {
-        //        thumb.CssClass = "marked";
-        //    }            
-            
-        //    //var url = ThumbImage.ImageUrl;
+        //        //felmeddel vid uppladdning som misslyckas
+        //        var uploadError = new CustomValidator();
+        //        uploadError.ValidationGroup = "Main";
+        //        uploadError.IsValid = false;
+        //        uploadError.ErrorMessage = "Ett fel inträffade vid uppladdningen";
+        //        Validators.Add(uploadError);
 
-        //    //if (e.CommandName == "bigger")
-        //    //{
-        //    //    var thumb = e.Item.FindControl("ImageButton") as Image;
+        //        // Clear the error from the server
+        //        Server.ClearError();
+        //    }
 
-        //    //    //markera thumben
-        //    //    thumb.CssClass = "marked";
-
-        //    //    BigImage.ImageUrl = "img/" + thumb.ImageUrl;
-
-        //    //}
-        }
+        //}
 
 
         protected void thumbsRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -106,18 +117,19 @@ namespace Labb1Steg2
             var url = thumb.ImageUrl;
             var query = Request.QueryString["name"];
 
-            //thumb.CssClass = "marked";
-
             //om tom = sidan laddas för 1a gången med dock.jpg
             if (query == null)
             {
                 query = "Dock.jpg";                
             }
 
+            //är query & thumbs samma
             if (url.Contains(query))
             {
-                thumb.CssClass = "marked";
+                thumb.CssClass = "thumbs marked";
             }
+
+
         }
     }
 }

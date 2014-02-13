@@ -33,7 +33,25 @@
     border: 3px solid grey;
 }
 
-.success {
+#success {
     background: #d3faa7;
+    height: 30px;
+    margin-bottom: 10px;
+    border: 3px solid #aedb7c;
 
+}
+
+    #success p {
+        font-family: Arial;
+        width: 150px;
+        margin: 5px;
+        float: left;
+    }
+
+#close {
+    background-image: url(close.png);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    float: right;
 }

@@ -60,6 +60,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="close.png" />
     <Content Include="Default.aspx" />
     <Content Include="errorPage.html" />
     <Content Include="gallery.js" />

@@ -1,16 +1,9 @@
 ﻿
-
-function init() {
-    $(".thumbs").click(function () {
-        $(this).addClass("marked");
-    });
-}
-
-function fadeOut() {
-
-    $(".success").fadeOut(5000, function () {
+function hide() {
+    $("#close").click(function () {
+        $("#success").hide();
     });
 }
 
 
-window.onload = init;
+window.onload = hide;

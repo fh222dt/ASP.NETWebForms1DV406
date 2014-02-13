@@ -58,15 +58,6 @@ namespace Labb1Steg2 {
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary;
         
         /// <summary>
-        /// galleryFileUpload control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload galleryFileUpload;
-        
-        /// <summary>
         /// FileUploadRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
@@ -83,6 +74,15 @@ namespace Labb1Steg2 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RegularExpressionValidator FileUploadRegularExpressionValidator;
+        
+        /// <summary>
+        /// galleryFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload galleryFileUpload;
         
         /// <summary>
         /// uploadButton control.

@@ -72,23 +72,25 @@ namespace Labb1Steg2.App_Code
         {
             try
             {
+                //vid fel mimetyp kastar detta undantag            
                 var image = System.Drawing.Image.FromStream(stream);
 
-                //spara bilden m thumb om bilden har rätt mimetyp
+                //spara bilden m thumb om bilden har rätt filtyp
                 if (IsValidImage(image))
                 {
 
                     string imgPath = PhysicalApplicationPath + fileName;
                     string fileExt = Path.GetExtension(imgPath);
                     string name = Path.GetFileNameWithoutExtension(imgPath);
-                    int i = 2;
 
                     //lägg till en siffra om filnamnet redan finns
                     if (ImageExist(fileName))
                     {
-                        fileName = string.Format("{0}{1}{2}", name, i++, fileExt);
+                        int i = 2;
+                        fileName = string.Format("{0}({1}){2}", name, i, fileExt);
                     }
 
+                    //utför sparning & generering av thumb
                     image.Save(Path.GetFullPath(PhysicalApplicationPath + fileName));
                     var thumb = image.GetThumbnailImage(60, 45, null, System.IntPtr.Zero);
                     thumb.Save(Path.GetFullPath(PhysicalApplicationPath + @"\thumbs\" + fileName));
@@ -102,10 +104,12 @@ namespace Labb1Steg2.App_Code
                 return fileName;
             }
 
-            catch 
-            {
-                throw new ArgumentException("Bilden har fel format");
+            catch
+            {   //returnera tom sträng ist för filväg
+                return "";
+                //throw new ArgumentException("Bilden har fel format");
             }
+
         }
     }
 }

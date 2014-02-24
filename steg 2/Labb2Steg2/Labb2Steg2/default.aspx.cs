@@ -36,7 +36,7 @@ namespace Labb2Steg2
             }
             catch (Exception)
             {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle läggas till.");
+                throw;//ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle läggas till.");
             }
         }
 
@@ -47,7 +47,7 @@ namespace Labb2Steg2
                 var contact = Service.GetContact(contactId);
                 if (contact == null)
                 {
-                    ModelState.AddModelError(String.Empty, String.Format("Kontakten med id {0} hittades inte.", contactId);
+                    ModelState.AddModelError(String.Empty, String.Format("Kontakten med id {0} hittades inte.", contactId));
                     return;
                 }
 
@@ -59,7 +59,7 @@ namespace Labb2Steg2
 
             catch(Exception)
             {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle uppdateras.");
+                throw;// ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle uppdateras.");
             }
         }
 
@@ -72,7 +72,7 @@ namespace Labb2Steg2
 
             catch (Exception)
             {
-                ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle tas bort.");
+                throw;//ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle tas bort.");
             }
         }
     }

@@ -17,11 +17,11 @@ namespace Labb2Steg2.Model.DAL
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("app.uspRemoveContact", conn);
+                    SqlCommand cmd = new SqlCommand("Person.uspRemoveContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till parameter för lagrade proceduren
-                    cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Value = contactId;
 
                     conn.Open();
 
@@ -30,7 +30,7 @@ namespace Labb2Steg2.Model.DAL
                 }
                 catch
                 {
-                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw;// new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
 
@@ -42,13 +42,13 @@ namespace Labb2Steg2.Model.DAL
             using (var conn = CreateConnection())
             {
                 try
-                {                    
-                    SqlCommand cmd = new SqlCommand("app.uspGetContact", conn);
+                {
+                    SqlCommand cmd = new SqlCommand("Person.uspGetContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till parameter för lagrade proceduren
                     //cmd.Parameters.AddWithValue("@ContactId", contactId);
-                    //cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Value = contactId;
                                         
                     conn.Open();
                                         
@@ -59,7 +59,7 @@ namespace Labb2Steg2.Model.DAL
                             var contactIdIndex = reader.GetOrdinal("ContactId");
                             var firstNameIndex = reader.GetOrdinal("FirstName");
                             var lastNameIndex = reader.GetOrdinal("LastName");
-                            var emailAddressIndex = reader.GetOrdinal("EmailAdress");
+                            var emailAddressIndex = reader.GetOrdinal("EmailAddress");
                                                         
                             return new Contact
                             {
@@ -75,8 +75,8 @@ namespace Labb2Steg2.Model.DAL
                 }
 
                 catch
-                {                    
-                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                {
+                    throw;// new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace Labb2Steg2.Model.DAL
                 {                    
                     var contacts = new List<Contact>(100);
                                         
-                    var cmd = new SqlCommand("app.uspGetContacts", conn);
+                    var cmd = new SqlCommand("Person.uspGetContacts", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     conn.Open();
@@ -100,7 +100,7 @@ namespace Labb2Steg2.Model.DAL
                         var contactIdIndex = reader.GetOrdinal("ContactId");
                         var firstNameIndex = reader.GetOrdinal("FirstName");
                         var lastNameIndex = reader.GetOrdinal("LastName");
-                        var emailAddressIndex = reader.GetOrdinal("EmailAdress");
+                        var emailAddressIndex = reader.GetOrdinal("EmailAddress");
                                                 
                         while (reader.Read())
                         {                            
@@ -120,13 +120,15 @@ namespace Labb2Steg2.Model.DAL
                 }
                 catch
                 {
-                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
-                
+        
+        //TODO: 
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
+            throw new NotImplementedException();
         }
 
         public void InsertContact(Contact contact)
@@ -135,8 +137,8 @@ namespace Labb2Steg2.Model.DAL
             using (var conn = CreateConnection())
             {
                 try
-                {                    
-                    var cmd = new SqlCommand("app.uspAddContact", conn);
+                {
+                    var cmd = new SqlCommand("Person.uspAddContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till de paramterar den lagrade proceduren kräver. 
@@ -147,17 +149,15 @@ namespace Labb2Steg2.Model.DAL
                     cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
                                         
                     conn.Open();
-
-                    // Den lagrade proceduren innehåller en INSERT-sats och returnerar inga poster varför metoden
-                    // ExecuteNonQuery används för att exekvera den lagrade proceduren.
+                                        
                     cmd.ExecuteNonQuery();
 
                     // Hämtar primärnyckelns värde för den nya posten och tilldelar Customer-objektet värdet.
-                    contact.ContactId = (int)cmd.Parameters["@CustomerId"].Value;
+                    contact.ContactId = (int)cmd.Parameters["@ContactId"].Value;
                 }
                 catch
                 {
-                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
@@ -169,7 +169,7 @@ namespace Labb2Steg2.Model.DAL
             {
                 try
                 {
-                    var cmd = new SqlCommand("app.uspUpdateContact", conn);
+                    var cmd = new SqlCommand("Person.uspUpdateContact", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till de paramterar den lagrade proceduren kräver. 
@@ -189,7 +189,7 @@ namespace Labb2Steg2.Model.DAL
                 catch
                 {
                     // Kastar ett eget undantag om ett undantag kastas.
-                    throw new ApplicationException("An error occured in the data access layer.");
+                    throw;// new ApplicationException("An error occured in the data access layer.");
                 }
             }
         }

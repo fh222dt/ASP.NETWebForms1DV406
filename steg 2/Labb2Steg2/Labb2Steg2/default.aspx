@@ -12,12 +12,16 @@
     
     <form id="form1" runat="server">
     <div>
+        <%-- Validering av uppladdning --%>
+        <asp:ValidationSummary ID="ValidationSummary" runat="server"  HeaderText="Fel inträffade. Åtgärda felen och försök igen."  />
+                
+        <%-- Tabell som visar kontakter --%>
         <asp:ListView ID="ContactListView" runat="server"
             ItemType="Labb2Steg2.Model.Contact"
             SelectMethod="ContactListView_GetData"
             InsertMethod="ContactListView_InsertItem"
-            UpdateMethod="ontactListView_UpdateItem"
-            DeleteMethod="CcontactListView_DeleteItem"
+            UpdateMethod="ContactListView_UpdateItem"
+            DeleteMethod="ContactListView_DeleteItem"
             DataKeyNames="ContactId"
             InsertItemPosition="FirstItem">
             <LayoutTemplate>
@@ -65,6 +69,8 @@
                         <asp:LinkButton runat="server" CommandName="Cancel" Text="Rensa" CausesValidation="false" />
                     </td>
                 </tr>
+                <%-- validering --%>
+
             </InsertItemTemplate>
             <%-- Mall för rad i tabellen för att redigera kunduppgifter. --%>
             <EditItemTemplate>                
@@ -78,6 +84,7 @@
                         <asp:LinkButton ID="LinkButton2" runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" />
                     </td>
                 </tr>
+                <%-- validering --%>
             </EditItemTemplate>
         </asp:ListView>
     </div>

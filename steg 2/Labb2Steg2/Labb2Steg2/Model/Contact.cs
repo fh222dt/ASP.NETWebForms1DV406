@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Labb2Steg2.App_Code
+namespace Labb2Steg2.Model
 {
     public class Contact
     {   

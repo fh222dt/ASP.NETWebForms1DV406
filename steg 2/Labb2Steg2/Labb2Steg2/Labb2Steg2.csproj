@@ -60,6 +60,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="close.png" />
+    <Content Include="contacts.js" />
     <Content Include="default.aspx" />
     <Content Include="errorPage.html" />
     <Content Include="Global.asax" />
@@ -67,6 +69,7 @@
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="StyleSheet.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

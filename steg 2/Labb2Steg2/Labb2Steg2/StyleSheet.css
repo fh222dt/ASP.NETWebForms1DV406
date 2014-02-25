@@ -1,0 +1,58 @@
+﻿/*body {
+    width: 630px;
+    margin-left: 80px;
+    
+}
+
+#BigImage {
+    width: 624px;
+    border: 3px solid black;
+}
+
+#thumbsArea {
+    height: 70px;
+    overflow:auto;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+}
+
+#thumbs {
+    width:4000px;
+    height: 52px;
+}
+
+.thumbs {
+    float: left;
+    margin-right: 10px;
+    border: 3px solid black;
+        
+}
+
+.marked {
+    border: 3px solid grey;
+}*/
+
+.success {
+    background: #d3faa7;
+    height: 30px;
+    margin-bottom: 10px;
+    border: 3px solid #aedb7c;
+    width: 75%;
+
+}
+
+    .success p {
+        /*font-family: Arial;*/
+        width: 350px;
+        margin: 5px;
+        float: left;
+    }
+
+.close {
+    background-image: url(close.png);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    float: right;
+}

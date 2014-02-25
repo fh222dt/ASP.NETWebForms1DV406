@@ -19,12 +19,7 @@ namespace Labb2Steg2.Model
         }
 
         //Metoder
-
-        //public void DeleteContact(Contact contact)
-        //{
-        //    ContactDAL.DeleteContact(contact);
-        //}
-
+                
         public void DeleteContact(int contactId)
         {
             ContactDAL.DeleteContact(contactId);
@@ -43,7 +38,10 @@ namespace Labb2Steg2.Model
         //TODO:
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
-            throw  new NotImplementedException();
+            throw new NotImplementedException();
+            //totalRowCount = GetContacts.Count;          //hmm
+
+            //return ContactDAL.GetContactsPageWise();    //3 parametrar
         }
         
         

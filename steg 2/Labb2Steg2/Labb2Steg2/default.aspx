@@ -17,15 +17,24 @@
         
         <%-- Visa rättmeddelande --%>
         <asp:PlaceHolder ID="InsertPlaceHolder" runat="server" Visible="false">
-            <p>Ny kontakt har lagts till!</p>
+            <div class="success">
+                <div class="close"></div>
+                <p>Ny kontakt har lagts till!</p>
+            </div>            
         </asp:PlaceHolder>
 
         <asp:PlaceHolder ID="EditPlaceHolder" runat="server" Visible="false">
-            <p>Din kontakt har ändrats!</p>
+            <div class="success">
+                <div class="close"></div>
+                <p>Din kontakt har ändrats!</p>
+            </div>   
         </asp:PlaceHolder>
 
         <asp:PlaceHolder ID="DeletePlaceHolder" runat="server" Visible="false">
-            <p>Din kontakt har tagits bort!</p>
+            <div class="success">
+                <div class="close"></div>
+                <p>Din kontakt har tagits bort!</p>
+            </div>
         </asp:PlaceHolder>
 
         <%-- Tabell som visar kontakter --%>
@@ -48,6 +57,7 @@
                     <%-- Platshållare för nya rader --%>
                     <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
                 </table>
+                <%-- Pageing --%>
                 <%--<asp:DataPager ID="DataPager" runat="server" PageSize="20">
                     <Fields>
                         <asp:NextPreviousPagerField ShowFirstPageButton="true" FirstPageText="<<"
@@ -137,5 +147,6 @@
         </asp:ListView>
     </div>
     </form>
+    <script src="contacts.js"></script>
 </body>
 </html>

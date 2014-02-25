@@ -51,8 +51,24 @@ namespace Labb2Steg2
                 return null;
             }
 
-            
+
         }
+
+        //public IEnumerable<Contact> ContactListView_GetData(int maximumRows, int startRowIndex, out int totalRowCount)
+        //{
+        //    try
+        //    {
+        //        return Service.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
+        //    }
+
+        //    catch (Exception)
+        //    {
+        //        throw;//ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle läggas till.");
+        //        return null;
+        //    }
+
+            
+        //}
 
         public void ContactListView_InsertItem(Contact contact)
         {

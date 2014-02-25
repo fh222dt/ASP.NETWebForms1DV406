@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.ComponentModel.DataAnnotations;
 
 namespace Labb2Steg2.Model
 {
@@ -45,9 +46,17 @@ namespace Labb2Steg2.Model
             throw  new NotImplementedException();
         }
         
-        //måste valideras!
+        
         public void SaveContact(Contact contact)
         {
+            ICollection<ValidationResult> validationResults;
+            if (!contact.Validate(out validationResults))
+            {
+                var ex = new ValidationException("Objektet klarade inte valideringen.");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+
             if (contact.ContactId == 0) // Ny post om contactID är 0
             {
                 ContactDAL.InsertContact(contact);

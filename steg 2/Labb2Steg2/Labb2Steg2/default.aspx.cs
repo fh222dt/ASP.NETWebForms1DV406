@@ -40,14 +40,25 @@ namespace Labb2Steg2
 
         public IEnumerable<Contact> ContactListView_GetData()
         {
-            return Service.GetContacts();
+            try
+            {
+                return Service.GetContacts();
+            }
+
+            catch (Exception)
+            {
+                throw;//ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle läggas till.");
+                return null;
+            }
+
+            
         }
 
         public void ContactListView_InsertItem(Contact contact)
         {
             try
             {
-                ValidationSummary.ValidationGroup = "insert";
+                //ValidationSummary.ValidationGroup = "insert";             koden kommer aldrig hit
                 Service.SaveContact(contact);
                 Session["insert"] = true;
                 Response.Redirect("~");
@@ -63,7 +74,7 @@ namespace Labb2Steg2
         {
             try
             {
-                ValidationSummary.ValidationGroup = "edit";
+                //ValidationSummary.ValidationGroup = "edit";
                 var contact = Service.GetContact(contactId);
                 if (contact == null)
                 {

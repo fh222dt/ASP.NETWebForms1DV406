@@ -8,9 +8,9 @@ using System.Web.Configuration;
 
 namespace Labb2Steg2.Model.DAL
 {
-    public class ContactDAL: DALBase    //rätt sätt att ärva???????????
+    public class ContactDAL: DALBase
     {
-        public void DeleteContact(int contactId) // osäker om klar
+        public void DeleteContact(int contactId)
         { 
             // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -36,7 +36,7 @@ namespace Labb2Steg2.Model.DAL
 
         }
 
-        public Contact GetContactById(int contactId)    //hur är det med parametern t sprocen?
+        public Contact GetContactById(int contactId)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -47,7 +47,6 @@ namespace Labb2Steg2.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till parameter för lagrade proceduren
-                    //cmd.Parameters.AddWithValue("@ContactId", contactId);
                     cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Value = contactId;
                                         
                     conn.Open();
@@ -128,6 +127,8 @@ namespace Labb2Steg2.Model.DAL
         //ngt med sidnr som inte är samma som i förel
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
+            throw new NotImplementedException();
+
             // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
@@ -139,9 +140,9 @@ namespace Labb2Steg2.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till de paramterar den lagrade proceduren kräver. 
-                    cmd.Parameters.Add("@PageIndex", SqlDbType.Int, 4).Value = ;
-                    cmd.Parameters.Add("@PageSize", SqlDbType.Int, 4).Value = ;
-                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Value = ;
+                    cmd.Parameters.Add("@PageIndex", SqlDbType.Int, 4).Value = maximumRows;
+                    cmd.Parameters.Add("@PageSize", SqlDbType.Int, 4).Value = startRowIndex;
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Value = totalRowCount;
 
                     conn.Open();
 
@@ -207,7 +208,7 @@ namespace Labb2Steg2.Model.DAL
             }
         }
 
-        public void UpdateContact(Contact contact)      // osäker om klar
+        public void UpdateContact(Contact contact)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -226,9 +227,6 @@ namespace Labb2Steg2.Model.DAL
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
-
-
-
                     
                 }
                 catch

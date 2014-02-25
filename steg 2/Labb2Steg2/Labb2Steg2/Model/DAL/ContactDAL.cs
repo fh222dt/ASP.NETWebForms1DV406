@@ -125,10 +125,55 @@ namespace Labb2Steg2.Model.DAL
             }
         }
         
-        //TODO: 
+        //ngt med sidnr som inte är samma som i förel
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
-            throw new NotImplementedException();
+            // Skapar och initierar ett anslutningsobjekt.
+            using (var conn = CreateConnection())
+            {
+                try
+                {
+                    var contacts = new List<Contact>(100);
+
+                    var cmd = new SqlCommand("Person.uspGetContactsPageWise", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Lägger till de paramterar den lagrade proceduren kräver. 
+                    cmd.Parameters.Add("@PageIndex", SqlDbType.Int, 4).Value = ;
+                    cmd.Parameters.Add("@PageSize", SqlDbType.Int, 4).Value = ;
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Value = ;
+
+                    conn.Open();
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        var contactIdIndex = reader.GetOrdinal("ContactId");
+                        var firstNameIndex = reader.GetOrdinal("FirstName");
+                        var lastNameIndex = reader.GetOrdinal("LastName");
+                        var emailAddressIndex = reader.GetOrdinal("EmailAddress");
+
+                        while (reader.Read())
+                        {
+                            contacts.Add(new Contact
+                            {
+                                ContactId = reader.GetInt32(contactIdIndex),
+                                FirstName = reader.GetString(firstNameIndex),
+                                LastName = reader.GetString(lastNameIndex),
+                                EmailAddress = reader.GetString(emailAddressIndex)
+                            });
+                        }
+                    }
+
+                    contacts.TrimExcess();
+
+                    return contacts;
+                }
+                catch
+                {
+                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                }
+            }
+            
         }
 
         public void InsertContact(Contact contact)

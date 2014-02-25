@@ -20,7 +20,22 @@ namespace Labb2Steg2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["insert"] as bool? == true)
+            {
+                InsertPlaceHolder.Visible = true;
+                Session.Remove("insert");
+            }
 
+            else if (Session["edit"] as bool? == true)
+            {
+                EditPlaceHolder.Visible = true;
+                Session.Remove("edit");
+            }
+            else if (Session["delete"] as bool? == true)
+            {
+                DeletePlaceHolder.Visible = true;
+                Session.Remove("delete");
+            }
         }
 
         public IEnumerable<Contact> ContactListView_GetData()
@@ -32,7 +47,11 @@ namespace Labb2Steg2
         {
             try
             {
+                ValidationSummary.ValidationGroup = "insert";
                 Service.SaveContact(contact);
+                Session["insert"] = true;
+                Response.Redirect("~");
+
             }
             catch (Exception)
             {
@@ -44,6 +63,7 @@ namespace Labb2Steg2
         {
             try
             {
+                ValidationSummary.ValidationGroup = "edit";
                 var contact = Service.GetContact(contactId);
                 if (contact == null)
                 {
@@ -54,6 +74,8 @@ namespace Labb2Steg2
                 if (TryUpdateModel(contact))
                 {
                     Service.SaveContact(contact);
+                    Session["edit"] = true;
+                    Response.Redirect("~");
                 }
             }
 
@@ -67,7 +89,10 @@ namespace Labb2Steg2
         {
             try
             {
+                //ValidationSummary.ValidationGroup = "delete";
                 Service.DeleteContact(contactId);
+                Session["delete"] = true;
+                Response.Redirect("~");
             }
 
             catch (Exception)

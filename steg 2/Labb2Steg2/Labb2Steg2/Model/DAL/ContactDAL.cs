@@ -119,7 +119,7 @@ namespace Labb2Steg2.Model.DAL
                 }
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
@@ -186,7 +186,7 @@ namespace Labb2Steg2.Model.DAL
                 }
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
@@ -213,9 +213,8 @@ namespace Labb2Steg2.Model.DAL
                     
                 }
                 catch
-                {
-                    // Kastar ett eget undantag om ett undantag kastas.
-                    throw;// new ApplicationException("An error occured in the data access layer.");
+                {                    
+                    throw new ApplicationException("An error occured in the data access layer.");
                 }
             }
         }

@@ -20,10 +20,7 @@ namespace Labb2Steg2.Model.DAL
 
         //metoder
         protected SqlConnection CreateConnection()
-        {
-            //var conn = CreateConnection();
-
-            //return conn;
+        {            
             return new SqlConnection(_connectionString);
         }
     }

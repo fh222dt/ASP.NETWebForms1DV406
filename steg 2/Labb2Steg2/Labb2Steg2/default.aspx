@@ -36,7 +36,7 @@
                 <p>Din kontakt har tagits bort!</p>
             </div>
         </asp:PlaceHolder>
-
+        
         <%-- Tabell som visar kontakter --%>
         <asp:ListView ID="ContactListView" runat="server"
             ItemType="Labb2Steg2.Model.Contact"

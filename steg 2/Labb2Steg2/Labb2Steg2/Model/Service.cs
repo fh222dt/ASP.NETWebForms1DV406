@@ -37,9 +37,7 @@ namespace Labb2Steg2.Model
 
         
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
-        {
-            //throw new NotImplementedException();
-
+        {            
             return ContactDAL.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
         }
         

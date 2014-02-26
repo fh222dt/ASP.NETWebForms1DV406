@@ -7,10 +7,7 @@ using System.Web;
 namespace Labb2Steg2.Model
 {
     public class Contact
-    {   
-        //ska valideras med data annotations
-
-
+    {           
         //Egenskaper
         public int ContactId { get; set; }
 

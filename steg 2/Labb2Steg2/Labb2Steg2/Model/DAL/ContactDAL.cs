@@ -30,7 +30,7 @@ namespace Labb2Steg2.Model.DAL
                 }
                 catch
                 {
-                    throw;// new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
 
@@ -75,14 +75,14 @@ namespace Labb2Steg2.Model.DAL
 
                 catch
                 {
-                    throw;// new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
 
         public IEnumerable<Contact> GetContacts()
         {
-            // Skapar och initierar ett anslutningsobjekt.
+            
             using (var conn = CreateConnection())
             {
                 try
@@ -124,54 +124,37 @@ namespace Labb2Steg2.Model.DAL
             }
         }
         
-        //ngt med sidnr som inte är samma som i förel
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
-            throw new NotImplementedException();
-
-            // Skapar och initierar ett anslutningsobjekt.
+            
             using (var conn = CreateConnection())
             {
                 try
                 {
-                    var contacts = new List<Contact>(100);
+                    var contacts = new List<Contact>(maximumRows);
 
                     var cmd = new SqlCommand("Person.uspGetContactsPageWise", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    //sidnr
+                    var pageNo = startRowIndex / maximumRows +1;
+
                     // Lägger till de paramterar den lagrade proceduren kräver. 
-                    cmd.Parameters.Add("@PageIndex", SqlDbType.Int, 4).Value = maximumRows;
-                    cmd.Parameters.Add("@PageSize", SqlDbType.Int, 4).Value = startRowIndex;
-                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Value = totalRowCount;
+                    cmd.Parameters.Add("@PageIndex", SqlDbType.Int, 4).Value = pageNo; //vilket sidnr vi börjar på
+                    cmd.Parameters.Add("@PageSize", SqlDbType.Int, 4).Value = maximumRows;      //hur många rader per sida (20st)
 
-                    conn.Open();
+                    cmd.Parameters.Add("@RecordCount", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        var contactIdIndex = reader.GetOrdinal("ContactId");
-                        var firstNameIndex = reader.GetOrdinal("FirstName");
-                        var lastNameIndex = reader.GetOrdinal("LastName");
-                        var emailAddressIndex = reader.GetOrdinal("EmailAddress");
+                    var allContacts = GetContacts();
+                    
+                    totalRowCount = allContacts.Count();
 
-                        while (reader.Read())
-                        {
-                            contacts.Add(new Contact
-                            {
-                                ContactId = reader.GetInt32(contactIdIndex),
-                                FirstName = reader.GetString(firstNameIndex),
-                                LastName = reader.GetString(lastNameIndex),
-                                EmailAddress = reader.GetString(emailAddressIndex)
-                            });
-                        }
-                    }
-
-                    contacts.TrimExcess();
-
-                    return contacts;
+                    return allContacts.Skip(startRowIndex).Take(maximumRows);
+                    
                 }
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
             
@@ -198,7 +181,7 @@ namespace Labb2Steg2.Model.DAL
                                         
                     cmd.ExecuteNonQuery();
 
-                    // Hämtar primärnyckelns värde för den nya posten och tilldelar Customer-objektet värdet.
+                    // Hämtar primärnyckelns värde för den nya posten och tilldelar objektet värdet.
                     contact.ContactId = (int)cmd.Parameters["@ContactId"].Value;
                 }
                 catch

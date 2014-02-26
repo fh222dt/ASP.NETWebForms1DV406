@@ -38,27 +38,11 @@ namespace Labb2Steg2
             }
         }
 
-        public IEnumerable<Contact> ContactListView_GetData()
-        {
-            try
-            {
-                return Service.GetContacts();
-            }
-
-            catch (Exception)
-            {
-                throw;//ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle läggas till.");
-                return null;
-            }
-
-
-        }
-
-        //public IEnumerable<Contact> ContactListView_GetData(int maximumRows, int startRowIndex, out int totalRowCount)
+        //public IEnumerable<Contact> ContactListView_GetData()
         //{
         //    try
         //    {
-        //        return Service.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
+        //        return Service.GetContacts();
         //    }
 
         //    catch (Exception)
@@ -67,14 +51,27 @@ namespace Labb2Steg2
         //        return null;
         //    }
 
-            
+
         //}
+
+        public IEnumerable<Contact> ContactListView_GetData(int maximumRows, int startRowIndex, out int totalRowCount)
+        {
+            try
+            {
+                return Service.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
+            }
+
+            catch (Exception)
+            {
+                throw;//ModelState.AddModelError(String.Empty, "Ett oväntat fel inträffade då kontaktuppgiften skulle läggas till.");
+                return null;
+            }
+        }
 
         public void ContactListView_InsertItem(Contact contact)
         {
             try
-            {
-                //ValidationSummary.ValidationGroup = "insert";             koden kommer aldrig hit
+            {                
                 Service.SaveContact(contact);
                 Session["insert"] = true;
                 Response.Redirect("~");
@@ -90,7 +87,6 @@ namespace Labb2Steg2
         {
             try
             {
-                //ValidationSummary.ValidationGroup = "edit";
                 var contact = Service.GetContact(contactId);
                 if (contact == null)
                 {
@@ -116,7 +112,6 @@ namespace Labb2Steg2
         {
             try
             {
-                //ValidationSummary.ValidationGroup = "delete";
                 Service.DeleteContact(contactId);
                 Session["delete"] = true;
                 Response.Redirect("~");

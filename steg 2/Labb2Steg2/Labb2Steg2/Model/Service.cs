@@ -35,13 +35,12 @@ namespace Labb2Steg2.Model
             return ContactDAL.GetContacts();
         }
 
-        //TODO:
+        
         public IEnumerable<Contact> GetContactsPageWise(int maximumRows, int startRowIndex, out int totalRowCount)
         {
-            throw new NotImplementedException();
-            //totalRowCount = GetContacts.Count;          //hmm
+            //throw new NotImplementedException();
 
-            //return ContactDAL.GetContactsPageWise();    //3 parametrar
+            return ContactDAL.GetContactsPageWise(maximumRows, startRowIndex, out totalRowCount);
         }
         
         

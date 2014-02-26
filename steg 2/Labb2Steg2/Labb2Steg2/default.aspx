@@ -58,7 +58,7 @@
                     <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
                 </table>
                 <%-- Pageing --%>
-                <%--<asp:DataPager ID="DataPager" runat="server" PageSize="20">
+                <asp:DataPager ID="DataPager" runat="server" PageSize="20">
                     <Fields>
                         <asp:NextPreviousPagerField ShowFirstPageButton="true" FirstPageText="<<"
                             ShowNextPageButton="false" ShowPreviousPageButton="false" />
@@ -66,7 +66,7 @@
                         <asp:NextPreviousPagerField ShowLastPageButton="true" LastPageText=">>"
                              ShowNextPageButton="false" ShowPreviousPageButton="false" />
                     </Fields>
-                </asp:DataPager>--%>
+                </asp:DataPager>
             </LayoutTemplate>
             <%-- Mall för nya rader. --%>
             <ItemTemplate>                

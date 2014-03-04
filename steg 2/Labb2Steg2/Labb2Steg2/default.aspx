@@ -12,7 +12,7 @@
     
     <form id="form1" runat="server">
     <div>
-        <%-- Validering av uppladdning --%>
+        <%-- Valideringpresentation --%>
         <asp:ValidationSummary ID="ValidationSummary" runat="server"  HeaderText="Fel inträffade. Åtgärda felen och försök igen."/>
         
         <%-- Visa rättmeddelande --%>

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Decorhelp.Model
 {
-    public class placed
+    public class placedTable
     {
         //Egenskaper
         public int placedID { get; set; }

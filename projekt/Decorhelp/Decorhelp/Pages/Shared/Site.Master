@@ -1,0 +1,37 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="Decorhelp.Pages.Shared.Site" ViewStateMode="Disabled" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Decorhelp -fh222dt-</title>
+    <%-- behövs? --%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <%-- länka in css --%>
+</head>
+<body>
+    <form id="masterform" runat="server">
+    <header>
+        <h1>Decorhelp</h1>
+        <h2>Planera din inredning</h2>
+    </header>
+    <div id="navigation">
+        <ul>
+            <li>Hem</li>
+            <li>Lägg till föremål</li>
+            <li>Ändra??</li>
+        </ul>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <footer>
+        <p>Decorhelp -planera din inredning, skriv ut en lista över dina inredningsföremål, få ett vackert hem &copy; Frida Holmström</p>
+    </footer>
+    </form>
+</body>
+</html>

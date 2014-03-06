@@ -82,6 +82,7 @@
     <Compile Include="Model\decorarea.cs" />
     <Compile Include="Model\decoritem.cs" />
     <Compile Include="Model\placedTable.cs" />
+    <Compile Include="Model\Service.cs" />
     <Compile Include="Pages\listall.aspx.cs">
       <DependentUpon>listall.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

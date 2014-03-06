@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Decorhelp.Model.DAL
 {
-    public class placedDAL
+    public class placedDAL : DALBase
     {
     }
 }

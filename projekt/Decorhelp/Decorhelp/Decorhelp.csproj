@@ -76,6 +76,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\DAL\DALBase.cs" />
     <Compile Include="Model\DAL\decorareaDAL.cs" />
     <Compile Include="Model\DAL\decoritemDAL.cs" />
     <Compile Include="Model\DAL\placedDAL.cs" />

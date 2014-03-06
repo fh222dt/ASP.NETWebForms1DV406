@@ -83,7 +83,16 @@ namespace Decorhelp.Model
         {
             return DecoritemDAL.GetDecorItemById(decorItemID);
         }
-        //TODO metod för att hämta alla saknas
+        
+        public IEnumerable<decorarea> GetDecorAreas()
+        {
+            return DecorareaDAL.GetDecorAreas();
+        }
+
+        public IEnumerable<decoritem> GetDecorItems()
+        {
+            return DecoritemDAL.GetDecorItems();
+        }
 
         
         //delete metoder

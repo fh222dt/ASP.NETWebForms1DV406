@@ -5,24 +5,29 @@ using System.Web;
 
 namespace Decorhelp.Model.DAL
 {
-    public class decorareaDAL
+    public class decorareaDAL : DALBase
     {   //TODO: fixa alla metoder
-        internal void DeleteDecorArea(int decorAreaID)
+        public void DeleteDecorArea(int decorAreaID)
         {
             throw new NotImplementedException();
         }
 
-        internal decorarea GetDecorAreaById(int decorAreaID)
+        public decorarea GetDecorAreaById(int decorAreaID)
         {
             throw new NotImplementedException();
         }
 
-        internal void InsertDecorArea(decorarea decorarea)
+        public void InsertDecorArea(decorarea decorarea)
         {
             throw new NotImplementedException();
         }
 
-        internal void UpdateDecorArea(decorarea decorarea)
+        public void UpdateDecorArea(decorarea decorarea)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<decorarea> GetDecorAreas()
         {
             throw new NotImplementedException();
         }

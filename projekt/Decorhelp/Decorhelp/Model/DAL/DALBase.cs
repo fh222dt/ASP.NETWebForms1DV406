@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,7 @@ namespace Decorhelp.Model.DAL
         //konstruktor
         static DALBase()
         {
-            _connectionString = WebConfigurationManager.ConnectionStrings["ContactConnectionString"].ConnectionString;
+            _connectionString = WebConfigurationManager.ConnectionStrings["DecorHelpConnectionString"].ConnectionString;
         }
 
         //metoder
@@ -24,5 +25,6 @@ namespace Decorhelp.Model.DAL
         {
             return new SqlConnection(_connectionString);
         }
+
     }
 }

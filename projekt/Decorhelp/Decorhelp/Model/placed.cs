@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Decorhelp.Model
 {
-    public class placedTable
+    public class Placed
     {
         //Egenskaper
         public int placedID { get; set; }
@@ -19,6 +19,6 @@ namespace Decorhelp.Model
         public int periodID { get; set; }
 
         [Required(ErrorMessage = "Du måste välja om föremålet ska placeras.")]
-        public bool placed { get; set; }
+        public bool isPlaced { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Decorhelp.Model
         //fält
         private decorareaDAL _decorareaDAL;
         private decoritemDAL _decoritemDAL;
-        private placedDAL _placedDAL;
+        private PlacedDAL _placedDAL;
 
         //Egenskaper
         private decorareaDAL DecorareaDAL
@@ -25,7 +25,7 @@ namespace Decorhelp.Model
             get { return _decoritemDAL ?? (_decoritemDAL = new decoritemDAL()); }
         }
 
-        private placedDAL PlacedDAL
+        private PlacedDAL PlacedDAL
         {
             get { return _placedDAL ?? (_placedDAL = new placedDAL()); }
         }
@@ -83,6 +83,11 @@ namespace Decorhelp.Model
         {
             return DecoritemDAL.GetDecorItemById(decorItemID);
         }
+
+        public Placed GetPlaced(int decorItemID)
+        {
+            return PlacedDAL.GetPlacedById(decorItemID);
+        }
         
         public IEnumerable<decorarea> GetDecorAreas()
         {
@@ -94,6 +99,10 @@ namespace Decorhelp.Model
             return DecoritemDAL.GetDecorItems();
         }
 
+        public IEnumerable<Placed> GetAllPlaced()
+        {
+            return PlacedDAL.GetAllPlaced();
+        }
         
         //delete metoder
         public void DeleteDecorArea(int decorAreaID)
@@ -105,7 +114,5 @@ namespace Decorhelp.Model
         {
             DecoritemDAL.DeleteDecorItem(decorItemID);
         }
-
-        //TODO metod för placed
     }
 }

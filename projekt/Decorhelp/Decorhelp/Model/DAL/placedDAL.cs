@@ -9,7 +9,7 @@ namespace Decorhelp.Model.DAL
 {
     public class PlacedDAL : DALBase
     {   
-        //TODO: sprocen finns ej
+        //ang sprocen kan kanske hämta de som endast har true på isPlaced?
         public Placed GetPlacedById(int decorItemID)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -53,7 +53,7 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        //TODO: sprocen finns ej
+        //ang sprocen kan kanske hämta de som endast har true på isPlaced?
         public IEnumerable<Placed> GetAllPlaced()
         {
             using (var conn = CreateConnection())

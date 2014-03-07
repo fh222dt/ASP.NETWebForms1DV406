@@ -78,7 +78,7 @@ namespace Decorhelp.Model.DAL
             }
         }
         
-        //TODO: parametrar ej komplett i sprocen (in & ut)
+        //TODO: måste testas! anv SET vet ej om det blir rätt
         public void InsertDecorItem(decoritem decoritem)
         {
             // Skapar och initierar ett anslutningsobjekt.
@@ -92,16 +92,16 @@ namespace Decorhelp.Model.DAL
                     // Lägger till de paramterar den lagrade proceduren kräver. 
                     cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Value = decoritem.decorAreaID; //väljs fr drop-down
                     cmd.Parameters.Add("@decorItemName", SqlDbType.VarChar, 40).Value = decoritem.decorItemName;
-                    //cmd.Parameters.Add("@EmailAddress", SqlDbType.VarChar, 50).Value = contact.EmailAddress;
+                    cmd.Parameters.Add("@decorItemDesc", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;
 
-                    //cmd.Parameters.Add("@ContactID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@decoritemID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
                     conn.Open();
 
                     cmd.ExecuteNonQuery();
 
                     // Hämtar primärnyckelns värde för den nya posten och tilldelar objektet värdet.
-                    decoritem.decorItemID = (int)cmd.Parameters["@ContactId"].Value; //ej rätt!!!
+                    decoritem.decorItemID = (int)cmd.Parameters["@decoritemID"].Value;
                 }
                 catch
                 {
@@ -110,7 +110,6 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        //TODO: osäker på vad som hände m fk decorareaid?? Vill man ju kunna byta!
         public void UpdateDecorItem(decoritem decoritem)
         {
             // Skapar och initierar ett anslutningsobjekt.
@@ -124,7 +123,8 @@ namespace Decorhelp.Model.DAL
                     // Lägger till de paramterar den lagrade proceduren kräver. 
                     cmd.Parameters.Add("@decoritemID", SqlDbType.Int, 4).Value = decoritem.decorItemID;
                     cmd.Parameters.Add("@decoritemName", SqlDbType.VarChar, 40).Value = decoritem.decorItemName;
-                    cmd.Parameters.Add("@decoritemDescription", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;                    
+                    cmd.Parameters.Add("@decoritemDescription", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;
+                    cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Value = decoritem.decorAreaID;
 
                     conn.Open();
 

@@ -9,7 +9,6 @@ namespace Decorhelp.Model.DAL
 {
     public class decorareaDAL : DALBase
     {   
-        //TODO: finns för många parametrar i sprocen
         public void DeleteDecorArea(int decorAreaID)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -77,8 +76,7 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        //TODO: underlig param @roomName, inte rätt i övrigt heller, samma fel som i  motsv. item-sprocen
-        //decorAreaID, decorAreaName, decorAreaDescription, roomID
+        //TODO: måste testas! anv SET vet ej om det blir rätt        
         public void InsertDecorArea(decorarea decorarea)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -91,7 +89,7 @@ namespace Decorhelp.Model.DAL
                     // Lägger till de paramterar den lagrade proceduren kräver. 
                     cmd.Parameters.Add("@decorAreaName", SqlDbType.VarChar, 40).Value = decorarea.decorAreaName; //väljs fr drop-down
                     cmd.Parameters.Add("@decorAreaDesc", SqlDbType.VarChar, 40).Value = decorarea.decorAreaDescription;
-                    cmd.Parameters.Add("@RoomID", SqlDbType.VarChar, 50).Value = decorarea.roomID; //fr tabell utanför projektet
+                    cmd.Parameters.Add("@RoomID", SqlDbType.Int, 4).Value = decorarea.roomID; //fr tabell utanför projektet
 
                     cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
@@ -109,7 +107,6 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        //TODO: osäker på vad som hände m fk roomid?? Vill man ju kunna byta!
         public void UpdateDecorArea(decorarea decorarea)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())

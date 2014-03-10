@@ -10,28 +10,28 @@ namespace Decorhelp.Model
     public class Service
     {
         //fält
-        private decorareaDAL _decorareaDAL;
-        private decoritemDAL _decoritemDAL;
+        private DecorareaDAL _decorareaDAL;
+        private DecoritemDAL _decoritemDAL;
         private PlacedDAL _placedDAL;
 
         //Egenskaper
-        private decorareaDAL DecorareaDAL
+        private DecorareaDAL DecorareaDAL
         {
-            get { return _decorareaDAL ?? (_decorareaDAL = new decorareaDAL()); }
+            get { return _decorareaDAL ?? (_decorareaDAL = new DecorareaDAL()); }
         }
 
-        private decoritemDAL DecoritemDAL
+        private DecoritemDAL DecoritemDAL
         {
-            get { return _decoritemDAL ?? (_decoritemDAL = new decoritemDAL()); }
+            get { return _decoritemDAL ?? (_decoritemDAL = new DecoritemDAL()); }
         }
 
         private PlacedDAL PlacedDAL
         {
-            get { return _placedDAL ?? (_placedDAL = new placedDAL()); }
+            get { return _placedDAL ?? (_placedDAL = new PlacedDAL()); }
         }
 
         //create/update metoder
-        public void SaveDecorArea(decorarea decorarea)
+        public void SaveDecorArea(Decorarea decorarea)
         {
             ICollection<ValidationResult> validationResults;
             if (!decorarea.Validate(out validationResults))
@@ -52,7 +52,7 @@ namespace Decorhelp.Model
             }
         }
 
-        public void SaveDecorItem(decoritem decoritem)
+        public void SaveDecorItem(Decoritem decoritem)
         {
             ICollection<ValidationResult> validationResults;
             if (!decoritem.Validate(out validationResults))
@@ -74,12 +74,12 @@ namespace Decorhelp.Model
         }
 
         //read metoder
-        public decorarea GetDecorArea(int decorAreaID)
+        public Decorarea GetDecorArea(int decorAreaID)
         {
             return DecorareaDAL.GetDecorAreaById(decorAreaID);
         }
 
-        public decoritem GetDecorItem(int decorItemID)
+        public Decoritem GetDecorItem(int decorItemID)
         {
             return DecoritemDAL.GetDecorItemById(decorItemID);
         }
@@ -89,12 +89,12 @@ namespace Decorhelp.Model
             return PlacedDAL.GetPlacedById(decorItemID);
         }
         
-        public IEnumerable<decorarea> GetDecorAreas()
+        public IEnumerable<Decorarea> GetDecorAreas()
         {
             return DecorareaDAL.GetDecorAreas();
         }
 
-        public IEnumerable<decoritem> GetDecorItems()
+        public IEnumerable<Decoritem> GetDecorItems()
         {
             return DecoritemDAL.GetDecorItems();
         }

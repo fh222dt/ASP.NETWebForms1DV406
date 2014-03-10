@@ -29,7 +29,7 @@ namespace Decorhelp.Pages
         //     int startRowIndex
         //     out int totalRowCount
         //     string sortByExpression
-        public IEnumerable<decoritem> SummaryListView_GetData()
+        public IEnumerable<Decoritem> SummaryListView_GetData()
         {
             return Service.GetDecorItems();
         }

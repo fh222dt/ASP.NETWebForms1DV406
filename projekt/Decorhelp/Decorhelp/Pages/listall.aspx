@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <%-- lista alla föremål --%>
     <asp:ListView ID="SummaryListView" runat="server"
-        ItemType="Decorhelp.Model.decoritem"
+        ItemType="Decorhelp.Model.Decoritem"
         SelectMethod="SummaryListView_GetData"
         DataKeyNames="decorItemID"
         >
@@ -25,8 +25,15 @@
             <ItemTemplate>                
                 <tr>
                     <td>Rumsnamn in här</td>
-                    <td><%#: Item.decorAreaID %></td>
-                    <td><%#: Item.decorItemName %></td>
+                    <td>
+                        <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>'
+                         Text='<%#: Item.decorAreaID %>' />
+                    </td>                    
+                    <td>
+                        <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>'
+                        Text='<%#: Item.decorItemName %>' />
+
+                    </td>
                                             
                     <td>                        
                     </td>

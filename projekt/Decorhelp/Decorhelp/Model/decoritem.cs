@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Decorhelp.Model
 {
-    public class decoritem
+    public class Decoritem
     {
         //Egenskaper
         public int decorItemID { get; set; }

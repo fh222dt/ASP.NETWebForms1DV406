@@ -8,7 +8,7 @@ using System.Web.Configuration;
 
 namespace Decorhelp.Model.DAL
 {
-    public class decoritemDAL: DALBase
+    public class DecoritemDAL: DALBase
     {   
         public void DeleteDecorItem(int decorItemID)
         {   // Skapar och initierar ett anslutningsobjekt.
@@ -34,7 +34,7 @@ namespace Decorhelp.Model.DAL
             }            
         }
 
-        public decoritem GetDecorItemById(int decorItemID)
+        public Decoritem GetDecorItemById(int decorItemID)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -58,7 +58,7 @@ namespace Decorhelp.Model.DAL
                             var itemDescriptionIndex = reader.GetOrdinal("decorItemDescription");
                             var areaIDIndex = reader.GetOrdinal("decorAreaID");
 
-                            return new decoritem
+                            return new Decoritem
                             {
                                 decorItemID = reader.GetInt32(itemIDIndex),
                                 decorItemName = reader.GetString(itemNameIndex),
@@ -79,7 +79,7 @@ namespace Decorhelp.Model.DAL
         }
         
         //TODO: måste testas! anv SET vet ej om det blir rätt
-        public void InsertDecorItem(decoritem decoritem)
+        public void InsertDecorItem(Decoritem decoritem)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -110,7 +110,7 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        public void UpdateDecorItem(decoritem decoritem)
+        public void UpdateDecorItem(Decoritem decoritem)
         {
             // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -137,13 +137,13 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        public IEnumerable<decoritem> GetDecorItems()
+        public IEnumerable<Decoritem> GetDecorItems()
         {
             using (var conn = CreateConnection())
             {
                 try
                 {
-                    var items = new List<decoritem>(100);
+                    var items = new List<Decoritem>(100);
 
                     var cmd = new SqlCommand("app.GetAllDecorItems", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -159,7 +159,7 @@ namespace Decorhelp.Model.DAL
 
                         while (reader.Read())
                         {
-                            items.Add(new decoritem
+                            items.Add(new Decoritem
                             {
                                 decorItemID = reader.GetInt32(itemIDIndex),
                                 decorItemName = reader.GetString(itemNameIndex),

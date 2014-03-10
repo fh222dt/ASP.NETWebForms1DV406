@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Decorhelp.Model.DAL
 {
-    public class decorareaDAL : DALBase
+    public class DecorareaDAL : DALBase
     {   
         public void DeleteDecorArea(int decorAreaID)
         {// Skapar och initierar ett anslutningsobjekt.
@@ -33,7 +33,7 @@ namespace Decorhelp.Model.DAL
             }      
         }
 
-        public decorarea GetDecorAreaById(int decorAreaID)
+        public Decorarea GetDecorAreaById(int decorAreaID)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
@@ -56,7 +56,7 @@ namespace Decorhelp.Model.DAL
                             var areaDescriptionIndex = reader.GetOrdinal("decorAreaDescription");
                             var roomIDIndex = reader.GetOrdinal("RoomID");      //hur lösa?? fr tabell utanför projektet
 
-                            return new decorarea
+                            return new Decorarea
                             {
                                 decorAreaID = reader.GetInt32(areaIDIndex),
                                 decorAreaName = reader.GetString(areaNameIndex),
@@ -77,7 +77,7 @@ namespace Decorhelp.Model.DAL
         }
 
         //TODO: måste testas! anv SET vet ej om det blir rätt        
-        public void InsertDecorArea(decorarea decorarea)
+        public void InsertDecorArea(Decorarea decorarea)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
@@ -107,7 +107,7 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        public void UpdateDecorArea(decorarea decorarea)
+        public void UpdateDecorArea(Decorarea decorarea)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
@@ -133,13 +133,13 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        public IEnumerable<decorarea> GetDecorAreas()
+        public IEnumerable<Decorarea> GetDecorAreas()
         {
             using (var conn = CreateConnection())
             {
                 try
                 {
-                    var items = new List<decorarea>(100);
+                    var items = new List<Decorarea>(100);
 
                     var cmd = new SqlCommand("app.GetAllDecorAreas", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -155,7 +155,7 @@ namespace Decorhelp.Model.DAL
 
                         while (reader.Read())
                         {
-                            items.Add(new decorarea
+                            items.Add(new Decorarea
                             {
                                 decorAreaID = reader.GetInt32(areaIDIndex),
                                 decorAreaName = reader.GetString(areaNameIndex),

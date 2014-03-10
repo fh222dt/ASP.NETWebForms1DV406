@@ -60,6 +60,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\DecorAreas\AreaDetails.aspx" />
+    <Content Include="Pages\DecorItems\ItemDetails.aspx" />
     <Content Include="Pages\listall.aspx" />
     <Content Include="Pages\Shared\errorPage.html" />
     <Content Include="Global.asax" />
@@ -68,11 +70,14 @@
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\jquery-2.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Infrastructure\ValidationExtensions.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -80,10 +85,24 @@
     <Compile Include="Model\DAL\decorareaDAL.cs" />
     <Compile Include="Model\DAL\decoritemDAL.cs" />
     <Compile Include="Model\DAL\placedDAL.cs" />
-    <Compile Include="Model\decorarea.cs" />
-    <Compile Include="Model\decoritem.cs" />
+    <Compile Include="Model\Decorarea.cs" />
+    <Compile Include="Model\Decoritem.cs" />
     <Compile Include="Model\placed.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\DecorAreas\AreaDetails.aspx.cs">
+      <DependentUpon>AreaDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DecorAreas\AreaDetails.aspx.designer.cs">
+      <DependentUpon>AreaDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DecorItems\ItemDetails.aspx.cs">
+      <DependentUpon>ItemDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DecorItems\ItemDetails.aspx.designer.cs">
+      <DependentUpon>ItemDetails.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\listall.aspx.cs">
       <DependentUpon>listall.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

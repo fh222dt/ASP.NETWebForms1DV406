@@ -11,9 +11,9 @@
             <div>Namn: <%#: Item.decorAreaName %></div>
             <div>Tillhör rum: <%#: Item.roomID %></div>
             <div>Kommentar: <%#: Item.decorAreaDescription %></div>
-            <asp:HyperLink runat="server" Text="Redigera" CssClass="btn btn-default btn-sm" NavigateUrl='<%# GetRouteUrl("DecorAreaEdit", new { id = Item.decorAreaID }) %>' />
-            <asp:HyperLink runat="server" Text="Ta bort" CssClass="btn btn-default btn-sm" NavigateUrl='<%# GetRouteUrl("DecorAreaDelete", new { id = Item.decorAreaID }) %>' />
-            <asp:HyperLink runat="server" Text="Tillbaka" CssClass="btn btn-default btn-sm" NavigateUrl='<%# GetRouteUrl("DecorAreas", null)%>' />
+            <asp:HyperLink runat="server" Text="Redigera" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorAreaEdit", new { id = Item.decorAreaID }) %>' />
+            <asp:HyperLink runat="server" Text="Ta bort" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorAreaDelete", new { id = Item.decorAreaID }) %>' />
+            <asp:HyperLink runat="server" Text="Tillbaka" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorAreas", null)%>' />
                       
         </ItemTemplate>
 

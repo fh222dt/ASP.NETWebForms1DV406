@@ -62,6 +62,7 @@
   <ItemGroup>
     <Content Include="Content\style.css" />
     <Content Include="Pages\DecorAreas\AreaDetails.aspx" />
+    <Content Include="Pages\DecorAreas\AreaEdit.aspx" />
     <Content Include="Pages\DecorItems\ItemDetails.aspx" />
     <Content Include="Pages\listall.aspx" />
     <Content Include="Pages\Shared\errorPage.html" />
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="Pages\DecorAreas\AreaDetails.aspx.designer.cs">
       <DependentUpon>AreaDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DecorAreas\AreaEdit.aspx.cs">
+      <DependentUpon>AreaEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DecorAreas\AreaEdit.aspx.designer.cs">
+      <DependentUpon>AreaEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\DecorItems\ItemDetails.aspx.cs">
       <DependentUpon>ItemDetails.aspx</DependentUpon>

@@ -54,7 +54,7 @@ namespace Decorhelp.Model.DAL
                             var areaIDIndex = reader.GetOrdinal("decorAreaID");
                             var areaNameIndex = reader.GetOrdinal("decorAreaName");
                             var areaDescriptionIndex = reader.GetOrdinal("decorAreaDescription");
-                            var roomIDIndex = reader.GetOrdinal("RoomID");      //hur lösa?? fr tabell utanför projektet
+                            var roomIDIndex = reader.GetOrdinal("roomID");      //hur lösa?? fr tabell utanför projektet
 
                             return new Decorarea
                             {

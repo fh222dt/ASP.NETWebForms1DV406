@@ -10,7 +10,7 @@
         DataKeyNames="decorItemID"
         >
         <LayoutTemplate>
-            <table>
+            <table class="table table-hover">
                 <tr>
                     <th>Rum</th>
                     <th>Yta</th>
@@ -24,7 +24,7 @@
         <%-- Mall för nya rader. --%>
             <ItemTemplate>                
                 <tr>
-                    <td>Rumsnamn in här</td>
+                    <td>Rumsnamn</td>
                     <td>
                         <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>'
                          Text='<%#: Item.decorAreaID %>' />

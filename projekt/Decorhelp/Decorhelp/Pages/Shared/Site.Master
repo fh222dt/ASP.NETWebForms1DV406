@@ -8,30 +8,35 @@
     <%-- behövs? --%>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css">
+    
 
-    <%-- länka in css --%>
 </head>
 <body>
     <form id="masterform" runat="server">
-    <header>
-        <h1>Decorhelp</h1>
-        <h2>Planera din inredning</h2>
-    </header>
-    <div id="navigation">
-        <ul>
-            <li>Hem</li>
-            <li>Lägg till föremål</li>
-            <li>Ändra??</li>
-        </ul>
-    </div>
-    <div>
-        <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
+    <div id="content">
+        <header>
+            <h1>Decorhelp</h1>
+            <%--<h2>Planera din inredning</h2>--%>
+        </header>
+        <div id="navigation">
+            <ul class="nav nav-tabs">
+                <li><a href="#">Hem</a></li>
+                <li><a href="#">Lägg till</a></li>
+                <li><a href="#">Ändra</a></li>
+                <li><a href="#">Ta bort</a></li>
+            </ul>
+        </div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
         
-        </asp:ContentPlaceHolder>
+            </asp:ContentPlaceHolder>
+        </div>
+        <footer>
+            <p class="text-muted">Decorhelp &copy; Frida Holmström 2014</p>
+        </footer>
     </div>
-    <footer>
-        <p>Decorhelp -planera din inredning, skriv ut en lista över dina inredningsföremål, få ett vackert hem &copy; Frida Holmström</p>
-    </footer>
     </form>
 </body>
 </html>

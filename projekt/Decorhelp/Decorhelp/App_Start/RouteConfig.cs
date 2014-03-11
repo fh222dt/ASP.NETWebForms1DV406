@@ -10,7 +10,7 @@ namespace Decorhelp
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.MapPageRoute("DecorAreas", "ytor", "~/Pages/DecorAreas/listall.aspx");
+            routes.MapPageRoute("DecorAreas", "ytor", "~/Pages/listall.aspx");
             routes.MapPageRoute("DecorAreaCreate", "yta/ny", "~/Pages/DecorAreas/AreaCreate.aspx");
             routes.MapPageRoute("DecorAreaDetails", "yta/{id}", "~/Pages/DecorAreas/AreaDetails.aspx");
             routes.MapPageRoute("DecorAreaEdit", "yta/{id}/edit", "~/Pages/DecorAreas/AreaEdit.aspx");

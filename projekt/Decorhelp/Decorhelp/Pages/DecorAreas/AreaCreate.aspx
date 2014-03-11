@@ -1,16 +1,14 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="AreaEdit.aspx.cs" Inherits="Decorhelp.Pages.DecorAreas.AreaEdit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="AreaCreate.aspx.cs" Inherits="Decorhelp.Pages.DecorAreas.DecorAreaCreate" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <h2>Ändra inredningsyta</h2>
-    <asp:FormView ID="AreaEditFormView" runat="server"
+    <h2>Lägg till inredningsyta</h2>
+    <asp:FormView ID="AreaCreateFormView" runat="server"
         ItemType="Decorhelp.Model.Decorarea"
-        SelectMethod="AreaEditFormView_GetItem"
-        UpdateMethod="AreaEditFormView_UpdateItem"
-        DataKeyNames="decorAreaID"
-        DefaultMode="Edit"
+        InsertMethod="AreaCreateFormView_InsertItem"
+        DefaultMode="Insert"
         RenderOuterTable="false" >
-        <EditItemTemplate>
+        <InsertItemTemplate>
             <div>
                 <label for="Name">Namn:</label> 
                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorAreaName %>'></asp:TextBox>
@@ -33,11 +31,11 @@
                 <asp:TextBox ID="DescTextBox" runat="server" Text='<%# BindItem.decorAreaDescription %>'></asp:TextBox>
             </div>
 
-            <asp:LinkButton runat="server" Text="Spara" CommandName="Update" />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>' Text='Avbryt' />
+            <asp:LinkButton ID="LinkButton1" runat="server" Text="Spara" CommandName="Insert" />
+            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreas") %>' Text='Avbryt' />
                          
                       
-        </EditItemTemplate>
+        </InsertItemTemplate>
 
     </asp:FormView>
 </asp:Content>

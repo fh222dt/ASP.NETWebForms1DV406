@@ -46,9 +46,11 @@ namespace Decorhelp.Pages.DecorAreas
             }
         }
 
-        public void AreaEditFormView_UpdateItem(int id)
+        public void AreaEditFormView_UpdateItem([RouteData]int id)
         {
-            //TODO: ändra area.roomID t siffra ist för  namn
+
+            //TODO: rumsid funkar ej!
+            //TODO: hantera att description kan vara tomt
             try
             {
                 var area = Service.GetDecorArea(id);
@@ -62,11 +64,40 @@ namespace Decorhelp.Pages.DecorAreas
 
                 if (TryUpdateModel(area))
                 {
+                    //rummets namn till roomid
+                    DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");                    
+                    var dropdownstring = dropdown.SelectedItem.ToString();
+
+                   switch (dropdownstring)
+                    {
+                        case "Köket":
+                            area.roomID = 2;
+                            break;
+                        case "Vardagsrummet":
+                            area.roomID = 3;
+                            break;
+                        case "Sovrummet":
+                            area.roomID = 4;
+                            break;
+                        case "Gästrummet":
+                            area.roomID = 5;
+                            break;
+                        case "Hallen":
+                            area.roomID = 6;
+                            break;
+                        case "Badrummet":
+                            area.roomID = 7;
+                            break;
+                        case "Uterummet":
+                            area.roomID = 8;
+                            break;
+                    } 
+
                     Service.SaveDecorArea(area);
                     
                     //dirigera om användaren
                     //TODO: lägg till rättmeddelande
-                    Response.RedirectToRoute("AreaDetails", new { id = area.decorAreaID });
+                    Response.RedirectToRoute("DecorAreaDetails", new { id = area.decorAreaID });
                     Context.ApplicationInstance.CompleteRequest();
                 }
             }

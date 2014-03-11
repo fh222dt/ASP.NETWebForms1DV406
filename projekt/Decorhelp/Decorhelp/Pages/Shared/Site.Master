@@ -8,8 +8,8 @@
     <%-- behövs? --%>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link href="~/Content/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
     
 
 </head>
@@ -22,10 +22,15 @@
         </header>
         <div id="navigation">
             <ul class="nav nav-tabs">
-                <li><a href="#">Hem</a></li>
-                <li><a href="#">Lägg till</a></li>
-                <li><a href="#">Ändra</a></li>
-                <li><a href="#">Ta bort</a></li>
+                <li>
+                    <asp:HyperLink runat="server" NavigateUrl='<%$ RouteUrl:routename=Default %>'>Hem</asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink runat="server" NavigateUrl='<%$ RouteUrl:routename=DecorAreaCreate %>'>Ny inredningsyta</asp:HyperLink>
+                </li>
+                <li>
+                    <asp:HyperLink runat="server" NavigateUrl='<%$ RouteUrl:routename=DecorItemCreate %>'>Nytt föremål</asp:HyperLink>
+                </li>
             </ul>
         </div>
         <div id="main">

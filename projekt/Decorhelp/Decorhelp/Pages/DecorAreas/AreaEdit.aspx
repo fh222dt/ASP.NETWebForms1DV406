@@ -33,8 +33,8 @@
                 <asp:TextBox ID="DescTextBox" runat="server" Text='<%# BindItem.decorAreaDescription %>'></asp:TextBox>
             </div>
 
-            <asp:LinkButton runat="server" Text="Spara" CommandName="Update" />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>' Text='Avbryt' />
+            <asp:LinkButton runat="server" Text="Spara" CommandName="Update" CssClass="btn btn-default btn-xs" />
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>' CssClass="btn btn-default btn-xs" Text='Avbryt' />
                          
                       
         </EditItemTemplate>

@@ -17,7 +17,7 @@ namespace Decorhelp.Pages.DecorAreas
 
         public void AreaCreateFormView_InsertItem(Decorarea area)
         {
-            //TODO: rumsid funkar ej!
+            //TODO: rumsid verkar sparas rätt i db, men detailssidan läser inte av den rätt, alla nya blir nr8!
             //TODO: hantera att description kan vara tomt
             if (ModelState.IsValid)
             {

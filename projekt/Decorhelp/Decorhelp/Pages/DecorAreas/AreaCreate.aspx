@@ -31,8 +31,8 @@
                 <asp:TextBox ID="DescTextBox" runat="server" Text='<%# BindItem.decorAreaDescription %>'></asp:TextBox>
             </div>
 
-            <asp:LinkButton ID="LinkButton1" runat="server" Text="Spara" CommandName="Insert" />
-            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreas") %>' Text='Avbryt' />
+            <asp:LinkButton ID="LinkButton1" runat="server" Text="Spara" CommandName="Insert" CssClass="btn btn-default btn-xs" />
+            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreas") %>'  CssClass="btn btn-default btn-xs" Text='Avbryt' />
                          
                       
         </InsertItemTemplate>

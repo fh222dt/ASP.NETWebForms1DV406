@@ -76,7 +76,7 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        //TODO: måste testas! anv SET vet ej om det blir rätt        
+        //TODO: måste testas! anv SET vet ej om det blir rätt       verkar funka! 
         public void InsertDecorArea(Decorarea decorarea)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())

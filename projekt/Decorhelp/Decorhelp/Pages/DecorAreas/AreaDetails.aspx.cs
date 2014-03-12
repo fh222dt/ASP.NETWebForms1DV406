@@ -16,8 +16,6 @@ namespace Decorhelp.Pages.DecorAreas
 
         }
 
-        // The id parameter should match the DataKeyNames value set on the control
-        // or be decorated with a value provider attribute, e.g. [QueryString]int id
         public Decorhelp.Model.Decorarea AreaDetailsFormView_GetItem([RouteData] int id)
         {
             try

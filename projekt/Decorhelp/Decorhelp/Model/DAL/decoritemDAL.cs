@@ -123,7 +123,7 @@ namespace Decorhelp.Model.DAL
                     // Lägger till de paramterar den lagrade proceduren kräver. 
                     cmd.Parameters.Add("@decoritemID", SqlDbType.Int, 4).Value = decoritem.decorItemID;
                     cmd.Parameters.Add("@decoritemName", SqlDbType.VarChar, 40).Value = decoritem.decorItemName;
-                    cmd.Parameters.Add("@decoritemDescription", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;      //TODO: ok m null
+                    cmd.Parameters.Add("@decoritemDescription", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;
                     cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Value = decoritem.decorAreaID;
 
                     conn.Open();
@@ -156,6 +156,8 @@ namespace Decorhelp.Model.DAL
                         var itemNameIndex = reader.GetOrdinal("decorItemName");
                         var itemDescriptionIndex = reader.GetOrdinal("decorItemDescription");
                         var areaIDIndex = reader.GetOrdinal("decorAreaID");
+                        var roomNameIndex = reader.GetOrdinal("roomName");
+                        var decorAreaNameIndex = reader.GetOrdinal("decorAreaName");
 
                         while (reader.Read())
                         {
@@ -164,7 +166,10 @@ namespace Decorhelp.Model.DAL
                                 decorItemID = reader.GetInt32(itemIDIndex),
                                 decorItemName = reader.GetString(itemNameIndex),
                                 decorItemDescription = reader.GetValue(itemDescriptionIndex).ToString(), //är detta vettigt för att hantera ev. null-värde??                                
-                                decorAreaID = reader.GetInt32(areaIDIndex)
+                                decorAreaID = reader.GetInt32(areaIDIndex),
+                                roomName = reader.GetString(roomNameIndex),
+                                decorAreaName = reader.GetString(decorAreaNameIndex)
+
                             });
                         }
                     }

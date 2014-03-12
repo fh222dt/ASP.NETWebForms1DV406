@@ -47,7 +47,7 @@ namespace Decorhelp.Pages.DecorItems
             {
                 DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
                 var item = Service.GetDecorItem(id);
-                //dropdown.SelectedValue = item.decorAreaID.ToString();
+                //dropdown.SelectedValue = item.decorAreaID.ToString();     //Objektreferensen har inte angetts till en instans av ett objekt.
                 return item;
                 
             }
@@ -60,7 +60,6 @@ namespace Decorhelp.Pages.DecorItems
 
         public void ItemEditFormView_UpdateItem([RouteData]int id)
         {
-            //TODO: hantera att description kan vara tomt
             try
             {
                 var item = Service.GetDecorItem(id);
@@ -75,11 +74,11 @@ namespace Decorhelp.Pages.DecorItems
                 if (TryUpdateModel(item))
                 {
                     //TODO: hämta areaid
-                    DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
-                    var area = dropdown.SelectedItem.Value; // dropdown.SelectedValue;
-                    int areaid = Convert.ToInt32(area);
-
+                    //DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
+                    //var area = dropdown.SelectedItem.Value; // dropdown.SelectedValue;
+                    //int areaid = Convert.ToInt32(area);
                     //item.decorAreaID = areaid;
+
                     Service.SaveDecorItem(item);
                     
                     //dirigera om användaren

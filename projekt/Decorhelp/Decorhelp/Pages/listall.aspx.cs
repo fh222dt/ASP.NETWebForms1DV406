@@ -25,6 +25,7 @@ namespace Decorhelp.Pages
 
         public IEnumerable<Decoritem> SummaryListView_GetData()
         {
+            //TODO: visa inte dummy
             return Service.GetDecorItems();
         }
     }

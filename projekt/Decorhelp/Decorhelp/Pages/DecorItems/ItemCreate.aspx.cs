@@ -18,7 +18,6 @@ namespace Decorhelp.Pages.DecorItems
         public void ItemCreateFormView_InsertItem(Decoritem item)
         {   //TODO: går ej att testa ännu
             //TODO: tillhör yta dropdownen ska hämta fr db
-            //TODO: hantera att description kan vara tomt
             if (ModelState.IsValid)
             {
                 try

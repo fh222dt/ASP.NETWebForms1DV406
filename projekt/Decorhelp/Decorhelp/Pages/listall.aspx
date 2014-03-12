@@ -24,10 +24,10 @@
         <%-- Mall för nya rader. --%>
             <ItemTemplate>                
                 <tr>
-                    <td>Rumsnamn</td>
+                    <td><asp:Literal runat="server" Text='<%#: Item.roomName %>'></asp:Literal></td>
                     <td>
                         <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>'
-                         Text='<%#: Item.decorAreaID %>' />
+                         Text='<%#: Item.decorAreaName %>' />
                     </td>                    
                     <td>
                         <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>'

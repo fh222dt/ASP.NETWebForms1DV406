@@ -50,7 +50,6 @@ namespace Decorhelp.Pages.DecorAreas
         {
 
             //TODO: rumsid funkar ej!
-            //TODO: hantera att description kan vara tomt
             try
             {
                 var area = Service.GetDecorArea(id);

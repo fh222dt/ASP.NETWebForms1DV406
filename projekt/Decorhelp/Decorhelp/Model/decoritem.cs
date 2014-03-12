@@ -18,7 +18,12 @@ namespace Decorhelp.Model
         [StringLength(40, ErrorMessage = "Beskrivning av yta kan max ha 40 tecken")]
         public string decorItemDescription { get; set; }
 
-        //fk, hur validera?
+        [Required(ErrorMessage = "Namn på föremål måste anges")]
         public int decorAreaID { get; set; }
+
+        //nedan används endast för att visa en lista av alla föremål via en vy i db
+        public string roomName { get; set; }
+
+        public string decorAreaName { get; set; }
     }
 }

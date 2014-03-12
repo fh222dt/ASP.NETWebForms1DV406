@@ -18,8 +18,26 @@ namespace Decorhelp.Pages.DecorItems
             get { return _service ?? (_service = new Service()); }
         }
 
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
+                //var dropdownstring = dropdown.SelectedItem.ToString();
+
+
+
+                var areas = Service.GetDecorAreas();
+
+                dropdown.DataSource = areas;
+                dropdown.DataTextField = "decorAreaName";
+                dropdown.DataValueField = "decorAreaID";
+                dropdown.DataBind();
+                dropdown.Items.Insert(0, new ListItem("Välj yta", "-1"));
+                //TODO: visa inte dummyytan
+            }
 
         }
                 
@@ -27,16 +45,11 @@ namespace Decorhelp.Pages.DecorItems
         {
             try
             {
-
-                var decoritem = Service.GetDecorItem(id);
-                //if (string.IsNullOrEmpty(decorarea.decorAreaDescription))
-                //{
-                //    decorarea.decorAreaDescription = "Ingen kommentar";
-                //}
-
-                return decoritem;
-
-
+                DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
+                var item = Service.GetDecorItem(id);
+                //dropdown.SelectedValue = item.decorAreaID.ToString();
+                return item;
+                
             }
             catch (Exception)
             {
@@ -45,10 +58,8 @@ namespace Decorhelp.Pages.DecorItems
             }
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
         public void ItemEditFormView_UpdateItem([RouteData]int id)
         {
-            //TODO: rumsid funkar ej!
             //TODO: hantera att description kan vara tomt
             try
             {
@@ -63,35 +74,12 @@ namespace Decorhelp.Pages.DecorItems
 
                 if (TryUpdateModel(item))
                 {
-                    //TODO: samma problem som i create
-                    DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");                    
-                    var dropdownstring = dropdown.SelectedItem.ToString();
+                    //TODO: hämta areaid
+                    DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
+                    var area = dropdown.SelectedItem.Value; // dropdown.SelectedValue;
+                    int areaid = Convert.ToInt32(area);
 
-                   //switch (dropdownstring)
-                   // {
-                   //     case "Köket":
-                   //         item.roomID = 2;
-                   //         break;
-                   //     case "Vardagsrummet":
-                   //         item.roomID = 3;
-                   //         break;
-                   //     case "Sovrummet":
-                   //         item.roomID = 4;
-                   //         break;
-                   //     case "Gästrummet":
-                   //         item.roomID = 5;
-                   //         break;
-                   //     case "Hallen":
-                   //         item.roomID = 6;
-                   //         break;
-                   //     case "Badrummet":
-                   //         item.roomID = 7;
-                   //         break;
-                   //     case "Uterummet":
-                   //         item.roomID = 8;
-                   //         break;
-                   // } 
-
+                    //item.decorAreaID = areaid;
                     Service.SaveDecorItem(item);
                     
                     //dirigera om användaren
@@ -106,5 +94,13 @@ namespace Decorhelp.Pages.DecorItems
                 //return null;
             }
         }
+
+        //protected void AreaDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    //vilken yta som är vald
+        //    DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
+        //    var area = dropdown.DataValueField;
+        //    int areaid = Convert.ToInt32(area);
+        //}
     }
 }

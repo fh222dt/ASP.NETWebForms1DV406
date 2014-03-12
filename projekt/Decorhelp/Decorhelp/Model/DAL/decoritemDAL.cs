@@ -123,7 +123,7 @@ namespace Decorhelp.Model.DAL
                     // Lägger till de paramterar den lagrade proceduren kräver. 
                     cmd.Parameters.Add("@decoritemID", SqlDbType.Int, 4).Value = decoritem.decorItemID;
                     cmd.Parameters.Add("@decoritemName", SqlDbType.VarChar, 40).Value = decoritem.decorItemName;
-                    cmd.Parameters.Add("@decoritemDescription", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;
+                    cmd.Parameters.Add("@decoritemDescription", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;      //TODO: ok m null
                     cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Value = decoritem.decorAreaID;
 
                     conn.Open();

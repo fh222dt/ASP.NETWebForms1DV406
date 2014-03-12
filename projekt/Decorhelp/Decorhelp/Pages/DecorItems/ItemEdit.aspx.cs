@@ -17,39 +17,22 @@ namespace Decorhelp.Pages.DecorItems
         {
             get { return _service ?? (_service = new Service()); }
         }
-
-
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
-                //var dropdownstring = dropdown.SelectedItem.ToString();
+            
+        }
 
-
-
-                var areas = Service.GetDecorAreas();
-
-                dropdown.DataSource = areas;
-                dropdown.DataTextField = "decorAreaName";
-                dropdown.DataValueField = "decorAreaID";
-                dropdown.DataBind();
-                dropdown.Items.Insert(0, new ListItem("Välj yta", "-1"));
-                //TODO: visa inte dummyytan
-            }
-
+        public IEnumerable<Decorarea> AreaDropDownList_GetData()
+        {
+            return Service.GetDecorAreas();
         }
                 
         public Decorhelp.Model.Decoritem ItemEditFormView_GetItem([RouteData]int id)
         {
             try
             {
-                DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
-                var item = Service.GetDecorItem(id);
-                //dropdown.SelectedValue = item.decorAreaID.ToString();     //Objektreferensen har inte angetts till en instans av ett objekt.
-                return item;
-                
+                return Service.GetDecorItem(id);                
             }
             catch (Exception)
             {
@@ -72,13 +55,7 @@ namespace Decorhelp.Pages.DecorItems
                 }
 
                 if (TryUpdateModel(item))
-                {
-                    //TODO: hämta areaid
-                    //DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
-                    //var area = dropdown.SelectedItem.Value; // dropdown.SelectedValue;
-                    //int areaid = Convert.ToInt32(area);
-                    //item.decorAreaID = areaid;
-
+                {                                        
                     Service.SaveDecorItem(item);
                     
                     //dirigera om användaren
@@ -93,13 +70,5 @@ namespace Decorhelp.Pages.DecorItems
                 //return null;
             }
         }
-
-        //protected void AreaDropDownList_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    //vilken yta som är vald
-        //    DropDownList dropdown = (DropDownList)ItemEditFormView.FindControl("AreaDropDownList");
-        //    var area = dropdown.DataValueField;
-        //    int areaid = Convert.ToInt32(area);
-        //}
     }
 }

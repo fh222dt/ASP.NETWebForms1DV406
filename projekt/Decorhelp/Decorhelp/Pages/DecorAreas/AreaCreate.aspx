@@ -17,13 +17,14 @@
             <div>
                 <label for="Room">Tillhör rum:</label> 
                 <asp:DropDownList ID="RoomDropDownList" runat="server">
-                    <asp:ListItem>Köket</asp:ListItem>
-                    <asp:ListItem>Vardagsrummet</asp:ListItem>
-                    <asp:ListItem>Sovrummet</asp:ListItem>
-                    <asp:ListItem>Gästrummet</asp:ListItem>
-                    <asp:ListItem>Hallen</asp:ListItem>
-                    <asp:ListItem>Badrummet</asp:ListItem>
-                    <asp:ListItem>Uterummet</asp:ListItem>
+                    <asp:ListItem>Välj rum</asp:ListItem>
+                    <asp:ListItem Value="2">Köket</asp:ListItem>
+                    <asp:ListItem Value="3">Vardagsrummet</asp:ListItem>
+                    <asp:ListItem Value="4">Sovrummet</asp:ListItem>
+                    <asp:ListItem Value="5">Gästrummet</asp:ListItem>
+                    <asp:ListItem Value="6">Hallen</asp:ListItem>
+                    <asp:ListItem Value="7">Badrummet</asp:ListItem>
+                    <asp:ListItem Value="8">Uterummet</asp:ListItem>
                 </asp:DropDownList>
             </div>
             <div>

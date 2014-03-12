@@ -24,34 +24,8 @@ namespace Decorhelp.Pages.DecorAreas
                 {
                     Service service = new Service();
                     
-                    //rummets namn till roomid
                     DropDownList dropdown = (DropDownList)AreaCreateFormView.FindControl("RoomDropDownList");
-                    var dropdownstring = dropdown.SelectedItem.ToString();
-
-                    switch (dropdownstring)
-                    {
-                        case "Köket":
-                            area.roomID = 2;
-                            break;
-                        case "Vardagsrummet":
-                            area.roomID = 3;
-                            break;
-                        case "Sovrummet":
-                            area.roomID = 4;
-                            break;
-                        case "Gästrummet":
-                            area.roomID = 5;
-                            break;
-                        case "Hallen":
-                            area.roomID = 6;
-                            break;
-                        case "Badrummet":
-                            area.roomID = 7;
-                            break;
-                        case "Uterummet":
-                            area.roomID = 8;
-                            break;
-                    }
+                    area.roomID = Convert.ToInt32(dropdown.SelectedValue);
 
                     service.SaveDecorArea(area);
 

@@ -27,17 +27,8 @@ namespace Decorhelp.Pages.DecorAreas
         public Decorarea AreaEditFormView_GetItem([RouteData]int id)
         {
             try
-            {
-                
-                var decorarea = Service.GetDecorArea(id);
-                //if (string.IsNullOrEmpty(decorarea.decorAreaDescription))
-                //{
-                //    decorarea.decorAreaDescription = "Ingen kommentar";
-                //}
-
-                return decorarea;
-
-
+            {               
+                return Service.GetDecorArea(id);
             }
             catch (Exception)
             {
@@ -62,36 +53,10 @@ namespace Decorhelp.Pages.DecorAreas
                 }
 
                 if (TryUpdateModel(area))
-                {
-                    //rummets namn till roomid
-                    DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");                    
-                    var dropdownstring = dropdown.SelectedItem.ToString();
-
-                   switch (dropdownstring)
-                    {
-                        case "Köket":
-                            area.roomID = 2;
-                            break;
-                        case "Vardagsrummet":
-                            area.roomID = 3;
-                            break;
-                        case "Sovrummet":
-                            area.roomID = 4;
-                            break;
-                        case "Gästrummet":
-                            area.roomID = 5;
-                            break;
-                        case "Hallen":
-                            area.roomID = 6;
-                            break;
-                        case "Badrummet":
-                            area.roomID = 7;
-                            break;
-                        case "Uterummet":
-                            area.roomID = 8;
-                            break;
-                    } 
-
+                {                    
+                    DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");
+                    area.roomID = Convert.ToInt32(dropdown.SelectedValue);
+                    //TODO: ha rätt rum förvalt i dropdownen
                     Service.SaveDecorArea(area);
                     
                     //dirigera om användaren

@@ -10,50 +10,30 @@ namespace Decorhelp.Pages.DecorItems
 {
     public partial class ItemCreate : System.Web.UI.Page
     {
+        private Service _service;
+
+        private Service Service
+        {
+            get { return _service ?? (_service = new Service()); }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
+        public IEnumerable<Decorarea> AreaDropDownList_GetData()
+        {
+            return Service.GetDecorAreas();
+        }
+
         public void ItemCreateFormView_InsertItem(Decoritem item)
-        {   //TODO: går ej att testa ännu
-            //TODO: tillhör yta dropdownen ska hämta fr db
+        {   
             if (ModelState.IsValid)
             {
                 try
                 {
-                    Service service = new Service();
-
-                    //detta behövs kanske inte?
-                    DropDownList dropdown = (DropDownList)ItemCreateFormView.FindControl("AreaDropDownList");
-                    var dropdownstring = dropdown.SelectedItem.ToString();
-
-                    switch (dropdownstring)
-                    {
-                        case "Köket":
-                            item.decorAreaID = 2;
-                            break;
-                        case "Vardagsrummet":
-                            item.decorAreaID = 3;
-                            break;
-                        case "Sovrummet":
-                            item.decorAreaID = 4;
-                            break;
-                        case "Gästrummet":
-                            item.decorAreaID = 5;
-                            break;
-                        case "Hallen":
-                            item.decorAreaID = 6;
-                            break;
-                        case "Badrummet":
-                            item.decorAreaID = 7;
-                            break;
-                        case "Uterummet":
-                            item.decorAreaID = 8;
-                            break;
-                    }
-
-                    service.SaveDecorItem(item);
+                    Service.SaveDecorItem(item);
 
                     //dirigera om användaren
                     //TODO: lägg till rättmeddelande

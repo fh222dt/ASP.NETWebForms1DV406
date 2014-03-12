@@ -62,7 +62,7 @@ namespace Decorhelp.Model
                 throw ex;
             }
             //create
-            if (decoritem.decorAreaID == 0) // Ny post om decorareaID är 0
+            if (decoritem.decorItemID == 0) // Ny post om decorareaID är 0
             {
                 DecoritemDAL.InsertDecorItem(decoritem);
             }

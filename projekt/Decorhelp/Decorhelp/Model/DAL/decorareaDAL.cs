@@ -61,7 +61,7 @@ namespace Decorhelp.Model.DAL
                                 decorAreaID = reader.GetInt32(areaIDIndex),
                                 decorAreaName = reader.GetString(areaNameIndex),
                                 decorAreaDescription = reader.GetValue(areaDescriptionIndex).ToString(), //är detta vettigt för att hantera ev. null-värde??                                
-                                roomID = reader.GetInt32(areaIDIndex)
+                                roomID = reader.GetInt32(roomIDIndex)
                             };
                         }
                     }

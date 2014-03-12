@@ -15,10 +15,14 @@
                 <label for="Name">Namn:</label> 
                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorItemName %>'></asp:TextBox>
             </div>
-            <%-- inte klart! hämta fr db area-tabellen--%>
             <div>
                 <label for="Area">Tillhör inredningsyta:</label> 
-                <asp:DropDownList ID="AreaDropDownList" runat="server" >
+                <asp:DropDownList ID="AreaDropDownList" runat="server"
+                    ItemType="Decorhelp.Model.Decorarea"
+                    SelectMethod="AreaDropDownList_GetData"
+                    DataTextField="decorAreaName"
+                    DataValueField="decorareaID"
+                    SelectedValue='<%# BindItem.decorAreaID %>'>
                     
                 </asp:DropDownList>
             </div>

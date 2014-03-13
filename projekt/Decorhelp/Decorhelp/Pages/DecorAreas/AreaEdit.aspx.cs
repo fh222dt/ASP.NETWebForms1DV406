@@ -11,7 +11,6 @@ namespace Decorhelp.Pages.DecorAreas
 {
     public partial class AreaEdit : System.Web.UI.Page
     {
-        //kan man lägga detta i masterpage code behind???
         private Service _service;
 
         private Service Service
@@ -23,12 +22,16 @@ namespace Decorhelp.Pages.DecorAreas
         {
 
         }
-
+        //TODO: ha rätt rum förvalt i dropdownen
         public Decorarea AreaEditFormView_GetItem([RouteData]int id)
         {
             try
-            {               
-                return Service.GetDecorArea(id);
+            {
+                var area = Service.GetDecorArea(id);
+                //DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");
+                //dropdown.SelectedValue = area.roomID.ToString();
+
+                return area;
             }
             catch (Exception)
             {
@@ -39,16 +42,14 @@ namespace Decorhelp.Pages.DecorAreas
 
         public void AreaEditFormView_UpdateItem([RouteData]int id)
         {
-
-            //TODO: rumsid funkar ej!
             try
             {
-                var area = Service.GetDecorArea(id);
+                var area = Service.GetDecorArea(id);                
+
                 if (area == null)
                 {
                     // Hittar inte i db
-                    ModelState.AddModelError(String.Empty,
-                        String.Format("Inredningsytan hittades inte."));
+                    ModelState.AddModelError(String.Empty, String.Format("Inredningsytan hittades inte."));
                     return;
                 }
 
@@ -56,7 +57,7 @@ namespace Decorhelp.Pages.DecorAreas
                 {                    
                     DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");
                     area.roomID = Convert.ToInt32(dropdown.SelectedValue);
-                    //TODO: ha rätt rum förvalt i dropdownen
+                    
                     Service.SaveDecorArea(area);
                     
                     //dirigera om användaren

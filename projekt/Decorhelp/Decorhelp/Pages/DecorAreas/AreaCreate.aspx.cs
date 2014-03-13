@@ -12,12 +12,10 @@ namespace Decorhelp.Pages.DecorAreas
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         public void AreaCreateFormView_InsertItem(Decorarea area)
         {
-            //TODO: rumsid verkar sparas rätt i db, men detailssidan läser inte av den rätt, alla nya blir nr8!
             if (ModelState.IsValid)
             {
                 try
@@ -31,6 +29,7 @@ namespace Decorhelp.Pages.DecorAreas
 
                     //dirigera om användaren
                     //TODO: lägg till rättmeddelande
+                    
                     Response.RedirectToRoute("DecorAreaDetails", new { id = area.decorAreaID });
                     Context.ApplicationInstance.CompleteRequest();                    
                 }

@@ -13,7 +13,6 @@
                 <label for="Name">Namn:</label> 
                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorAreaName %>'></asp:TextBox>
             </div>
-            <%-- inte klart! --%>
             <div>
                 <label for="Room">Tillhör rum:</label> 
                 <asp:DropDownList ID="RoomDropDownList" runat="server">
@@ -33,10 +32,7 @@
             </div>
 
             <asp:LinkButton ID="LinkButton1" runat="server" Text="Spara" CommandName="Insert" CssClass="btn btn-default btn-xs" />
-            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreas") %>'  CssClass="btn btn-default btn-xs" Text='Avbryt' />
-                         
-                      
+            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreas") %>'  CssClass="btn btn-default btn-xs" Text='Avbryt' />                      
         </InsertItemTemplate>
-
     </asp:FormView>
 </asp:Content>

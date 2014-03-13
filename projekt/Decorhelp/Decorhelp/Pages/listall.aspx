@@ -4,18 +4,30 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <%-- lista alla föremål --%>
+
+    <asp:Table ID="Table1" runat="server" ></asp:Table>
+    
+
+
+
     <asp:ListView ID="SummaryListView" runat="server"
         ItemType="Decorhelp.Model.Decoritem"
         SelectMethod="SummaryListView_GetData"
-        DataKeyNames="decorItemID"
-        >
+        DataKeyNames="decorItemID" >
         <LayoutTemplate>
             <table class="table table-hover">
                 <tr>
                     <th>Rum</th>
-                    <th>Yta</th>
-                    <th>Föremål</th>
-                    <th></th>
+                    <th>Inredningsyta</th>
+                    <th>Föremål</th>                    
+                </tr>
+                <tr>
+                    <td rowspan="4">Köket</td>
+                    <td rowspan="4">Skänken</td>
+                    <td>Skål</td>
+                    <tr><td>Blomma</td></tr>
+                    <tr><td>tavla</td></tr>
+                    <tr><td>duk</td></tr>
                 </tr>
                 <%-- Platshållare för nya rader --%>
                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
@@ -23,19 +35,16 @@
         </LayoutTemplate>
         <%-- Mall för nya rader. --%>
             <ItemTemplate>                
-                <tr>
-                    <td><asp:Literal runat="server" Text='<%#: Item.roomName %>'></asp:Literal></td>
+                <tr id="row" runat="server">
+                    <td><asp:Literal ID="Literal1" runat="server" Text='<%#: Item.roomName %>'></asp:Literal></td>
                     <td>
-                        <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>'
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>'
                          Text='<%#: Item.decorAreaName %>' />
                     </td>                    
                     <td>
-                        <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>'
+                        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>'
                         Text='<%#: Item.decorItemName %>' />
 
-                    </td>
-                                            
-                    <td>                        
                     </td>
                 </tr>
             </ItemTemplate>
@@ -49,4 +58,5 @@
             </EmptyDataTemplate>  
 
     </asp:ListView>
+  
 </asp:Content>

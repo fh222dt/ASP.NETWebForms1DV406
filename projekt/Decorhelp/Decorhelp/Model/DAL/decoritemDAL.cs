@@ -57,6 +57,7 @@ namespace Decorhelp.Model.DAL
                             var itemNameIndex = reader.GetOrdinal("decorItemName");
                             var itemDescriptionIndex = reader.GetOrdinal("decorItemDescription");
                             var areaIDIndex = reader.GetOrdinal("decorAreaID");
+                            
 
                             return new Decoritem
                             {
@@ -64,6 +65,7 @@ namespace Decorhelp.Model.DAL
                                 decorItemName = reader.GetString(itemNameIndex),
                                 decorItemDescription = reader.GetValue(itemDescriptionIndex).ToString(), //är detta vettigt för att hantera ev. null-värde??                                
                                 decorAreaID = reader.GetInt32(areaIDIndex)
+                                
                             };
                         }
                     }
@@ -78,7 +80,6 @@ namespace Decorhelp.Model.DAL
             }
         }
         
-        //TODO: måste testas! anv SET vet ej om det blir rätt
         public void InsertDecorItem(Decoritem decoritem)
         {
             // Skapar och initierar ett anslutningsobjekt.

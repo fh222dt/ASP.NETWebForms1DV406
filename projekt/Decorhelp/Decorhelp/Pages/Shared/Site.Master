@@ -34,6 +34,13 @@
             </ul>
         </div>
         <div id="main">
+            <%-- Visa rättmeddelande --%>
+        <asp:PlaceHolder ID="SuccessPlaceHolder" runat="server" Visible="false">
+            <div class="success">
+                <div class="close"></div>
+                <p>Ny kontakt har lagts till!</p>
+            </div>            
+        </asp:PlaceHolder>
             <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">
         
             </asp:ContentPlaceHolder>

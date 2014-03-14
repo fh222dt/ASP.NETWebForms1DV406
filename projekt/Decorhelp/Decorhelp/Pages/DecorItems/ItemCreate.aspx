@@ -3,6 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>Lägg till inredningsföremål</h2>
+
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
+
     <asp:FormView ID="ItemCreateFormView" runat="server"
         ItemType="Decorhelp.Model.Decoritem"
         InsertMethod="ItemCreateFormView_InsertItem"
@@ -11,7 +14,9 @@
         <InsertItemTemplate>
             <div>
                 <label for="Name">Namn:</label> 
-                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorItemName %>'></asp:TextBox>
+                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorItemName %>' MaxLength="40"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="NameTextBoxRequiredFieldValidator" runat="server" ErrorMessage="Namn måste anges"
+                     Display="Dynamic" ControlToValidate="NameTextBox">*</asp:RequiredFieldValidator>
             </div>
             <div>
                 <label for="Area">Tillhör inredningsyta:</label> 
@@ -20,12 +25,16 @@
                     SelectMethod="AreaDropDownList_GetData"
                     DataTextField="decorAreaName"
                     DataValueField="decorareaID"
-                    SelectedValue='<%# BindItem.decorAreaID %>'>                    
+                    SelectedValue='<%# BindItem.decorAreaID %>'
+                    AppendDataBoundItems="true">
+                    <asp:ListItem Value="">Välj yta</asp:ListItem>                    
                 </asp:DropDownList>
+                <asp:RequiredFieldValidator ID="RoomDropDownListRequiredFieldValidator" runat="server" ErrorMessage="Inredningsyta måste anges"
+                     ControlToValidate="AreaDropDownList" Display="Dynamic">*</asp:RequiredFieldValidator>
             </div>
             <div>
                 <label for="Name">Kommentar: (ej obligatorisk)</label> 
-                <asp:TextBox ID="DescTextBox" runat="server" Text='<%# BindItem.decorItemDescription %>'></asp:TextBox>
+                <asp:TextBox ID="DescTextBox" runat="server" Text='<%# BindItem.decorItemDescription %>' MaxLength="40"></asp:TextBox>
             </div>
 
             <asp:LinkButton runat="server" Text="Spara" CommandName="Insert" CssClass="btn btn-default btn-xs" />

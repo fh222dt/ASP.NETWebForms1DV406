@@ -22,6 +22,7 @@ namespace Decorhelp.Pages.DecorItems
 
         }
 
+        //TODO: visa inte dummy
         public IEnumerable<Decorarea> AreaDropDownList_GetData()
         {
             return Service.GetDecorAreas();

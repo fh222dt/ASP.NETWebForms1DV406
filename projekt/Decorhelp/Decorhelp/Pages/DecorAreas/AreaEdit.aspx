@@ -3,6 +3,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>Ändra inredningsyta</h2>
+
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
+
     <asp:FormView ID="AreaEditFormView" runat="server"
         ItemType="Decorhelp.Model.Decorarea"
         SelectMethod="AreaEditFormView_GetItem"
@@ -13,9 +16,12 @@
         <EditItemTemplate>
             <div>
                 <label for="Name">Namn:</label> 
-                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorAreaName %>'></asp:TextBox>
+                <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorAreaName %>' MaxLength="40"></asp:TextBox>
+                <asp:RequiredFieldValidator ID="NameTextBoxRequiredFieldValidator" runat="server" ErrorMessage="Namn måste anges"
+                     Display="Dynamic" ControlToValidate="NameTextBox">*</asp:RequiredFieldValidator>
             </div>
             <div>
+                <%-- valideras ej då den är förvald vid edit --%>
                 <label for="Room">Tillhör rum:</label> 
                 <asp:DropDownList ID="RoomDropDownList" runat="server">
                     <asp:ListItem Value="2">Köket</asp:ListItem>
@@ -29,11 +35,11 @@
             </div>
             <div>
                 <label for="Name">Kommentar: (ej obligatorisk)</label> 
-                <asp:TextBox ID="DescTextBox" runat="server" Text='<%# BindItem.decorAreaDescription %>'></asp:TextBox>
+                <asp:TextBox ID="DescTextBox" runat="server" Text='<%# BindItem.decorAreaDescription %>' MaxLength="40"></asp:TextBox>
             </div>
 
             <asp:LinkButton runat="server" Text="Spara" CommandName="Update" CssClass="btn btn-default btn-xs" />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>' CssClass="btn btn-default btn-xs" Text='Avbryt' />
+            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>' CssClass="btn btn-default btn-xs" Text='Avbryt' />
                          
                       
         </EditItemTemplate>

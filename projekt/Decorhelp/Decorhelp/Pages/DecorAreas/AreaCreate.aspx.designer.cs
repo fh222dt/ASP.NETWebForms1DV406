@@ -13,6 +13,15 @@ namespace Decorhelp.Pages.DecorAreas {
     public partial class DecorAreaCreate {
         
         /// <summary>
+        /// ValidationSummarys control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummarys;
+        
+        /// <summary>
         /// AreaCreateFormView control.
         /// </summary>
         /// <remarks>

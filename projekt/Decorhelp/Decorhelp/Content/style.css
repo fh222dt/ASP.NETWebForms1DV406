@@ -18,3 +18,28 @@ header h1 {
 footer {
     font-size: small;
 }
+
+/*Visa rättmeddelande*/
+.success {
+    background: #d3faa7;
+    height: 60px;
+    margin: 10px;
+    border: 3px solid #aedb7c;
+    width: 75%;
+
+}
+
+    .success p {
+        /*font-family: Arial;*/
+        width: 350px;
+        margin: 5px;
+        float: left;
+    }
+
+.close-me {
+    background-image: url(../content/close.png);
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    float: right;
+}

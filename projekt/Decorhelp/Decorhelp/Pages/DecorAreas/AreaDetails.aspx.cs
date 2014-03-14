@@ -23,7 +23,7 @@ namespace Decorhelp.Pages.DecorAreas
                 Service service = new Service();
                 var decorarea = service.GetDecorArea(id);
                 
-                //om det inte finns ngn kommentar
+                //om det inte finns ngn kommentar om ytan
                 if (string.IsNullOrEmpty(decorarea.decorAreaDescription)) 
                 {
                     decorarea.decorAreaDescription = "Ingen kommentar";

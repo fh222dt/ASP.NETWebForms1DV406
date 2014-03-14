@@ -29,8 +29,9 @@ namespace Decorhelp.Pages.DecorItems
                 var id = int.Parse(e.CommandArgument.ToString());
                 Service.DeleteDecorItem(id);
 
-                //dirigera om användaren
-                //TODO: lägg till rättmeddelande
+                //dirigera om användaren  & visa rättmeddelande
+                Session["deleteItem"] = true;
+
                 Response.RedirectToRoute("DecorAreas");
                 Context.ApplicationInstance.CompleteRequest();
 

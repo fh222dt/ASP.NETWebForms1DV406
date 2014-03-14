@@ -11,7 +11,7 @@ namespace Decorhelp.Pages
 {
     public partial class listall : System.Web.UI.Page
     {
-        //kan man lägga detta i masterpage code behind???
+        //TODO: ta med placed oxå
         private Service _service;
 
         private Service Service

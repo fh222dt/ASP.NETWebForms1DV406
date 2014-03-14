@@ -57,9 +57,10 @@ namespace Decorhelp.Pages.DecorItems
                 if (TryUpdateModel(item))
                 {                                        
                     Service.SaveDecorItem(item);
-                    
-                    //dirigera om användaren
-                    //TODO: lägg till rättmeddelande
+
+                    //dirigera om användaren  & visa rättmeddelande
+                    Session["editItem"] = true;
+
                     Response.RedirectToRoute("DecorItemDetails", new { id = item.decorItemID });
                     Context.ApplicationInstance.CompleteRequest();
                 }

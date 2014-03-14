@@ -15,13 +15,15 @@ namespace Decorhelp.Pages.DecorItems
         {
 
         }
-
+        //TODO: visa vilken yta det tillhör
         public Decorhelp.Model.Decoritem ItemDetailsFormView_GetItem([RouteData] int id)
         {
             try
             {
                 Service service = new Service();
                 var decoritem = service.GetDecorItem(id);
+
+                //om det inte finns ngn kommentar
                 if (string.IsNullOrEmpty(decoritem.decorItemDescription))
                 {
                     decoritem.decorItemDescription = "Ingen kommentar";
@@ -36,6 +38,11 @@ namespace Decorhelp.Pages.DecorItems
                 throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
                 //return null;
             }
+        }
+
+        protected void AreaLiteral_DataBinding(object sender, EventArgs e)
+        {
+
         }
     }
 }

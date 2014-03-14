@@ -13,7 +13,6 @@
                 <label for="Name">Namn:</label> 
                 <asp:TextBox ID="NameTextBox" runat="server" Text='<%# BindItem.decorItemName %>'></asp:TextBox>
             </div>
-            <%-- inte klart! hämta fr areatabellen--%>
             <div>
                 <label for="Area">Tillhör inredningsyta:</label> 
                 <asp:DropDownList ID="AreaDropDownList" runat="server"

@@ -35,8 +35,9 @@ namespace Decorhelp.Pages.DecorItems
                 {
                     Service.SaveDecorItem(item);
 
-                    //dirigera om användaren
-                    //TODO: lägg till rättmeddelande
+                    //dirigera om användaren  & visa rättmeddelande
+                    Session["createItem"] = true;
+
                     Response.RedirectToRoute("DecorItemDetails", new { id = item.decorItemID });
                     Context.ApplicationInstance.CompleteRequest();
                 }

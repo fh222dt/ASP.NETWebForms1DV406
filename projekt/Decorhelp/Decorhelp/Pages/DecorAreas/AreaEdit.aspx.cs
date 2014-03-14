@@ -60,8 +60,9 @@ namespace Decorhelp.Pages.DecorAreas
                     
                     Service.SaveDecorArea(area);
                     
-                    //dirigera om användaren
-                    //TODO: lägg till rättmeddelande
+                    //dirigera om användaren & visa rättmeddelande                    
+                    Session["editArea"] = true;
+
                     Response.RedirectToRoute("DecorAreaDetails", new { id = area.decorAreaID });
                     Context.ApplicationInstance.CompleteRequest();
                 }

@@ -30,8 +30,9 @@ namespace Decorhelp.Pages.DecorAreas
                 var id = int.Parse(e.CommandArgument.ToString());
                 Service.DeleteDecorArea(id);
 
-                //dirigera om användaren
-                //TODO: lägg till rättmeddelande
+                //dirigera om användaren  & visa rättmeddelande
+                Session["deleteArea"] = true;
+
                 Response.RedirectToRoute("DecorAreas");
                 Context.ApplicationInstance.CompleteRequest();
                 

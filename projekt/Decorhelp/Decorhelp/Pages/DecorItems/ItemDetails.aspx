@@ -9,7 +9,7 @@
         RenderOuterTable="false" >
         <ItemTemplate>
             <div>Namn: <%#: Item.decorItemName %></div>
-            <div>Tillhör inredningsyta: <%#: Item.decorAreaID %></div>
+            <div>Tillhör inredningsyta:<asp:Literal ID="AreaLiteral" runat="server" OnDataBinding="AreaLiteral_DataBinding"></asp:Literal></div>
             <div>Kommentar: <%#: Item.decorItemDescription %></div>
             <asp:HyperLink runat="server" Text="Redigera" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorItemEdit", new { id = Item.decorItemID }) %>' />
             <asp:HyperLink runat="server" Text="Ta bort" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorItemDelete", new { id = Item.decorItemID }) %>' />

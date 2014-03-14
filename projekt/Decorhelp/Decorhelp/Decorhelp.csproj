@@ -60,6 +60,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\close.png" />
+    <Content Include="Content\decorhelp.js" />
     <Content Include="Content\style.css" />
     <Content Include="Pages\DecorAreas\AreaDetails.aspx" />
     <Content Include="Pages\DecorAreas\AreaEdit.aspx" />
@@ -74,6 +76,7 @@
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="Pages\Shared\Site.Master" />
+    <None Include="Properties\PublishProfiles\FridasProfile.pubxml" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />

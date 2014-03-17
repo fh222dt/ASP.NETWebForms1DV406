@@ -6,10 +6,14 @@
     <asp:FormView ID="ItemDetailsFormView" runat="server"
         ItemType="Decorhelp.Model.Decoritem"
         SelectMethod="ItemDetailsFormView_GetItem"
-        RenderOuterTable="false" >
+        RenderOuterTable="false"
+          >
         <ItemTemplate>
             <div>Namn: <%#: Item.decorItemName %></div>
-            <div>Tillhör inredningsyta:<asp:Literal ID="AreaLiteral" runat="server" OnDataBinding="AreaLiteral_DataBinding"></asp:Literal></div>
+            <div>Tillhör inredningsyta:<%--<asp:Literal ID="AreaLiteral" runat="server" OnDataBinding="AreaLiteral_DataBinding"></asp:Literal>--%>
+                <%-- Label-kontrollen uppgift är att visa vilken typ kontaktinformationen är av. --%>
+                        <asp:Label ID="ContactTypeNameLabel" runat="server" Text="{0}" OnPreRender="ContactTypeNameLabel_PreRender"/>
+            </div>
             <div>Kommentar: <%#: Item.decorItemDescription %></div>
             <asp:HyperLink runat="server" Text="Redigera" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorItemEdit", new { id = Item.decorItemID }) %>' />
             <asp:HyperLink runat="server" Text="Ta bort" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorItemDelete", new { id = Item.decorItemID }) %>' />

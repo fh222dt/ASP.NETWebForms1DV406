@@ -29,6 +29,9 @@ namespace Decorhelp.Pages.DecorItems
                     decoritem.decorItemDescription = "Ingen kommentar";
                 }
 
+                //sparar undan objektet för att kunna nyttja areaID
+                Session["areaID"] = decoritem;
+
                 return decoritem;
 
 
@@ -40,9 +43,22 @@ namespace Decorhelp.Pages.DecorItems
             }
         }
 
-        protected void AreaLiteral_DataBinding(object sender, EventArgs e)
+ 
+        protected void ContactTypeNameLabel_PreRender(object sender, EventArgs e)
         {
+            //hämtar label att placera text i
+            var label = (Label)ItemDetailsFormView.FindControl("ContactTypeNameLabel");
+            if (label != null)
+            {
+                //hämtar objektet från sessionen
+                Decoritem itemAreaID = (Decoritem)Session["areaID"];
 
+                //hämtar från annan databastabell med alla ytor för att få tag i ytans namn
+                Service service = new Service();
+                var areaName = service.GetDecorAreas().FirstOrDefault(ar => ar.decorAreaID == itemAreaID.decorAreaID);
+
+                label.Text = String.Format(label.Text, areaName.decorAreaName);
+            }
         }
     }
 }

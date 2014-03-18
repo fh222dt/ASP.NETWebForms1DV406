@@ -61,34 +61,42 @@ namespace Decorhelp.Pages
         }
 
         //TODO: period blir null varje gång
-        public IEnumerable<Decoritem> ListView1_GetData(int? period)
+        public IEnumerable<Decoritem> ListView1_GetData()
         {
-            int i;
+            var i = 1;
             if (IsPostBack)
             {
-                var placed = GetSpecificItems(1);
-                return placed;
+                i = (int)Session["periodID"];
             }
-            else
-            {
-                if (period == null)
-                {
 
-                    i = 1;
-                }
-                else
-                {
-                    i = Convert.ToInt32(period);
-                }
-                var placed = GetSpecificItems(i);
-                return placed;
-            }
+            var placed = GetSpecificItems(i);
+            return placed;
+
+            //if (IsPostBack)
+            //{
+            //    var placed = GetSpecificItems(1);
+            //    return placed;
+            //}
+            //else
+            //{
+            //    if (period == null)
+            //    {
+
+            //        i = 1;
+            //    }
+            //    else
+            //    {
+            //        i = Convert.ToInt32(period);
+            //    }
+            //    var placed = GetSpecificItems(i);
+            //    return placed;
+            //}
         }
 
         protected void PeriodButton_Click(object sender, EventArgs e)
         {
             var period = Convert.ToInt32(PeriodDropDownList.SelectedValue);
-            ListView1_GetData(period);
+            Session["periodID"] = period;
         }
     }
 }

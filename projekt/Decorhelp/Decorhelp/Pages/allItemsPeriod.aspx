@@ -4,6 +4,8 @@
     <h2>Alla föremål per period</h2>
     <p>Här kan du få en snabb översikt över de föremål som är tänkta att användas under olika perioder.</p>
 
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
+
     <div>
         <label for="Period">Välj period att visa:</label>
         <asp:DropDownList ID="PeriodDropDownList" runat="server">
@@ -13,7 +15,10 @@
                         <asp:ListItem Value="3">Jul</asp:ListItem>
                         <asp:ListItem Value="4">Året runt</asp:ListItem>
         </asp:DropDownList>
-        <asp:Button ID="PeriodButton" runat="server" Text="Visa" OnClick="PeriodButton_Click"/>
+        <asp:RequiredFieldValidator ID="PeriodDropDownListRequiredFieldValidator" runat="server" ErrorMessage="Period måste anges"
+                     ControlToValidate="PeriodDropDownList" Display="Dynamic">*</asp:RequiredFieldValidator>
+
+        <asp:Button ID="PeriodButton" runat="server" Text="Visa" OnClick="PeriodButton_Click" CssClass="btn btn-default btn-xs"/>
     </div>
     <asp:ListView ID="ListView1" runat="server"
         ItemType="Decorhelp.Model.Decoritem"
@@ -33,11 +38,12 @@
                 <td>
                     <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>'
                         Text='<%#: Item.decorAreaName %>' />
+                    <asp:Literal ID="Literal2" runat="server" Text='kommentar'></asp:Literal>
                 </td>                    
                 <td>
                     <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>'
                     Text='<%#: Item.decorItemName %>' />
-
+                    <asp:Literal ID="Literal3" runat="server" Text=" ( )"></asp:Literal><span><%#: Item.decorItemDescription %></span>
                 </td>
             </tr>
         </ItemTemplate>

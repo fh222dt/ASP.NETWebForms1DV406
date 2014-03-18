@@ -60,6 +60,7 @@ namespace Decorhelp.Pages
             return specificDecorItems;
         }
 
+        //TODO: period blir null varje gång
         public IEnumerable<Decoritem> ListView1_GetData(int? period)
         {
             int i;

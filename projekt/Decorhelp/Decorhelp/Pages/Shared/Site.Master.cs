@@ -11,7 +11,27 @@ namespace Decorhelp.Pages.Shared
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //TODO: lägga in navbar funktionalitet
+            //gör aktuell sida aktiv i navigeringsmenyn, men det blev en nödlösning
+
+            if (Page.AppRelativeVirtualPath == "~/Pages/listall.aspx")
+            {
+                navhome.Attributes["class"] = "active";
+            }
+
+            else if (Page.AppRelativeVirtualPath == "~/Pages/DecorAreas/AreaCreate.aspx")
+            {
+                navarea.Attributes["class"] = "active";
+            }
+
+            else if (Page.AppRelativeVirtualPath == "~/Pages/DecorItems/ItemCreate.aspx")
+            {
+                navitem.Attributes["class"] = "active";
+            }
+
+            else if (Page.AppRelativeVirtualPath == "~/Pages/allItemsPeriod.aspx")
+            {
+                navlist.Attributes["class"] = "active";
+            }
 
             //visa rättmeddelande
             if (Session["createArea"] as bool? == true) 

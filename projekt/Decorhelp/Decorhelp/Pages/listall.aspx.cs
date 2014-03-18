@@ -11,13 +11,15 @@ namespace Decorhelp.Pages
 {
     public partial class listall : System.Web.UI.Page
     {
-        //TODO: ta med placed oxå
+        
         private Service _service;
 
         private Service Service
         {            
             get { return _service ?? (_service = new Service()); }
         }
+
+        //TODO fixa visningen
 
         //protected void Page_Load(object sender, EventArgs e)
         //{            

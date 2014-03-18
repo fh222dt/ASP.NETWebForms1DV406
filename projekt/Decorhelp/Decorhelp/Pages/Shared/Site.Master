@@ -5,9 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Decorhelp -fh222dt-</title>
-    <%-- behövs? --%>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
     <script src="<%= ResolveClientUrl("~/Scripts/jquery-2.1.0.min.js") %>"></script>
@@ -22,14 +19,17 @@
         <%-- navigeringsbar --%>
         <div id="navigation">
             <ul class="nav nav-tabs">
-                <li>
-                    <asp:HyperLink runat="server" NavigateUrl='<%$ RouteUrl:routename=Default %>'>Hem</asp:HyperLink>
+                <li id="navhome" runat="server">
+                    <asp:HyperLink ID="HomeHyperLink" runat="server" NavigateUrl='<%$ RouteUrl:routename=Default %>'>Hem</asp:HyperLink>
                 </li>
-                <li>
+                <li id="navarea" runat="server">
                     <asp:HyperLink runat="server" NavigateUrl='<%$ RouteUrl:routename=DecorAreaCreate %>'>Ny inredningsyta</asp:HyperLink>
                 </li>
-                <li>
+                <li id="navitem" runat="server">
                     <asp:HyperLink runat="server" NavigateUrl='<%$ RouteUrl:routename=DecorItemCreate %>'>Nytt föremål</asp:HyperLink>
+                </li>
+                <li id="navlist" runat="server">
+                    <asp:HyperLink runat="server" NavigateUrl='<%$ RouteUrl:routename=PeriodList %>'>Visa planeringslista</asp:HyperLink>
                 </li>
             </ul>
         </div>

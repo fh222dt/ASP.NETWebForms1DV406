@@ -25,6 +25,9 @@ namespace Decorhelp
             routes.MapPageRoute("Error", "serverfel", "~/Pages/Shared/errorPage.html");
 
             routes.MapPageRoute("Default", "", "~/Pages/listall.aspx");
+
+            routes.MapPageRoute("PeriodList", "planeringslista", "~/Pages/allItemsPeriod.aspx");
         }
     }
 }
+

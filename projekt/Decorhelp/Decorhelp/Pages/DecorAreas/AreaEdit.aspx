@@ -2,7 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>Ändra inredningsyta</h2>
 
-    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="validation" />
 
     <asp:FormView ID="AreaEditFormView" runat="server"
         ItemType="Decorhelp.Model.Decorarea"

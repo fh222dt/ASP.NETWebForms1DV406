@@ -21,7 +21,6 @@ namespace Decorhelp.Pages
         {
                         
         }
-        //TODO: kanske visa att det inte finns ngn kommentar
 
         //Returnerar lista med utvalda föremåls-objekt
         private IEnumerable<Decoritem> GetSpecificItems(int period)

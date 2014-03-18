@@ -26,7 +26,6 @@ footer {
     margin: 10px;
     border: 3px solid #aedb7c;
     width: 75%;
-
 }
 
     .success p {
@@ -44,3 +43,38 @@ footer {
     float: right;
 }
 
+label {
+    width: 210px;
+}
+
+input, select {
+    width: 200px;
+    height: 25px;
+}
+
+.details {
+    display: inline-block;
+    width: 120px;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+.links {
+    margin-top: 15px;
+}
+
+.validation {
+    background: #feb17a ;
+    margin: 10px;
+    border: 3px solid #ff6a00;
+    width: 75%;
+    color: #ff0000;    
+}
+
+    .validation ul {
+        list-style-type: none;
+        padding:0; 
+        margin: 5px;
+    }

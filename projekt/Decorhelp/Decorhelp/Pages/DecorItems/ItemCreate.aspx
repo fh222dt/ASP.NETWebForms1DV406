@@ -3,7 +3,7 @@
     
     <h2>Lägg till inredningsföremål</h2>
 
-    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="validation" />
 
     <asp:FormView ID="ItemCreateFormView" runat="server"
         ItemType="Decorhelp.Model.Decoritem"

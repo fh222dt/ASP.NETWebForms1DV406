@@ -4,7 +4,7 @@
     <h2>Alla föremål per period</h2>
     <p>Här kan du få en snabb översikt över de föremål som är tänkta att dekoreras med under olika perioder.</p>
 
-    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="validation"/>
 
     <div>
         <%-- värden kommer fr tabell utanför projektet --%>
@@ -19,7 +19,7 @@
         <asp:RequiredFieldValidator ID="PeriodDropDownListRequiredFieldValidator" runat="server" ErrorMessage="Period måste anges"
                      ControlToValidate="PeriodDropDownList" Display="Dynamic">*</asp:RequiredFieldValidator>
 
-        <asp:Button ID="PeriodButton" runat="server" Text="Visa" OnClick="PeriodButton_Click" CssClass="btn btn-default btn-xs"/>
+        <asp:LinkButton ID="periodLink" runat="server" Text="Visa" OnClick="PeriodButton_Click" CssClass="btn btn-default btn-xs" />
     </div>
 
     <asp:ListView ID="ListView1" runat="server"

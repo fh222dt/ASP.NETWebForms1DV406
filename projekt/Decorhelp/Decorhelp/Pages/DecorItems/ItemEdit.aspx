@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ItemEdit.aspx.cs" Inherits="Decorhelp.Pages.DecorItems.ItemEdit" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
-    <h2>Ändra inredningsyta</h2>
+    <h2>Ändra inredningsföremål</h2>
 
-    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" CssClass="validation" />
 
     <asp:FormView ID="ItemEditFormView" runat="server"
         ItemType="Decorhelp.Model.Decoritem"

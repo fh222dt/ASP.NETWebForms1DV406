@@ -21,10 +21,8 @@ namespace Decorhelp.Model
         public int decorAreaID { get; set; }
 
         //nedan används endast för att visa en lista av alla föremål via en vy i db
-        [StringLength(40, ErrorMessage = "Namn på rum kan max ha 40 tecken"), Required(ErrorMessage = "Rum måste anges")]
         public string roomName { get; set; }
 
-        [StringLength(40, ErrorMessage = "Namn på yta kan max ha 40 tecken"), Required(ErrorMessage = "Namn på yta måste anges")]
         public string decorAreaName { get; set; }
     }
 }

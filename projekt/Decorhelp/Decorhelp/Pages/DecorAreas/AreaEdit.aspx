@@ -10,7 +10,7 @@
         UpdateMethod="AreaEditFormView_UpdateItem"
         DataKeyNames="decorAreaID"
         DefaultMode="Edit"
-        RenderOuterTable="false" >
+        RenderOuterTable="false" OnPreRender="AreaEditFormView_PreRender" >
         <EditItemTemplate>
             <div>
                 <label for="Name">Namn:</label> 

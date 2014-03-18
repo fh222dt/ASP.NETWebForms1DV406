@@ -22,21 +22,22 @@ namespace Decorhelp.Pages.DecorAreas
         {
 
         }
-        //TODO: ha rätt rum förvalt i dropdownen
+        
         public Decorarea AreaEditFormView_GetItem([RouteData]int id)
         {
             try
             {
-                var area = Service.GetDecorArea(id);
-                //DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");
-                //dropdown.SelectedValue = area.roomID.ToString();
+                var area = Service.GetDecorArea(id);               
+
+                //spara undan rumsid för att kunna visa rummets namn (endast rumsid fås fr db)
+                Session["roomID"] = area.roomID;
 
                 return area;
             }
             catch (Exception)
             {
-                throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
-                //return null;
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
+                return null;
             }
         }
 
@@ -48,13 +49,14 @@ namespace Decorhelp.Pages.DecorAreas
 
                 if (area == null)
                 {
-                    // Hittar inte i db
+                    // om man inte hittar i db
                     ModelState.AddModelError(String.Empty, String.Format("Inredningsytan hittades inte."));
                     return;
                 }
 
                 if (TryUpdateModel(area))
-                {                    
+                {   
+                    //hämtar ut valt rumsid fr dropdown
                     DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");
                     area.roomID = Convert.ToInt32(dropdown.SelectedValue);
                     
@@ -69,9 +71,18 @@ namespace Decorhelp.Pages.DecorAreas
             }
             catch (Exception)
             {
-                throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
-                //return null;
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
             }
+        }
+
+        protected void AreaEditFormView_PreRender(object sender, EventArgs e)
+        {
+            //hämtar sparat rumsid fr sessionen
+            int roomID = (int)Session["roomID"];
+
+            //sätter valt rum utifrån rumsid i dropdown så det stämmer överrens med tidigare sparade uppgifter 
+            DropDownList dropdown = (DropDownList)AreaEditFormView.FindControl("RoomDropDownList");
+            dropdown.Items.FindByValue(roomID.ToString()).Selected = true;
         }
     }
 }

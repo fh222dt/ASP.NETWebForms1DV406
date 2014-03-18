@@ -9,7 +9,7 @@ namespace Decorhelp.Model.DAL
 {
     public class PlacedDAL : DALBase
     {   
-        //ang sprocen kan kanske hämta de som endast har true på isPlaced?
+        //TODO ta bort anv ej
         public Placed GetPlacedById(int decorItemID)
         {// Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
@@ -30,7 +30,7 @@ namespace Decorhelp.Model.DAL
                         {
                             var placedIDIndex = reader.GetOrdinal("placedID");
                             var itemIndex = reader.GetOrdinal("decorItemID");
-                            var periodIDIndex = reader.GetOrdinal("periodID");  //hur lösa?? fr tabell utanför projektet
+                            var periodIDIndex = reader.GetOrdinal("periodID");
                             var isPlacedIndex = reader.GetOrdinal("isPlaced");      
 
                             return new Placed
@@ -53,8 +53,8 @@ namespace Decorhelp.Model.DAL
             }
         }
 
-        //ang sprocen kan kanske hämta de som endast har true på isPlaced?
-        public IEnumerable<Placed> GetAllPlaced()
+        
+        public IEnumerable<Placed> GetAllPlaced(int periodID)
         {
             using (var conn = CreateConnection())
             {
@@ -65,13 +65,16 @@ namespace Decorhelp.Model.DAL
                     var cmd = new SqlCommand("app.GetAllPlaced", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
+                    // Lägger till parameter för lagrade proceduren
+                    cmd.Parameters.Add("@periodID", SqlDbType.Int, 4).Value = periodID;
+
                     conn.Open();
 
                     using (var reader = cmd.ExecuteReader())
                     {
                         var placedIDIndex = reader.GetOrdinal("placedID");
                         var itemIndex = reader.GetOrdinal("decorItemID");
-                        var periodIDIndex = reader.GetOrdinal("periodID");  //hur lösa?? fr tabell utanför projektet
+                        var periodIDIndex = reader.GetOrdinal("periodID");
                         var isPlacedIndex = reader.GetOrdinal("isPlaced");
 
                         while (reader.Read())

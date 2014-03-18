@@ -11,10 +11,9 @@ namespace Decorhelp.Model
         //Egenskaper
         public int placedID { get; set; }
 
-        //[StringLength(40, ErrorMessage = "Namn på yta kan max ha 40 tecken"), Required(ErrorMessage = "Namn på yta måste anges")]
+        [Required(ErrorMessage = "Föremål måste anges")]
         public int decorItemID { get; set; }
-
-        //ska hårdkodas då det kommer från tabell utanför projektet
+        
         [Required(ErrorMessage = "Period måste anges")]
         public int periodID { get; set; }
 

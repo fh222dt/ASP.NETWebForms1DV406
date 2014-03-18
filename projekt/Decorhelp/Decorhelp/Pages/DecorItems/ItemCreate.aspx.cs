@@ -19,13 +19,15 @@ namespace Decorhelp.Pages.DecorItems
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //tar bort så man inte kan välja dummyyta
+            DropDownList dropdown = (DropDownList)ItemCreateFormView.FindControl("AreaDropDownList");
+            dropdown.Items.Remove(dropdown.Items.FindByValue("2"));
         }
 
-        //TODO: visa inte dummy
         public IEnumerable<Decorarea> AreaDropDownList_GetData()
         {
-            return Service.GetDecorAreas();
+            var areas = Service.GetDecorAreas();
+            return areas;
         }
 
         public void ItemCreateFormView_InsertItem(Decoritem item)

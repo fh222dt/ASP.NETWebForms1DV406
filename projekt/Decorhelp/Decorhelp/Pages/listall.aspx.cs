@@ -19,97 +19,60 @@ namespace Decorhelp.Pages
             get { return _service ?? (_service = new Service()); }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            ////antal föremål per yta
-            //var itemsInArea = 5;
-            ////antal ytor per rum
-            //var areasInRoom = 3;
-            ////antal rum
-            //var rooms = 4;
+        //protected void Page_Load(object sender, EventArgs e)
+        //{            
+        //    IEnumerable<Decoritem> allItems = Service.GetDecorItems();
+                        
+        //    TableRow tRowHead = new TableRow();
+        //    Table1.Rows.Add(tRowHead);
 
-            //IEnumerable<Decoritem> allItems = Service.GetDecorItems();
+        //    TableHeaderCell tHead1 = new TableHeaderCell();
+        //    tRowHead.Cells.Add(tHead1);
+        //    tHead1.Text = "Inredningsföremål";
 
-            //// Total number of rows.
-            //int rows;
-            //// Current row count.
-            //int rowCtr = 1;
-            //// Total number of cells per row (columns).
-            //int cells;
-            //// Current cell counter.
-            //int cellCnt;
+        //    TableHeaderCell tHead2 = new TableHeaderCell();
+        //    tRowHead.Cells.Add(tHead2);
+        //    tHead2.Text = "Inredningsyta";
 
-            ////    <tr>
-            ////        <td rowspan="4">Köket</td>
-            ////        <td rowspan="4">Skänken</td>
-            ////        <td>Skål</td>
+        //    TableHeaderCell tHead3 = new TableHeaderCell();
+        //    tRowHead.Cells.Add(tHead3);
+        //    tHead3.Text = "Rum";
 
-            ////        <tr><td>Blomma</td></tr>
-            ////        <tr><td>tavla</td></tr>
-            ////        <tr><td>duk</td></tr>
-            ////    </tr>
+        //    //antal föremål per yta
+        //    var itemsInArea = 4;
+        //    //antal ytor per rum
+        //    var areasInRoom = 2;
+        //    //antal rum
+        //    var rooms = 1;
 
-            //for (rows = 1; rows <= rooms*itemsInArea; rows++)
-            //{
-            //    // Create a new row and add it to the table.
-            //    TableRow tRow = new TableRow();
-            //    Table1.Rows.Add(tRow);
+        //    var totalRows = allItems.Count() -1;
+        //    for (int rows = 0; rows <totalRows; rows++)         //för varje rad
+        //    {
+        //        // Create a new row and add it to the table.
+        //        TableRow tRow = new TableRow();
+        //        Table1.Rows.Add(tRow);
 
-                
+        //        var item = allItems.ElementAt(rows);
+        //        //var lastItem = allItems.ElementAt(rows-1);
 
-            //    for (cells = 1; cells <= itemsInArea; cells++)
-            //    {
-            //        // Create a new cell and add it to the row.
-            //        TableCell tCell = new TableCell();
-            //        tRow.Cells.Add(tCell);
-            //        //tCell.RowSpan = areasInRoom;
-            //        tCell.Text = "rumsnamn";
+        //        //var arInRoom = allItems.Where(x => x.roomName == item.roomName);
 
-            //        // Create a new cell and add it to the row.
-            //        TableCell tCell2 = new TableCell();
-            //        tRow.Cells.Add(tCell2);
-            //        //tCell2.RowSpan = itemsInArea;
-            //        tCell2.Text = "ytans namn";
+        //        TableCell tCell = new TableCell();
+        //        tRow.Cells.Add(tCell);
+        //        tCell.Text = item.decorItemName;
 
-            //        if (rows >= 3)
-            //        {
-            //            // Create a new row and add it to the table.
-            //            TableRow tRow2 = new TableRow();
-            //            Table1.Rows.Add(tRow2);
-
-            //            // Create a new cell and add it to the row.
-            //            TableCell tCell5 = new TableCell();
-            //            tRow2.Cells.Add(tCell);
-            //            //tCell5.RowSpan = areasInRoom;
-            //            tCell5.Text = "föremål m egen rad";
-            //        }
-
-            //        else
-            //        {
-            //            // Create a new cell and add it to the row.
-            //            TableCell tCell3 = new TableCell();
-            //            tRow.Cells.Add(tCell3);
-            //            //tCell3.RowSpan = areasInRoom;
-            //            tCell3.Text = "föremål";
-            //        }
+        //        for (int cells = 0; cells < 9; cells++)     //9 inredningsytor
+        //        {
+        //            //TableCell tCell = new TableCell();
+        //            tRow.Cells.Add(tCell);
+        //            tCell.Text = item.decorAreaName;
+        //        }
                     
-
-            //        // Add a literal text as control.
-            //        //tCell.Controls.Add(new LiteralControl("Buy: "));
-
-            //        // Create a Hyperlink Web server control and add it to the cell.
-            //        //System.Web.UI.WebControls.HyperLink h = new HyperLink();
-            //        //h.Text = "rumsnamn";
-            //        //h.NavigateUrl = "http://www.microsoft.com/net";
-            //        //tCell3.Controls.Add(h);
-            //    }
-            //}
-
-        }
+        //    }
+        //}
 
         public IEnumerable<Decoritem> SummaryListView_GetData()
-        {
-            //TODO: visa inte dummy
+        {            
             return Service.GetDecorItems();
         }
     }

@@ -15,7 +15,7 @@ namespace Decorhelp.Pages.DecorItems
         {
 
         }
-        //TODO: visa vilken yta det tillhör
+        
         public Decorhelp.Model.Decoritem ItemDetailsFormView_GetItem([RouteData] int id)
         {
             try

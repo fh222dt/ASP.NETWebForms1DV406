@@ -83,12 +83,7 @@ namespace Decorhelp.Model
         {
             return DecoritemDAL.GetDecorItemById(decorItemID);
         }
-
-        public Placed GetPlaced(int decorItemID)
-        {
-            return PlacedDAL.GetPlacedById(decorItemID);
-        }
-        
+                
         public IEnumerable<Decorarea> GetDecorAreas()
         {
             return DecorareaDAL.GetDecorAreas();
@@ -99,9 +94,9 @@ namespace Decorhelp.Model
             return DecoritemDAL.GetDecorItems();
         }
 
-        public IEnumerable<Placed> GetAllPlaced()
+        public IEnumerable<Placed> GetAllPlaced(int periodID)
         {
-            return PlacedDAL.GetAllPlaced();
+            return PlacedDAL.GetAllPlaced(periodID);
         }
         
         //delete metoder

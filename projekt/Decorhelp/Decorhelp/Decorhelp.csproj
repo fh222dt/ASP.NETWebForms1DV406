@@ -63,6 +63,7 @@
     <Content Include="Content\close.png" />
     <Content Include="Content\decorhelp.js" />
     <Content Include="Content\style.css" />
+    <Content Include="Pages\allItemsPeriod.aspx" />
     <Content Include="Pages\DecorAreas\AreaDetails.aspx" />
     <Content Include="Pages\DecorAreas\AreaEdit.aspx" />
     <Content Include="Pages\DecorAreas\AreaCreate.aspx" />
@@ -97,8 +98,15 @@
     <Compile Include="Model\DAL\placedDAL.cs" />
     <Compile Include="Model\Decorarea.cs" />
     <Compile Include="Model\Decoritem.cs" />
-    <Compile Include="Model\placed.cs" />
+    <Compile Include="Model\Placed.cs" />
     <Compile Include="Model\Service.cs" />
+    <Compile Include="Pages\allItemsPeriod.aspx.cs">
+      <DependentUpon>allItemsPeriod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\allItemsPeriod.aspx.designer.cs">
+      <DependentUpon>allItemsPeriod.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\DecorAreas\AreaDetails.aspx.cs">
       <DependentUpon>AreaDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

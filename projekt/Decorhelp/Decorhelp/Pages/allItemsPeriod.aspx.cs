@@ -19,84 +19,95 @@ namespace Decorhelp.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Literal periodLiteral = (Literal)ListView1.FindControl("PeriodLiteral");
-            //periodLiteral.Text = PeriodDropDownList.SelectedItem.ToString;
-
-            
-
-            
-
-            //anropas metod som hämtar utvalda föremål
-            //var placedItems = GetSpecificItems(allDecorItems);
-            //Session["placed"] = placedItems;
+                        
         }
 
-        //Returnerar ny lista med utvalda föremål
+        //Returnerar lista med utvalda föremåls-objekt
         private IEnumerable<Decoritem> GetSpecificItems(int period)
         {
-            //hämtar alla föremål för vald period
-            var allPlaced = Service.GetAllPlaced(period);
-
-            var allDecorItems = new List<int>(100);
-
-            //skapar en lista med deras decorItemIDs
-            foreach (var item in allPlaced)
+            try
             {
-                allDecorItems.Add(item.decorItemID);
+                //hämtar alla föremål för vald period
+                var allPlaced = Service.GetAllPlaced(period);
+
+                //skapar en lista med periodens decorItemIDs
+                var decorItemIDs = new List<int>(100);
+
+                foreach (var item in allPlaced)
+                {
+                    decorItemIDs.Add(item.decorItemID);
+                }
+
+                decorItemIDs.TrimExcess();
+
+                //hämtar alla decoritems och sorterar ut de vi vill ha
+                var allItems = Service.GetDecorItems();
+
+                //skapar en lista med alla objekt som hör till perioden
+                var specificDecorItems = new List<Decoritem>(100);
+
+                foreach (var item in decorItemIDs)
+                {
+                    specificDecorItems.Add(allItems.ElementAt(item));
+                }
+
+                specificDecorItems.TrimExcess();
+
+                return specificDecorItems;
             }
-
-            allDecorItems.TrimExcess();
-
-            var specificDecorItems = new List<Decoritem>(100);
-
-            foreach (var item in allDecorItems)
+            catch (Exception)
             {
-                specificDecorItems.Add(Service.GetDecorItem(item));
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
+                return null;
             }
-
-            specificDecorItems.TrimExcess();
-
-
-            return specificDecorItems;
         }
 
-        //TODO: period blir null varje gång
         public IEnumerable<Decoritem> ListView1_GetData()
         {
-            var i = 1;
-            if (IsPostBack)
+            try
             {
-                i = (int)Session["periodID"];
+                //om inget val gjorts visas period 1
+                var i = 1;
+
+                //om man valt en period att visa, hämta period fr sessionen
+                if (IsPostBack)
+                {
+                    i = (int)Session["periodID"];
+                }
+
+                var placed = GetSpecificItems(i);
+                return placed;
             }
-
-            var placed = GetSpecificItems(i);
-            return placed;
-
-            //if (IsPostBack)
-            //{
-            //    var placed = GetSpecificItems(1);
-            //    return placed;
-            //}
-            //else
-            //{
-            //    if (period == null)
-            //    {
-
-            //        i = 1;
-            //    }
-            //    else
-            //    {
-            //        i = Convert.ToInt32(period);
-            //    }
-            //    var placed = GetSpecificItems(i);
-            //    return placed;
-            //}
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
+                return null;
+            }
         }
 
         protected void PeriodButton_Click(object sender, EventArgs e)
         {
+            //hämta vald period
             var period = Convert.ToInt32(PeriodDropDownList.SelectedValue);
+            //spara undan för att kunna hämta rätt föremål
             Session["periodID"] = period;
+        }
+
+        //fyller på literal med namn för vald period
+        protected void ListView1_PreRender(object sender, EventArgs e)
+        {
+            var periodLiteral = (Literal)ListView1.FindControl("PeriodLiteral");
+            //om inget val har gjorts
+            if (!IsPostBack)
+            {
+                periodLiteral.Text = String.Format(periodLiteral.Text, "Påsk");
+            }
+
+            //om val har gjorts
+            else
+            {
+                periodLiteral.Text = String.Format(periodLiteral.Text, PeriodDropDownList.SelectedItem);
+            }
         }
     }
 }

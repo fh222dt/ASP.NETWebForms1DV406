@@ -35,8 +35,7 @@ namespace Decorhelp.Pages.DecorAreas
                 }
                 catch (Exception)
                 {
-                    throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
-                    //return null;
+                    ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
                 }
             }
         }

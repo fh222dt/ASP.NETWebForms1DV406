@@ -74,8 +74,16 @@ namespace Decorhelp.Pages
         //}
 
         public IEnumerable<Decoritem> SummaryListView_GetData()
-        {            
-            return Service.GetDecorItems();
+        {
+            try
+            {
+                return Service.GetDecorItems();
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
+                return null;
+            }
         }
     }
 }

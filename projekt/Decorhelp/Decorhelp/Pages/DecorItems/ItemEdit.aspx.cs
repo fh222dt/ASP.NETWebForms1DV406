@@ -36,8 +36,8 @@ namespace Decorhelp.Pages.DecorItems
             }
             catch (Exception)
             {
-                throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
-                //return null;
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
+                return null;
             }
         }
 
@@ -48,9 +48,8 @@ namespace Decorhelp.Pages.DecorItems
                 var item = Service.GetDecorItem(id);
                 if (item == null)
                 {
-                    // Hittar inte i db
-                    ModelState.AddModelError(String.Empty,
-                        String.Format("Föremålet hittades inte."));
+                    // om man inte hittar i db
+                    ModelState.AddModelError(String.Empty,String.Format("Föremålet hittades inte."));
                     return;
                 }
 
@@ -67,8 +66,7 @@ namespace Decorhelp.Pages.DecorItems
             }
             catch (Exception)
             {
-                throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
-                //return null;
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
             }
         }
     }

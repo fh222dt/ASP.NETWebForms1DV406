@@ -34,6 +34,7 @@
             </ul>
         </div>
         <div id="main">
+
             <%-- Visa rättmeddelande --%>
         <asp:PlaceHolder ID="SuccessPlaceHolder" runat="server" Visible="false">
             <div class="success">
@@ -43,16 +44,16 @@
                 </p>
             </div>            
         </asp:PlaceHolder>
+
             <%-- Huvudinnehållet hamnar här --%>
-            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server">        
-            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="MainContentPlaceHolder" runat="server"></asp:ContentPlaceHolder>
         </div>
+
         <footer>
             <p class="text-muted">Decorhelp &copy; Frida Holmström 2014</p>
         </footer>
     </div>
     </form>
     <script src="<%= ResolveClientUrl("~/Content/decorhelp.js") %>"></script>
-    <%--<script src="../Content/decorhelp.js"></script>--%>
 </body>
 </html>

@@ -11,7 +11,8 @@ namespace Decorhelp.Model.DAL
     public class DecoritemDAL: DALBase
     {   
         public void DeleteDecorItem(int decorItemID)
-        {   // Skapar och initierar ett anslutningsobjekt.
+        {   
+            // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
                 try
@@ -29,7 +30,7 @@ namespace Decorhelp.Model.DAL
 
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }            
         }
@@ -63,7 +64,7 @@ namespace Decorhelp.Model.DAL
                             {
                                 decorItemID = reader.GetInt32(itemIDIndex),
                                 decorItemName = reader.GetString(itemNameIndex),
-                                decorItemDescription = reader.GetValue(itemDescriptionIndex).ToString(), //är detta vettigt för att hantera ev. null-värde??                                
+                                decorItemDescription = reader.GetValue(itemDescriptionIndex).ToString(), //för att kunna hantera ev. null-värde                                
                                 decorAreaID = reader.GetInt32(areaIDIndex)
                                 
                             };
@@ -75,7 +76,7 @@ namespace Decorhelp.Model.DAL
 
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
@@ -91,7 +92,7 @@ namespace Decorhelp.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till de paramterar den lagrade proceduren kräver. 
-                    cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Value = decoritem.decorAreaID; //väljs fr drop-down
+                    cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Value = decoritem.decorAreaID;
                     cmd.Parameters.Add("@decorItemName", SqlDbType.VarChar, 40).Value = decoritem.decorItemName;
                     cmd.Parameters.Add("@decorItemDesc", SqlDbType.VarChar, 40).Value = decoritem.decorItemDescription;
 
@@ -106,7 +107,7 @@ namespace Decorhelp.Model.DAL
                 }
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
@@ -133,7 +134,7 @@ namespace Decorhelp.Model.DAL
                 }
                 catch
                 {
-                    throw; // new ApplicationException("An error occured in the data access layer.");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
@@ -166,7 +167,7 @@ namespace Decorhelp.Model.DAL
                             {
                                 decorItemID = reader.GetInt32(itemIDIndex),
                                 decorItemName = reader.GetString(itemNameIndex),
-                                decorItemDescription = reader.GetValue(itemDescriptionIndex).ToString(), //är detta vettigt för att hantera ev. null-värde??                                
+                                decorItemDescription = reader.GetValue(itemDescriptionIndex).ToString(), //för att kunna hantera ev. null-värde                                
                                 decorAreaID = reader.GetInt32(areaIDIndex),
                                 roomName = reader.GetString(roomNameIndex),
                                 decorAreaName = reader.GetString(decorAreaNameIndex)
@@ -181,7 +182,7 @@ namespace Decorhelp.Model.DAL
                 }
                 catch
                 {
-                    throw;// new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }

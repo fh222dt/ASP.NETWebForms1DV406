@@ -38,16 +38,16 @@ namespace Decorhelp.Pages.DecorItems
             }
             catch (Exception)
             {
-                throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
-                //return null;
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
+                return null;
             }
         }
 
- 
-        protected void ContactTypeNameLabel_PreRender(object sender, EventArgs e)
+
+        protected void AreaLabel_PreRender(object sender, EventArgs e)
         {
             //hämtar label att placera text i
-            var label = (Label)ItemDetailsFormView.FindControl("ContactTypeNameLabel");
+            var label = (Label)ItemDetailsFormView.FindControl("AreaLabel");
             if (label != null)
             {
                 //hämtar objektet från sessionen

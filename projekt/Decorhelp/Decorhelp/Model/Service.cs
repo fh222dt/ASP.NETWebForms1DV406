@@ -41,7 +41,7 @@ namespace Decorhelp.Model
                 throw ex;
             }
             //create
-            if (decorarea.decorAreaID == 0) // Ny post om decorareaID är 0
+            if (decorarea.decorAreaID == 0)
             {
                 DecorareaDAL.InsertDecorArea(decorarea);
             }
@@ -62,7 +62,7 @@ namespace Decorhelp.Model
                 throw ex;
             }
             //create
-            if (decoritem.decorItemID == 0) // Ny post om decorareaID är 0
+            if (decoritem.decorItemID == 0)
             {
                 DecoritemDAL.InsertDecorItem(decoritem);
             }

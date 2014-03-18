@@ -7,6 +7,7 @@
     <asp:ValidationSummary ID="ValidationSummary" runat="server" />
 
     <div>
+        <%-- värden kommer fr tabell utanför projektet --%>
         <label for="Period">Välj period att visa:</label>
         <asp:DropDownList ID="PeriodDropDownList" runat="server">
                         <asp:ListItem Value="">Välj period</asp:ListItem>
@@ -20,6 +21,7 @@
 
         <asp:Button ID="PeriodButton" runat="server" Text="Visa" OnClick="PeriodButton_Click" CssClass="btn btn-default btn-xs"/>
     </div>
+
     <asp:ListView ID="ListView1" runat="server"
         ItemType="Decorhelp.Model.Decoritem"
         SelectMethod="ListView1_GetData"
@@ -35,10 +37,11 @@
                     <th>Föremål</th>
                     <th>Kommentar</th>                    
                 </tr>                
-                <%-- Platshållare för nya rader --%>
+
                 <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
             </table>
         </LayoutTemplate>
+
         <ItemTemplate>
             <tr id="row" runat="server">
                 <td><asp:Literal ID="Literal1" runat="server" Text='<%#: Item.roomName %>'></asp:Literal></td>
@@ -58,8 +61,10 @@
                 </td>
             </tr>
         </ItemTemplate>
+
         <EmptyDataTemplate>
             <p>Inga inredningsföremål kunde hittas</p>
         </EmptyDataTemplate>
+
     </asp:ListView>
 </asp:Content>

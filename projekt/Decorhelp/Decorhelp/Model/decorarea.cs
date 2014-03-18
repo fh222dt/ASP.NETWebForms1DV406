@@ -8,7 +8,6 @@ namespace Decorhelp.Model
 {
     public class Decorarea
     {
-        //Egenskaper
         public int decorAreaID { get; set; }
 
         [StringLength(40, ErrorMessage = "Namn på yta kan max ha 40 tecken"), Required(ErrorMessage = "Namn på yta måste anges")]
@@ -19,6 +18,7 @@ namespace Decorhelp.Model
         public string decorAreaDescription { get; set; }
 
         //ska hårdkodas då det kommer från tabell utanför projektet
+        [Required(ErrorMessage = "Rum måste anges")]
         public int roomID { get; set; }
     }
 }

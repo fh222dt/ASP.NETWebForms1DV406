@@ -11,6 +11,7 @@
         DataKeyNames="decorAreaID"
         DefaultMode="Edit"
         RenderOuterTable="false" OnPreRender="AreaEditFormView_PreRender" >
+        
         <EditItemTemplate>
             <div>
                 <label for="Name">Namn:</label> 
@@ -37,9 +38,8 @@
             </div>
 
             <asp:LinkButton runat="server" Text="Spara" CommandName="Update" CssClass="btn btn-default btn-xs" />
-            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>' CssClass="btn btn-default btn-xs" Text='Avbryt' />
-                         
-                      
+            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>' 
+                CssClass="btn btn-default btn-xs" Text='Avbryt' />                      
         </EditItemTemplate>
 
     </asp:FormView>

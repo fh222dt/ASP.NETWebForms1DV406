@@ -50,8 +50,7 @@ namespace Decorhelp.Model.DAL
                 }
                 catch
                 {
-                    new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
-                    return null;
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }

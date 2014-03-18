@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ItemEdit.aspx.cs" Inherits="Decorhelp.Pages.DecorItems.ItemEdit" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>Ändra inredningsyta</h2>
 
@@ -11,6 +12,7 @@
         DataKeyNames="decorItemID"
         DefaultMode="Edit"
         RenderOuterTable="false" >
+        
         <EditItemTemplate>
             <div>
                 <label for="Name">Namn:</label> 
@@ -19,7 +21,7 @@
                      Display="Dynamic" ControlToValidate="NameTextBox">*</asp:RequiredFieldValidator>
             </div>
             <div>
-                <%-- valideras ej då den är förvald vid edit --%>
+                <%-- valideras ej då yta är förvald vid editmode --%>
                 <label for="Area">Tillhör inredningsyta:</label> 
                 <asp:DropDownList ID="AreaDropDownList" runat="server"
                     ItemType="Decorhelp.Model.Decorarea"
@@ -35,7 +37,10 @@
             </div>
 
             <asp:LinkButton runat="server" Text="Spara" CommandName="Update" CssClass="btn btn-default btn-xs" />
-            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>' CssClass="btn btn-default btn-xs" Text='Avbryt' />                     
+            <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>' 
+                CssClass="btn btn-default btn-xs" Text='Avbryt' />                     
         </EditItemTemplate>
+
     </asp:FormView>
+
 </asp:Content>

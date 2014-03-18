@@ -22,6 +22,7 @@ namespace Decorhelp.Pages.DecorAreas
                 {
                     Service service = new Service();
                     
+                    //hämtar valt rum från dropdown
                     DropDownList dropdown = (DropDownList)AreaCreateFormView.FindControl("RoomDropDownList");
                     area.roomID = Convert.ToInt32(dropdown.SelectedValue);
 
@@ -35,7 +36,7 @@ namespace Decorhelp.Pages.DecorAreas
                 }
                 catch (Exception)
                 {
-                    ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
+                    ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle lägga till informationen");
                 }
             }
         }

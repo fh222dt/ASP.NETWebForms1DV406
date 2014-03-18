@@ -21,6 +21,7 @@ namespace Decorhelp.Pages
         {
                         
         }
+        //TODO: kanske visa att det inte finns ngn kommentar
 
         //Returnerar lista med utvalda föremåls-objekt
         private IEnumerable<Decoritem> GetSpecificItems(int period)
@@ -97,6 +98,7 @@ namespace Decorhelp.Pages
         protected void ListView1_PreRender(object sender, EventArgs e)
         {
             var periodLiteral = (Literal)ListView1.FindControl("PeriodLiteral");
+            
             //om inget val har gjorts
             if (!IsPostBack)
             {

@@ -2,7 +2,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
     <h2>Lägg till inredningsyta</h2>
 
-    <asp:ValidationSummary ID="ValidationSummarys" runat="server" />
+    <asp:ValidationSummary ID="ValidationSummary" runat="server" />
 
     <asp:FormView ID="AreaCreateFormView" runat="server"
         ItemType="Decorhelp.Model.Decorarea"
@@ -39,5 +39,6 @@
             <asp:LinkButton ID="LinkButton1" runat="server" Text="Spara" CommandName="Insert" CssClass="btn btn-default btn-xs" />
             <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreas") %>'  CssClass="btn btn-default btn-xs" Text='Avbryt' />                      
         </InsertItemTemplate>
+
     </asp:FormView>
 </asp:Content>

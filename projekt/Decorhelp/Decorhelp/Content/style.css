@@ -44,27 +44,3 @@ footer {
     float: right;
 }
 
-/*styla lista m föremål*/
-#colroom {
-    width: 200px;
-    float:left;
-    border: 1px solid black;
-}
-
-#colarea {
-    width: 200px;
-    float:left;
-    border: 1px solid black;
-}
-
-#colitem {
-    width: 200px;
-    float:left;
-    border: 1px solid black;
-}
-
-
-.table1 tr, .table1 td, .table1, .table1 th {
-    border:1px solid black;
-}
-

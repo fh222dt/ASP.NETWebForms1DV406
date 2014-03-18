@@ -1,16 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="ItemDetails.aspx.cs" Inherits="Decorhelp.Pages.DecorItems.ItemDetails" %>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    
     <h2>Detaljer inredningsföremål</h2>
+
     <asp:FormView ID="ItemDetailsFormView" runat="server"
         ItemType="Decorhelp.Model.Decoritem"
         SelectMethod="ItemDetailsFormView_GetItem"
-        RenderOuterTable="false"
-          >
+        RenderOuterTable="false">
+        
         <ItemTemplate>
             <div>Namn: <%#: Item.decorItemName %></div>
-            <div>Tillhör inredningsyta:<%--<asp:Literal ID="AreaLiteral" runat="server" OnDataBinding="AreaLiteral_DataBinding"></asp:Literal>--%>
-                <%-- Label-kontrollen uppgift är att visa vilken typ kontaktinformationen är av. --%>
-                        <asp:Label ID="ContactTypeNameLabel" runat="server" Text="{0}" OnPreRender="ContactTypeNameLabel_PreRender"/>
+            <div>Tillhör inredningsyta:
+                        <asp:Label ID="AreaLabel" runat="server" Text="{0}" OnPreRender="AreaLabel_PreRender"/>
             </div>
             <div>Kommentar: <%#: Item.decorItemDescription %></div>
             <asp:HyperLink runat="server" Text="Redigera" CssClass="btn btn-default btn-xs" NavigateUrl='<%# GetRouteUrl("DecorItemEdit", new { id = Item.decorItemID }) %>' />

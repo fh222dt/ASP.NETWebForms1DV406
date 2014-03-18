@@ -38,7 +38,7 @@ namespace Decorhelp.Pages.DecorItems
             }
             catch (Exception)
             {
-                throw; // ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle ta bort informationen");
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle ta bort informationen");
             }
         }
     }

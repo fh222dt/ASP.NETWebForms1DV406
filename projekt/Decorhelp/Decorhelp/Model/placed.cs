@@ -8,7 +8,6 @@ namespace Decorhelp.Model
 {
     public class Placed
     {
-        //Egenskaper
         public int placedID { get; set; }
 
         [Required(ErrorMessage = "Föremål måste anges")]

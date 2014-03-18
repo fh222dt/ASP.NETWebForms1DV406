@@ -10,7 +10,8 @@ namespace Decorhelp.Model.DAL
     public class DecorareaDAL : DALBase
     {   
         public void DeleteDecorArea(int decorAreaID)
-        {// Skapar och initierar ett anslutningsobjekt.
+        {   
+            // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
                 try
@@ -28,13 +29,14 @@ namespace Decorhelp.Model.DAL
 
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }      
         }
 
         public Decorarea GetDecorAreaById(int decorAreaID)
-        {// Skapar och initierar ett anslutningsobjekt.
+        {
+            // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
                 try
@@ -54,13 +56,13 @@ namespace Decorhelp.Model.DAL
                             var areaIDIndex = reader.GetOrdinal("decorAreaID");
                             var areaNameIndex = reader.GetOrdinal("decorAreaName");
                             var areaDescriptionIndex = reader.GetOrdinal("decorAreaDescription");
-                            var roomIDIndex = reader.GetOrdinal("roomID");      //hur lösa?? fr tabell utanför projektet
+                            var roomIDIndex = reader.GetOrdinal("roomID");
 
                             return new Decorarea
                             {
                                 decorAreaID = reader.GetInt32(areaIDIndex),
                                 decorAreaName = reader.GetString(areaNameIndex),
-                                decorAreaDescription = reader.GetValue(areaDescriptionIndex).ToString(), //är detta vettigt för att hantera ev. null-värde??                                
+                                decorAreaDescription = reader.GetValue(areaDescriptionIndex).ToString(), //för att kunna hantera ev. null-värde                               
                                 roomID = reader.GetInt32(roomIDIndex)
                             };
                         }
@@ -71,13 +73,14 @@ namespace Decorhelp.Model.DAL
 
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
 
         public void InsertDecorArea(Decorarea decorarea)
-        {// Skapar och initierar ett anslutningsobjekt.
+        {
+            // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
                 try
@@ -86,9 +89,9 @@ namespace Decorhelp.Model.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Lägger till de paramterar den lagrade proceduren kräver. 
-                    cmd.Parameters.Add("@decorAreaName", SqlDbType.VarChar, 40).Value = decorarea.decorAreaName; //väljs fr drop-down
+                    cmd.Parameters.Add("@decorAreaName", SqlDbType.VarChar, 40).Value = decorarea.decorAreaName;
                     cmd.Parameters.Add("@decorAreaDesc", SqlDbType.VarChar, 40).Value = decorarea.decorAreaDescription;
-                    cmd.Parameters.Add("@RoomID", SqlDbType.Int, 4).Value = decorarea.roomID; //fr tabell utanför projektet
+                    cmd.Parameters.Add("@RoomID", SqlDbType.Int, 4).Value = decorarea.roomID;
 
                     cmd.Parameters.Add("@decorAreaID", SqlDbType.Int, 4).Direction = ParameterDirection.Output;
 
@@ -101,13 +104,14 @@ namespace Decorhelp.Model.DAL
                 }
                 catch
                 {
-                    throw; // new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }
         }
 
         public void UpdateDecorArea(Decorarea decorarea)
-        {// Skapar och initierar ett anslutningsobjekt.
+        {
+            // Skapar och initierar ett anslutningsobjekt.
             using (var conn = CreateConnection())
             {
                 try
@@ -127,7 +131,7 @@ namespace Decorhelp.Model.DAL
                 }
                 catch
                 {
-                    throw; // new ApplicationException("An error occured in the data access layer.");
+                    throw new ApplicationException("An error occured in the data access layer.");
                 }
             }
         }
@@ -150,7 +154,7 @@ namespace Decorhelp.Model.DAL
                         var areaIDIndex = reader.GetOrdinal("decorAreaID");
                         var areaNameIndex = reader.GetOrdinal("decorAreaName");
                         var areaDescriptionIndex = reader.GetOrdinal("decorAreaDescription");
-                        var roomIDIndex = reader.GetOrdinal("RoomID");      //hur lösa?? fr tabell utanför projektet
+                        var roomIDIndex = reader.GetOrdinal("RoomID");
 
                         while (reader.Read())
                         {
@@ -158,7 +162,7 @@ namespace Decorhelp.Model.DAL
                             {
                                 decorAreaID = reader.GetInt32(areaIDIndex),
                                 decorAreaName = reader.GetString(areaNameIndex),
-                                decorAreaDescription = reader.GetValue(areaDescriptionIndex).ToString(), //är detta vettigt för att hantera ev. null-värde??                                
+                                decorAreaDescription = reader.GetValue(areaDescriptionIndex).ToString(), //för att kunna hantera ev. null-värde                                
                                 roomID = reader.GetInt32(areaIDIndex)
                             });
                         }
@@ -170,7 +174,7 @@ namespace Decorhelp.Model.DAL
                 }
                 catch
                 {
-                    throw;// new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
+                    throw new ApplicationException("Ett fel inträffade när data skulle hämtas från databasen");
                 }
             }        
         }

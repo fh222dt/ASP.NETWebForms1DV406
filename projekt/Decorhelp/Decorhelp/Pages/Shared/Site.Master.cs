@@ -33,7 +33,7 @@ namespace Decorhelp.Pages.Shared
                 navlist.Attributes["class"] = "active";
             }
 
-            //visa rättmeddelande
+            //visa rättmeddelanden
             if (Session["createArea"] as bool? == true) 
             {
                 SuccessPlaceHolder.Visible = true;

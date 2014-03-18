@@ -19,7 +19,7 @@ namespace Decorhelp.Pages.DecorItems
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //tar bort så man inte kan välja dummyyta
+            //tar bort så man inte kan välja dummyyta som kommer med fr db
             DropDownList dropdown = (DropDownList)ItemCreateFormView.FindControl("AreaDropDownList");
             dropdown.Items.Remove(dropdown.Items.FindByValue("2"));
         }
@@ -46,8 +46,7 @@ namespace Decorhelp.Pages.DecorItems
                 }
                 catch (Exception)
                 {
-                    throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle uppdatera informationen");
-                    //return null;
+                    ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle lägga till informationen");
                 }
             }
         }

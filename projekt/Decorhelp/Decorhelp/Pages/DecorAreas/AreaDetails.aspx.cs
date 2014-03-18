@@ -31,7 +31,6 @@ namespace Decorhelp.Pages.DecorAreas
 
                 //spara undan rumsid för att kunna visa rummets namn (endast id fås fr db)
                 Session["roomID"] = decorarea.roomID;
-
                 
                 return decorarea;
 
@@ -39,14 +38,14 @@ namespace Decorhelp.Pages.DecorAreas
             }
             catch (Exception)
             {
-                throw; //ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
-                //return null;
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle hämta informationen");
+                return null;
             }
         }
 
         protected void AreaDetailsFormView_PreRender(object sender, EventArgs e)
         {
-            //rumsnamn ist för rumsid
+            //visa rumsnamn ist för rumsid
             var roomLiteral = (Literal)AreaDetailsFormView.FindControl("RoomLiteral");            
             int roomID = (int)Session["roomID"];
 

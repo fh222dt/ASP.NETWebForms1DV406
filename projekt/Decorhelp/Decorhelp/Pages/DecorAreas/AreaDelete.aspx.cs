@@ -10,7 +10,6 @@ namespace Decorhelp.Pages.DecorAreas
 {
     public partial class DecorAreaDelete : System.Web.UI.Page
     {
-        //kan man lägga detta i masterpage code behind???
         private Service _service;
 
         private Service Service
@@ -39,7 +38,7 @@ namespace Decorhelp.Pages.DecorAreas
             }
             catch (Exception)
             {
-                throw; // ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle ta bort informationen");
+                ModelState.AddModelError(String.Empty, "Det blev fel när vi skulle ta bort informationen");
             }
         }
     }

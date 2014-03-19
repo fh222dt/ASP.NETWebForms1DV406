@@ -33,7 +33,6 @@
                 <tr>
                     <th>Rum</th>
                     <th>Inredningsyta</th>
-                    <th>Kommentar</th>
                     <th>Föremål</th>
                     <th>Kommentar</th>                    
                 </tr>                
@@ -48,10 +47,7 @@
                 <td>
                     <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorAreaDetails", new { id = Item.decorAreaID })  %>'
                         Text='<%#: Item.decorAreaName %>' />                    
-                </td> 
-                <td>
-                    <asp:Literal ID="Literal2" runat="server"></asp:Literal>
-                </td>                   
+                </td>                    
                 <td>
                     <asp:HyperLink runat="server" NavigateUrl='<%# GetRouteUrl("DecorItemDetails", new { id = Item.decorItemID })  %>'
                     Text='<%#: Item.decorItemName %>' />                    

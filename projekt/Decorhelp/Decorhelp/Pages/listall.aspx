@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Pages/Shared/Site.Master" AutoEventWireup="true" CodeBehind="listall.aspx.cs" Inherits="Decorhelp.Pages.listall" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContentPlaceHolder" runat="server">
+    
+    <div id="welcome">
+        <p>Välkommen till Decorhelp! Här kan du planera din inredning och få koll på hur du ska dekorera ditt hem under 
+            olika perioder. Lägg till nya föremål i menyn här ovan!
+        </p>
+    </div>
+    
     <%-- lista alla föremål --%>
     <h2>Alla inredningsföremål</h2>
 

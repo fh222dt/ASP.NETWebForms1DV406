@@ -62,6 +62,7 @@
   <ItemGroup>
     <Content Include="Content\close.png" />
     <Content Include="Content\decorhelp.js" />
+    <Content Include="Content\livingroom.png" />
     <Content Include="Content\style.css" />
     <Content Include="Pages\allItemsPeriod.aspx" />
     <Content Include="Pages\DecorAreas\AreaDetails.aspx" />
